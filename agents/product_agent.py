@@ -46,7 +46,7 @@ if len(pending) < 3:
         contents=prompt + "\n\n" + codebase,
         config=types.GenerateContentConfig(
             temperature=0.4,
-            max_output_tokens=2048,
+            max_output_tokens=8192,
         )
     )
 
