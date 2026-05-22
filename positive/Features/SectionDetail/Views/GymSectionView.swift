@@ -102,33 +102,7 @@ struct GymSectionView: View {
                                 withAnimation(.spring()) {
 
                                     selectedDayID = day.id
-                                    completed = []
-                                    notes = ""
-                                    distanceKm = ""
-                                    durationMin = ""
                                     restoreSessionIfNeeded()
-
-                                    if let log = store.logs.first(where: {
-                                        Calendar.current.isDateInToday($0.date) &&
-                                        $0.dayName == day.name
-                                    }) {
-
-                                        for ex in day.exercises
-                                        where log.completedExercises.contains(ex.name) {
-
-                                            completed.insert(ex.id)
-                                        }
-
-                                        notes = log.notes
-
-                                        if let km = log.distanceKm {
-                                            distanceKm = String(format: "%.1f", km)
-                                        }
-
-                                        if let min = log.durationMin {
-                                            durationMin = "\(min)"
-                                        }
-                                    }
                                 }
 
                             } label: {
@@ -481,7 +455,14 @@ private func restoreSessionIfNeeded() {
     guard let log = store.logs.first(where: {
         Calendar.current.isDateInToday($0.date) &&
         $0.dayName == day.name
-    }) else { return }
+    }) else {
+        // If no log exists for today, clear the current state to reflect an empty session
+        completed = []
+        notes = ""
+        distanceKm = ""
+        durationMin = ""
+        return
+    }
     
     // Restore completed exercises from today's log
     completed = Set(
@@ -494,9 +475,14 @@ private func restoreSessionIfNeeded() {
     
     if let km = log.distanceKm {
         distanceKm = String(format: "%.1f", km)
+    } else {
+        distanceKm = ""
     }
+    
     if let min = log.durationMin {
         durationMin = "\(min)"
+    } else {
+        durationMin = ""
     }
 }
 }
