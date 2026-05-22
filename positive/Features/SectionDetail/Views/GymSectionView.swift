@@ -315,15 +315,23 @@ struct GymSectionView: View {
 
                     Spacer()
 
-                    VStack(spacing: 12) {
+                    VStack(spacing: 20) {
 
                         Image(systemName: "dumbbell")
-                            .font(.system(size: 40, weight: .light))
-                            .foregroundColor(.white.opacity(0.15))
+                            .font(.system(size: 60, weight: .thin))
+                            .foregroundColor(.white.opacity(0.2))
 
-                        Text("Select a workout day above")
-                            .font(.system(size: 15, design: .rounded))
-                            .foregroundColor(.white.opacity(0.3))
+                        Text("No workout days yet!")
+                            .font(.system(size: 22, weight: .bold, design: .rounded))
+                            .foregroundColor(.white.opacity(0.8))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+
+                        Text("Tap the '+' button above to add your first workout plan.")
+                            .font(.system(size: 16, design: .rounded))
+                            .foregroundColor(.white.opacity(0.5))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
                     }
 
                     Spacer()
