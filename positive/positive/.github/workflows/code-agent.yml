@@ -1,0 +1,45 @@
+name: Code Agent — Implement Approved Suggestion
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  implement:
+    if: github.event.label.name == 'approved'
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install anthropic PyGithub
+
+      - name: Build check before changes
+        run: |
+          xcodebuild build \
+            -project positive.xcodeproj \
+            -scheme positive \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            CODE_SIGNING_ALLOWED=NO \
+          | grep -E 'error:|warning:|BUILD' || true
+
+      - run: python agents/code_agent.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+
+      - name: Build check after changes
+        run: |
+          xcodebuild build \
+            -project positive.xcodeproj \
+            -scheme positive \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            CODE_SIGNING_ALLOWED=NO \
+          | grep -E 'error:|BUILD'
