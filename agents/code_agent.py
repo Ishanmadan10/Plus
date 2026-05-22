@@ -156,7 +156,38 @@ except Exception as e:
     exit(1)
 
 if not result.get("changes"):
-    print("No changes returned by model")
+    print("No changes returned by model — marking as skipped and raising backlog PR")
+
+    for s in backlog["suggestions"]:
+        if s["id"] == suggestion_id:
+            s["status"] = "skipped"
+
+    with open("backlog.json", "w") as f:
+        json.dump(backlog, f, indent=2)
+
+    branch = f"agent/{suggestion_id}-skipped"
+
+    subprocess.run(["git", "config", "user.email", "agent@users.noreply.github.com"], check=True)
+    subprocess.run(["git", "config", "user.name", "Code Agent"], check=True)
+    subprocess.run(["git", "checkout", "-b", branch], check=True)
+    subprocess.run(["git", "add", "backlog.json"], check=True)
+
+    diff_check = subprocess.run(["git", "diff", "--cached", "--quiet"], check=False)
+    if diff_check.returncode == 0:
+        print("Backlog already up to date")
+        exit(0)
+
+    subprocess.run(["git", "commit", "-m", f"chore: mark {suggestion_id} as skipped — already implemented"], check=True)
+    subprocess.run(["git", "push", "origin", branch], check=True)
+
+    pr = repo.create_pull(
+        title=f"[Agent] Skip {suggestion_id} — already implemented",
+        body=f"## {suggestion.get('title', suggestion_id)}\n\nThe code agent determined this suggestion is already implemented.\n\nMarking as `skipped` in backlog so the next suggestion can proceed.\n\n> Suggestion: `{suggestion_id}`",
+        head=branch,
+        base="main"
+    )
+
+    print(f"Skipped PR #{pr.number} opened: {pr.html_url}")
     exit(0)
 
 # -----------------------------

@@ -69,7 +69,7 @@
       "why": "Encourages users to start writing and makes the blank editor less intimidating, improving the journaling experience.",
       "ui_impact": "A light gray placeholder text will be visible in the text editor when no content has been entered.",
       "backend_impact": "None",
-      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "file": "positive/Features/SectionDetail/Views/JournalEditorView.swift",
       "effort": "small",
       "priority": 1,
       "status": "pending"
