@@ -1,246 +1,141 @@
-import os
-import json
-import re
-import subprocess
-import time
-
+import os, json, re, subprocess, time
 from google import genai
 from google.genai import types
 from google.genai.errors import ClientError
 from github import Github, Auth
 
 # -----------------------------
-# ENV / GITHUB SETUP
+# GitHub setup
 # -----------------------------
 REPO = os.environ["GITHUB_REPOSITORY"]
-
-issue_number_raw = os.environ.get("ISSUE_NUMBER", "").strip()
-ISSUE_NUMBER = int(issue_number_raw) if issue_number_raw else None
-
-ISSUE_BODY = os.environ.get("ISSUE_BODY", "").strip()
-
-DEFAULT_BODY = """
-Perform one meaningful improvement to the iOS app.
-
-Priority order:
-1. Fix compile/runtime issues
-2. Reduce duplicated code
-3. Improve architecture
-4. Improve SwiftUI performance
-5. Improve accessibility
-6. Improve maintainability
-
-Do not make cosmetic-only changes.
-Do not rewrite the whole app.
-Return only high-impact improvements.
-"""
-
-IS_DEFAULT_BODY = not ISSUE_BODY
-
-if not ISSUE_BODY:
-    ISSUE_BODY = DEFAULT_BODY
 
 gh = Github(auth=Auth.Token(os.environ["GITHUB_TOKEN"]))
 repo = gh.get_repo(REPO)
 
+# -----------------------------
+# Gemini client
+# -----------------------------
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 MODELS = [
     "gemini-2.5-flash",
-     "gemini-2.5-pro",  
+    "gemini-2.5-pro", 
     "gemini-2.5-flash-lite",
 ]
 
-# -----------------------------
-# GEMINI CALL
-# -----------------------------
 def call_gemini(prompt: str, config):
     for model in MODELS:
         try:
             print(f"Trying model: {model}")
-
             response = client.models.generate_content(
                 model=model,
                 contents=prompt,
                 config=config
             )
-
-            if not response.text:
-                continue
-
-            return response.text.strip()
-
+            if response.text:
+                return response.text.strip()
         except ClientError as e:
+            if "RESOURCE_EXHAUSTED" in str(e):
+                print(f"Model {model} quota exhausted — trying next")
+                continue
             print(f"Model {model} failed: {e}")
             time.sleep(1)
-
         except Exception as e:
             print(f"Unexpected error {model}: {e}")
             time.sleep(1)
-
     return None
 
-# -----------------------------
-# SAFE JSON PARSER
-# -----------------------------
 def parse_json_response(raw_text: str):
-
     if not raw_text:
         raise ValueError("Empty response")
-
-    # remove markdown fences
-    cleaned = raw_text.replace("```json", "")
-    cleaned = cleaned.replace("```", "")
-    cleaned = cleaned.strip()
-
-    # find first {
+    cleaned = raw_text.replace("```json", "").replace("```", "").strip()
     start = cleaned.find("{")
-
-    # find last }
     end = cleaned.rfind("}")
-
     if start == -1 or end == -1:
         raise ValueError("No JSON object found")
-
-    json_str = cleaned[start:end + 1]
-
-    return json.loads(json_str)
+    return json.loads(cleaned[start:end + 1])
 
 # -----------------------------
-# EXTRACT IDS
+# Load backlog — pick highest priority pending suggestion
 # -----------------------------
-match = re.search(r'suggestion_id: (.+?) -->', ISSUE_BODY)
+with open("backlog.json") as f:
+    backlog = json.load(f)
 
-suggestion_id = (
-    match.group(1).strip()
-    if match
-    else f"manual-{int(time.time())}"
-)
+pending = [s for s in backlog["suggestions"] if s["status"] == "pending"]
+
+if not pending:
+    print("No pending suggestions — nothing to implement")
+    exit(0)
+
+# Sort by priority (lower number = higher priority), pick first
+pending.sort(key=lambda s: s.get("priority", 99))
+suggestion = pending[0]
+
+print(f"Implementing: [{suggestion.get('priority', '?')}] {suggestion.get('title', suggestion.get('id'))}")
+print(f"File: {suggestion.get('file', 'unknown')}")
+
+suggestion_id = suggestion["id"]
+suggestion_text = json.dumps(suggestion, indent=2)
 
 # -----------------------------
-# LOAD FULL REPO
+# Load full repo
 # -----------------------------
 def load_repo():
     repo_map = {}
-
     for root, _, files in os.walk("."):
-
-        # skip junk folders
-        if any(skip in root for skip in [
-            ".git",
-            "Pods",
-            "build",
-            ".build",
-            "DerivedData"
-        ]):
+        if any(skip in root for skip in [".git", "Pods", "build", ".build", "DerivedData"]):
             continue
-
         for file in files:
             if file.endswith(".swift"):
                 path = os.path.normpath(os.path.join(root, file))
-
                 try:
                     with open(path, "r", encoding="utf-8") as f:
                         repo_map[path] = f.read()
                 except Exception:
                     continue
-
     return repo_map
 
 repo_map = load_repo()
+EXISTING_FILES = set(repo_map.keys())
 
-codebase = "\n\n".join(
-    f"// FILE: {path}\n{content}"
-    for path, content in repo_map.items()
-)
+# Send the target file in full + repo summary for context
+target_file = os.path.normpath(suggestion.get("file", ""))
+target_content = repo_map.get(target_file, "")
 
-# lightweight architectural summary
 repo_summary = "\n".join(
     f"{path} | {len(content.splitlines())} lines"
     for path, content in repo_map.items()
 )
 
-# existing files (used for safety check)
-EXISTING_FILES = set(repo_map.keys())
-
 print(f"Loaded {len(repo_map)} Swift files")
 
 # -----------------------------
-# DECISION STEP
-# -----------------------------
-
-# When running autonomously with no specific issue, skip the decision gate
-# entirely — we know we want an improvement, so just proceed.
-if IS_DEFAULT_BODY:
-    print("Autonomous run (no issue body) — skipping decision gate")
-else:
-    decision_prompt = f"""
-You are a senior iOS architect.
-
-Decide whether this feature request or improvement should be implemented.
-The codebase is real and in active development.
-Err on the side of YES — only return should_change: false if the request
-is completely impossible, nonsensical, or dangerous.
-
-Return ONLY valid JSON.
-
-Format:
-{{
-  "should_change": true,
-  "reason": "short reason"
-}}
-
-FEATURE REQUEST:
-{ISSUE_BODY}
-
-REPOSITORY STRUCTURE:
-{repo_summary}
-"""
-
-    decision_raw = call_gemini(
-        decision_prompt,
-        types.GenerateContentConfig(
-            temperature=0.1,
-            max_output_tokens=256,
-            response_mime_type="application/json",
-        )
-    )
-
-    if decision_raw is None:
-        print("Decision fallback triggered — proceeding anyway")
-    else:
-        try:
-            decision = parse_json_response(decision_raw)
-        except Exception as e:
-            print("Decision JSON parse failed — proceeding anyway")
-            print(decision_raw)
-            print(e)
-            decision = {"should_change": True, "reason": "parse fallback"}
-
-        print("Decision:", decision)
-
-        if not decision.get("should_change", False):
-            print("No change required:", decision.get("reason", ""))
-            exit(0)
-
-# -----------------------------
-# LOAD CODE PROMPT
+# Load code prompt
 # -----------------------------
 with open("agents/prompts/code_prompt.txt", "r", encoding="utf-8") as f:
     base_prompt = f.read()
 
-prompt = base_prompt.replace("{{SUGGESTION}}", ISSUE_BODY)
-
 # -----------------------------
-# MAIN GENERATION
+# Build generation prompt
+# Send the target file in full, repo summary for wider context
 # -----------------------------
 generation_prompt = f"""
-{prompt}
+{base_prompt}
 
-FULL CODEBASE:
-{codebase}
+SUGGESTION TO IMPLEMENT:
+{suggestion_text}
+
+REPOSITORY STRUCTURE:
+{repo_summary}
+
+TARGET FILE (implement changes here):
+// FILE: {target_file}
+{target_content}
 """
 
+# -----------------------------
+# Generate
+# -----------------------------
 raw = call_gemini(
     generation_prompt,
     types.GenerateContentConfig(
@@ -251,18 +146,14 @@ raw = call_gemini(
 )
 
 if raw is None:
-    raw = json.dumps({
-        "summary": "no-op fallback",
-        "description": "AI unavailable",
-        "changes": []
-    })
+    print("Generation failed — all models exhausted")
+    exit(0)
 
 try:
     result = parse_json_response(raw)
 except Exception as e:
-    print("JSON parse failed")
+    print(f"JSON parse failed: {e}")
     print(raw)
-    print(e)
     exit(1)
 
 if not result.get("changes"):
@@ -270,34 +161,29 @@ if not result.get("changes"):
     exit(0)
 
 # -----------------------------
-# APPLY CHANGES SAFELY
+# Apply changes safely
 # -----------------------------
 written_files = 0
+written_paths = []
 
 for change in result["changes"]:
-
     file_path = change.get("file")
     content = change.get("content")
 
     if not file_path or content is None:
-        print("Skipping malformed change (missing file or content)")
+        print("Skipping malformed change")
         continue
 
-    # Normalize path separators
     file_path = os.path.normpath(file_path)
 
-    # Safety: block path traversal or absolute paths
     if os.path.isabs(file_path) or ".." in file_path.split(os.sep):
         print(f"Skipping dangerous path: {file_path}")
         continue
 
-    # Safety: must be a Swift file
     if not file_path.endswith(".swift"):
         print(f"Skipping non-Swift file: {file_path}")
         continue
 
-    # Safety: must be within repo root (existing file OR a new Swift file)
-    # New files are allowed as long as they pass the above checks
     if file_path not in EXISTING_FILES:
         print(f"New file will be created: {file_path}")
 
@@ -309,6 +195,7 @@ for change in result["changes"]:
         f.write(content)
 
     written_files += 1
+    written_paths.append(file_path)
     print(f"Updated: {file_path}")
 
 print(f"Written {written_files} files")
@@ -318,81 +205,70 @@ if written_files == 0:
     exit(0)
 
 # -----------------------------
-# GIT OPS
+# Git ops
 # -----------------------------
 branch = f"agent/{suggestion_id}"
 
-subprocess.run(
-    ["git", "config", "user.email", "agent@users.noreply.github.com"],
-    check=True
-)
+subprocess.run(["git", "config", "user.email", "agent@users.noreply.github.com"], check=True)
+subprocess.run(["git", "config", "user.name", "Code Agent"], check=True)
+subprocess.run(["git", "checkout", "-b", branch], check=True)
+subprocess.run(["git", "add", "-A"], check=True)
 
-subprocess.run(
-    ["git", "config", "user.name", "Code Agent"],
-    check=True
-)
+# Check if there's actually anything to commit
+diff_check = subprocess.run(["git", "diff", "--cached", "--quiet"], check=False)
+if diff_check.returncode == 0:
+    print("No actual changes detected after writing files — skipping commit")
+    exit(0)
 
-subprocess.run(
-    ["git", "checkout", "-b", branch],
-    check=True
-)
-
-subprocess.run(
-    ["git", "add", "-A"],
-    check=True
-)
-
-commit_message = result.get(
-    "summary",
-    "AI generated changes"
-)
-
-subprocess.run(
-    ["git", "commit", "-m", f"feat: {commit_message}"],
-    check=True
-)
-
-subprocess.run(
-    ["git", "push", "origin", branch],
-    check=True
-)
+commit_message = result.get("summary", suggestion.get("title", "AI generated changes"))
+subprocess.run(["git", "commit", "-m", f"feat: {commit_message}"], check=True)
+subprocess.run(["git", "push", "origin", branch], check=True)
 
 # -----------------------------
-# PR
+# Build PR body with UI + backend impact
 # -----------------------------
-pr_body = (
-    f"Closes #{ISSUE_NUMBER}\n\n{result.get('description', '')}"
-    if ISSUE_NUMBER
-    else result.get("description", "")
-)
+ui_impact = suggestion.get("ui_impact", "")
+backend_impact = suggestion.get("backend_impact", "")
+description = result.get("description", "")
+
+pr_body = f"""## {suggestion.get('title', suggestion_id)}
+
+**Why:** {suggestion.get('why', '')}
+
+---
+
+### UI Changes
+{ui_impact if ui_impact else '_No UI changes_'}
+
+### Backend / Logic Changes
+{backend_impact if backend_impact else '_No backend changes_'}
+
+---
+
+### Implementation Notes
+{description}
+
+---
+> Generated by Code Agent from backlog suggestion `{suggestion_id}`
+"""
 
 pr = repo.create_pull(
-    title=result.get("summary", "AI Generated Update"),
+    title=f"[Agent] {result.get('summary', suggestion.get('title', 'AI Generated Update'))}",
     body=pr_body,
     head=branch,
     base="main"
 )
 
 # -----------------------------
-# BACKLOG UPDATE
+# Mark suggestion as implemented in backlog
 # -----------------------------
-if os.path.exists("backlog.json"):
+for s in backlog["suggestions"]:
+    if s["id"] == suggestion_id:
+        s["status"] = "implemented"
+        s["pr"] = pr.number
 
-    try:
-        with open("backlog.json", "r", encoding="utf-8") as f:
-            backlog = json.load(f)
-
-        for s in backlog.get("suggestions", []):
-
-            if s.get("id") == suggestion_id:
-                s["status"] = "implemented"
-                s["pr"] = pr.number
-
-        with open("backlog.json", "w", encoding="utf-8") as f:
-            json.dump(backlog, f, indent=2)
-
-    except Exception as e:
-        print("Failed to update backlog.json")
-        print(e)
+with open("backlog.json", "w") as f:
+    json.dump(backlog, f, indent=2)
 
 print(f"PR #{pr.number} opened: {pr.html_url}")
+print(f"Suggestion '{suggestion_id}' marked as implemented")

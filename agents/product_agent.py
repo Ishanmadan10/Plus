@@ -19,6 +19,7 @@ client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 MODELS = [
     "gemini-2.5-flash",
+    "gemini-2.5-pro", 
     "gemini-2.5-flash-lite",
 ]
 
@@ -26,23 +27,19 @@ def call_gemini(prompt: str, config):
     for model in MODELS:
         try:
             print(f"Trying model: {model}")
-
             response = client.models.generate_content(
                 model=model,
                 contents=prompt,
                 config=config
             )
-
-            return response.text.strip()
-
+            if response.text:
+                return response.text.strip()
         except ClientError as e:
             print(f"Model {model} failed: {e}")
             time.sleep(1)
-
         except Exception as e:
             print(f"Unexpected error {model}: {e}")
             time.sleep(1)
-
     return None
 
 # -----------------------------
@@ -53,10 +50,14 @@ with open("backlog.json") as f:
 
 pending = [s for s in backlog["suggestions"] if s["status"] == "pending"]
 
-needs_more = len(pending) < 3
+print(f"Pending suggestions: {len(pending)}")
+
+if len(pending) >= 3:
+    print("Backlog healthy — no new suggestions needed")
+    exit(0)
 
 # -----------------------------
-# PRIORITY FILES
+# Priority files to scan
 # -----------------------------
 priority_files = [
     "positive/positive/App/ContentView.swift",
@@ -80,7 +81,7 @@ for path in priority_files:
 codebase = "\n\n".join(swift_files)
 
 # -----------------------------
-# LOAD PROMPT
+# Load prompt
 # -----------------------------
 with open("agents/prompts/product_prompt.txt") as f:
     prompt_template = f.read()
@@ -88,47 +89,57 @@ with open("agents/prompts/product_prompt.txt") as f:
 prompt = prompt_template + "\n\nCODEBASE:\n" + codebase
 
 # -----------------------------
-# GENERATE
+# Generate suggestions
 # -----------------------------
-if needs_more:
-    raw = call_gemini(
-        prompt,
-        types.GenerateContentConfig(
-            temperature=0.4,
-            max_output_tokens=4096,
-        )
+raw = call_gemini(
+    prompt,
+    types.GenerateContentConfig(
+        temperature=0.4,
+        max_output_tokens=4096,
     )
+)
 
-    if raw is None:
-        raw = json.dumps([
-            {
-                "id": "fallback_001",
-                "what": "Improve empty states across app",
-                "why": "Avoids blank screens and improves UX clarity",
-                "file": "positive/positive/App/ContentView.swift",
-                "effort": "small",
-                "status": "pending"
-            }
-        ])
+if raw is None:
+    print("Gemini unavailable — using fallback suggestion")
+    raw = json.dumps([{
+        "id": "fallback_001",
+        "title": "Improve empty states across app",
+        "what": "Add descriptive empty state views with icons and helpful text wherever lists or content areas can be empty.",
+        "why": "Blank screens confuse users and reduce perceived quality of the app.",
+        "ui_impact": "Empty state views added to habit list, task list, and emotion log.",
+        "backend_impact": "None — purely presentational.",
+        "file": "positive/positive/Features/Habits/Views/HabitChecklistView.swift",
+        "effort": "small",
+        "priority": 2,
+        "status": "pending"
+    }])
 
-    raw = re.sub(r'^```json|^```|```$', '', raw, flags=re.MULTILINE).strip()
+raw = re.sub(r'^```json|^```|```$', '', raw, flags=re.MULTILINE).strip()
 
-    try:
-        new_suggestions = json.loads(raw)
-    except:
-        new_suggestions = []
+try:
+    new_suggestions = json.loads(raw)
+except Exception as e:
+    print(f"JSON parse failed: {e}")
+    print(raw)
+    exit(1)
 
-    existing_ids = {s["id"] for s in backlog["suggestions"]}
+# -----------------------------
+# Merge into backlog (no duplicates)
+# -----------------------------
+existing_ids = {s["id"] for s in backlog["suggestions"]}
+added = 0
 
-    for s in new_suggestions:
-        if s.get("id") not in existing_ids:
-            backlog["suggestions"].append(s)
+for s in new_suggestions:
+    if s.get("id") not in existing_ids:
+        # Ensure required fields exist
+        s.setdefault("status", "pending")
+        s.setdefault("priority", 5)
+        s.setdefault("ui_impact", "")
+        s.setdefault("backend_impact", "")
+        backlog["suggestions"].append(s)
+        added += 1
 
-    with open("backlog.json", "w") as f:
-        json.dump(backlog, f, indent=2)
+with open("backlog.json", "w") as f:
+    json.dump(backlog, f, indent=2)
 
-    print(f"Added {len(new_suggestions)} suggestions")
-
-else:
-    print("Backlog healthy — no new suggestions")
-    exit(0)
+print(f"Added {added} new suggestions to backlog")

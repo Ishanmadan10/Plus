@@ -42,19 +42,23 @@ Focus ONLY on real user value improvements.
 
 ## OUTPUT RULES
 
-Return ONLY valid JSON array
+Return ONLY a valid JSON array — no markdown, no explanation, no preamble.
 
-Return EXACTLY 10 suggestions
+Return EXACTLY 10 suggestions.
 
-Each item must follow:
+Each item must follow this exact schema:
 
 [
   {
     "id": "sug_001",
-    "what": "specific change in one sentence",
-    "why": "user benefit in one sentence",
+    "title": "Short title (max 8 words)",
+    "what": "Specific change in one sentence",
+    "why": "User benefit in one sentence",
+    "ui_impact": "What the user will visually see change",
+    "backend_impact": "What logic or data handling changes, or 'None'",
     "file": "path/to/file.swift",
     "effort": "small",
+    "priority": 1,
     "status": "pending"
   }
 ]
@@ -63,15 +67,26 @@ Each item must follow:
 
 ## EFFORT DEFINITIONS
 
-- small: < 20 lines
-- medium: 20–60 lines
-- large: 60+ lines
+- small: < 20 lines changed
+- medium: 20–60 lines changed
+- large: 60+ lines changed
 
 ---
 
-## IMPORTANT BEHAVIOR RULE
+## PRIORITY DEFINITIONS
+
+Assign a number 1–10. Lower = more important. Base it on:
+- 1–3: Broken UX, missing empty states, crashes
+- 4–6: Accessibility, friction, inconsistency
+- 7–10: Polish, nice-to-haves
+
+---
+
+## IMPORTANT BEHAVIOR RULES
 
 - Be conservative — do NOT generate low-value suggestions
 - Avoid duplicate ideas
 - Prefer UI polish over feature expansion
 - Every suggestion must be realistically implementable in SwiftUI
+- The "file" field must be the exact file path where the change goes
+- IDs must be unique — use format sug_001, sug_002, etc.
