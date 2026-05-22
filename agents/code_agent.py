@@ -43,6 +43,9 @@ def call_gemini(prompt: str, config):
                 config=config
             )
 
+            if not response.text:
+                continue
+
             return response.text.strip()
 
         except ClientError as e:
@@ -54,6 +57,27 @@ def call_gemini(prompt: str, config):
             time.sleep(1)
 
     return None
+
+# -----------------------------
+# SAFE JSON PARSER
+# -----------------------------
+def parse_json_response(raw_text: str):
+    if not raw_text:
+        return None
+
+    cleaned = re.sub(
+        r"^```json|^```|```$",
+        "",
+        raw_text,
+        flags=re.MULTILINE
+    ).strip()
+
+    match = re.search(r"\{.*\}", cleaned, re.DOTALL)
+
+    if not match:
+        raise ValueError("No JSON object found")
+
+    return json.loads(match.group(0))
 
 # -----------------------------
 # EXTRACT IDS
@@ -78,7 +102,7 @@ def load_repo():
                 path = os.path.join(root, file)
 
                 try:
-                    with open(path, "r") as f:
+                    with open(path, "r", encoding="utf-8") as f:
                         repo_map[path] = f.read()
                 except Exception:
                     continue
@@ -102,9 +126,11 @@ You are a senior iOS architect.
 
 Decide whether this change should be implemented.
 
-Return ONLY JSON:
+Return ONLY valid JSON.
+
+Format:
 {{
-  "should_change": true/false,
+  "should_change": true,
   "reason": "string"
 }}
 
@@ -128,9 +154,11 @@ if decision_raw is None:
     exit(0)
 
 try:
-    decision = json.loads(decision_raw)
-except Exception:
+    decision = parse_json_response(decision_raw)
+except Exception as e:
     print("Decision JSON parse failed")
+    print(decision_raw)
+    print(e)
     exit(1)
 
 print("Decision:", decision)
@@ -142,7 +170,7 @@ if not decision.get("should_change", False):
 # -----------------------------
 # LOAD CODE PROMPT
 # -----------------------------
-with open("agents/prompts/code_prompt.txt") as f:
+with open("agents/prompts/code_prompt.txt", "r", encoding="utf-8") as f:
     base_prompt = f.read()
 
 prompt = base_prompt.replace("{{SUGGESTION}}", ISSUE_BODY)
@@ -165,18 +193,12 @@ if raw is None:
         "changes": []
     })
 
-raw = re.sub(
-    r'^```json|^```|```$',
-    '',
-    raw,
-    flags=re.MULTILINE
-).strip()
-
 try:
-    result = json.loads(raw)
-except Exception:
+    result = parse_json_response(raw)
+except Exception as e:
     print("JSON parse failed")
     print(raw)
+    print(e)
     exit(1)
 
 if not result.get("changes"):
@@ -186,8 +208,15 @@ if not result.get("changes"):
 # -----------------------------
 # APPLY CHANGES SAFELY
 # -----------------------------
+written_files = 0
+
 for change in result["changes"]:
-    file_path = change["file"]
+    file_path = change.get("file")
+    content = change.get("content")
+
+    if not file_path or content is None:
+        print("Skipping malformed change")
+        continue
 
     if file_path not in ALLOWED_FILES:
         print(f"Skipping unauthorized file: {file_path}")
@@ -195,10 +224,16 @@ for change in result["changes"]:
 
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-    with open(file_path, "w") as f:
-        f.write(change["content"])
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(content)
 
-print(f"Written {len(result['changes'])} files")
+    written_files += 1
+
+print(f"Written {written_files} files")
+
+if written_files == 0:
+    print("No valid file changes")
+    exit(0)
 
 # -----------------------------
 # GIT OPS
@@ -225,8 +260,10 @@ subprocess.run(
     check=True
 )
 
+commit_message = result.get("summary", "AI generated changes")
+
 subprocess.run(
-    ["git", "commit", "-m", f"feat: {result['summary']}"],
+    ["git", "commit", "-m", f"feat: {commit_message}"],
     check=True
 )
 
@@ -239,13 +276,13 @@ subprocess.run(
 # PR
 # -----------------------------
 pr_body = (
-    f"Closes #{ISSUE_NUMBER}\n\n{result['description']}"
+    f"Closes #{ISSUE_NUMBER}\n\n{result.get('description', '')}"
     if ISSUE_NUMBER
-    else result["description"]
+    else result.get("description", "")
 )
 
 pr = repo.create_pull(
-    title=result["summary"],
+    title=result.get("summary", "AI Generated Update"),
     body=pr_body,
     head=branch,
     base="main"
@@ -255,15 +292,20 @@ pr = repo.create_pull(
 # BACKLOG UPDATE
 # -----------------------------
 if os.path.exists("backlog.json"):
-    with open("backlog.json") as f:
-        backlog = json.load(f)
+    try:
+        with open("backlog.json", "r", encoding="utf-8") as f:
+            backlog = json.load(f)
 
-    for s in backlog.get("suggestions", []):
-        if s.get("id") == suggestion_id:
-            s["status"] = "implemented"
-            s["pr"] = pr.number
+        for s in backlog.get("suggestions", []):
+            if s.get("id") == suggestion_id:
+                s["status"] = "implemented"
+                s["pr"] = pr.number
 
-    with open("backlog.json", "w") as f:
-        json.dump(backlog, f, indent=2)
+        with open("backlog.json", "w", encoding="utf-8") as f:
+            json.dump(backlog, f, indent=2)
+
+    except Exception as e:
+        print("Failed to update backlog.json")
+        print(e)
 
 print(f"PR #{pr.number} opened: {pr.html_url}")
