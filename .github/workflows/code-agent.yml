@@ -39,7 +39,7 @@ jobs:
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 10
-          max_attempts: 3
+          max_attempts: 2
           retry_wait_seconds: 60
           command: python agents/code_agent.py
         env:
