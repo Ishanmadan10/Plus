@@ -19,7 +19,7 @@ client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 MODELS = [
     "gemini-2.5-flash",
-    "gemini-2.5-pro", 
+    "gemini-2.5-pro",
     "gemini-2.5-flash-lite",
 ]
 
@@ -57,44 +57,25 @@ if len(pending) >= 3:
     exit(0)
 
 # -----------------------------
-# Priority files to scan
+# Load full repo — all Swift files, full content
+# Product agent runs once daily so token usage is fine
+# Sending everything avoids hallucinated file paths
 # -----------------------------
-priority_files = [
-    # App
-    "positive/App/ContentView.swift",
-    "positive/App/positiveApp.swift",
-    # Home
-    "positive/Features/Home/Views/HomeView.swift",
-    "positive/Features/Home/Views/GreetingView.swift",
-    "positive/Features/Home/Components/ContentCards.swift",
-    "positive/Features/Home/Components/PillButton.swift",
-    # Habits
-    "positive/Features/Habits/Views/HabitChecklistView.swift",
-    "positive/Features/Habits/Views/TaskListView.swift",
-    # Emotion
-    "positive/Features/Emotion/Views/EmotionalPage.swift",
-    # Section detail views
-    "positive/Features/SectionDetail/Views/JournalSectionView.swift",
-    "positive/Features/SectionDetail/Views/GymSectionView.swift",
-    "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
-    "positive/Features/SectionDetail/Views/SpiritualitySectionView.swift",
-    "positive/Features/SectionDetail/Views/WorkSectionView.swift",
-    "positive/Features/SectionDetail/Views/GenericSectionView.swift",
-    "positive/Features/SectionDetail/Views/SectionDetailView.swift",
-    # Shared
-    "positive/Shared/Components/BackgroundView.swift",
-]
-
 swift_files = []
-for path in priority_files:
-    if os.path.exists(path):
-        with open(path) as f:
-            swift_files.append(f"// FILE: {path}\n{f.read()}")
-    else:
-        print(f"Skipping missing file: {path}")
+for root, _, files in os.walk("."):
+    if any(skip in root for skip in [".git", "Pods", "build", ".build", "DerivedData"]):
+        continue
+    for file in files:
+        if file.endswith(".swift"):
+            path = os.path.normpath(os.path.join(root, file))
+            try:
+                with open(path) as f:
+                    swift_files.append(f"// FILE: {path}\n{f.read()}")
+            except Exception:
+                continue
 
+print(f"Loaded {len(swift_files)} Swift files for analysis")
 codebase = "\n\n".join(swift_files)
-print(f"Loaded {len(swift_files)} files for analysis")
 
 # -----------------------------
 # Load prompt
