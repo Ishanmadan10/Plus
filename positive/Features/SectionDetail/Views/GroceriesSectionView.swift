@@ -70,11 +70,18 @@ struct GroceriesSectionView: View {
 
                 ScrollView {
                     if items.isEmpty {
-                        EmptyNotesView(
-                            message: "Your list is empty! Add an item below.",
-                            icon: "cart.fill"
-                        )
-                    } else {
+                        VStack(spacing: 16) {
+                            Spacer()
+                            Image(systemName: "cart.fill")
+                                .font(.system(size: 40, weight: .light))
+                                .foregroundColor(.white.opacity(0.15))
+                            Text("Your list is empty! Add an item below.")
+                                .font(.system(size: 15, design: .rounded))
+                                .foregroundColor(.white.opacity(0.25))
+                            Spacer()
+                        }
+                    }
+                    else {
                         LazyVStack(spacing: 10) {
 
                             ForEach($items) { $item in
