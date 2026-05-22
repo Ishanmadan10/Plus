@@ -61,24 +61,31 @@ def call_gemini(prompt: str, config):
 # -----------------------------
 # SAFE JSON PARSER
 # -----------------------------
+# -----------------------------
+# SAFE JSON PARSER
+# -----------------------------
 def parse_json_response(raw_text: str):
+
     if not raw_text:
-        return None
+        raise ValueError("Empty response")
 
-    cleaned = re.sub(
-        r"^```json|^```|```$",
-        "",
-        raw_text,
-        flags=re.MULTILINE
-    ).strip()
+    # remove markdown fences
+    cleaned = raw_text.replace("```json", "")
+    cleaned = cleaned.replace("```", "")
+    cleaned = cleaned.strip()
 
-    match = re.search(r"\{.*\}", cleaned, re.DOTALL)
+    # find first {
+    start = cleaned.find("{")
 
-    if not match:
+    # find last }
+    end = cleaned.rfind("}")
+
+    if start == -1 or end == -1:
         raise ValueError("No JSON object found")
 
-    return json.loads(match.group(0))
+    json_str = cleaned[start:end + 1]
 
+    return json.loads(json_str)
 # -----------------------------
 # EXTRACT IDS
 # -----------------------------
