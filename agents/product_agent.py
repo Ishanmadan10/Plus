@@ -1,13 +1,13 @@
 import os, json, re
-import google.generativeai as genai
-from github import Github
+from google import genai
+from google.genai import types
+from github import Github, Auth
 
 REPO = os.environ["GITHUB_REPOSITORY"]
-gh = Github(os.environ["GITHUB_TOKEN"])
+gh = Github(auth=Auth.Token(os.environ["GITHUB_TOKEN"]))
 repo = gh.get_repo(REPO)
 
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel("gemini-1.5-pro")
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 with open("backlog.json") as f:
     backlog = json.load(f)
@@ -16,18 +16,18 @@ pending = [s for s in backlog["suggestions"] if s["status"] == "pending"]
 
 if len(pending) < 3:
     priority_files = [
-        "positive/App/ContentView.swift",
-        "positive/Features/Home/Views/HomeView.swift",
-        "positive/Features/Home/Views/GreetingView.swift",
-        "positive/Features/Home/Components/ContentCards.swift",
-        "positive/Features/Home/Components/PillButton.swift",
-        "positive/Features/Habits/Views/HabitChecklistView.swift",
-        "positive/Features/Habits/Views/TaskListView.swift",
-        "positive/Features/Emotion/Views/EmotionalPage.swift",
-        "positive/Features/SectionDetail/Views/GenericSectionView.swift",
-        "positive/Features/SectionDetail/Views/JournalSectionView.swift",
-        "positive/Features/SectionDetail/Views/GymSectionView.swift",
-        "positive/Shared/Components/BackgroundView.swift",
+        "positive/positive/App/ContentView.swift",
+        "positive/positive/Features/Home/Views/HomeView.swift",
+        "positive/positive/Features/Home/Views/GreetingView.swift",
+        "positive/positive/Features/Home/Components/ContentCards.swift",
+        "positive/positive/Features/Home/Components/PillButton.swift",
+        "positive/positive/Features/Habits/Views/HabitChecklistView.swift",
+        "positive/positive/Features/Habits/Views/TaskListView.swift",
+        "positive/positive/Features/Emotion/Views/EmotionalPage.swift",
+        "positive/positive/Features/SectionDetail/Views/GenericSectionView.swift",
+        "positive/positive/Features/SectionDetail/Views/JournalSectionView.swift",
+        "positive/positive/Features/SectionDetail/Views/GymSectionView.swift",
+        "positive/positive/Shared/Components/BackgroundView.swift",
     ]
 
     swift_files = []
@@ -41,9 +41,10 @@ if len(pending) < 3:
     with open("agents/prompts/product_prompt.txt") as f:
         prompt = f.read()
 
-    response = model.generate_content(
-        prompt + "\n\n" + codebase,
-        generation_config=genai.GenerationConfig(
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=prompt + "\n\n" + codebase,
+        config=types.GenerateContentConfig(
             temperature=0.4,
             max_output_tokens=2048,
         )
@@ -100,7 +101,6 @@ for s in backlog["suggestions"]:
 with open("backlog.json", "w") as f:
     json.dump(backlog, f, indent=2)
 
-# Commit updated backlog back to repo
 os.system('git config user.email "agent@users.noreply.github.com"')
 os.system('git config user.name "Product Agent"')
 os.system('git add backlog.json')

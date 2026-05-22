@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install google-generativeai PyGithub
+      - run: pip install google-genai PyGithub
 
       - name: Build check before changes
         run: |

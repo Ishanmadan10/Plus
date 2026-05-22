@@ -1,16 +1,16 @@
 import os, json, re, subprocess
-import google.generativeai as genai
-from github import Github
+from google import genai
+from google.genai import types
+from github import Github, Auth
 
 REPO = os.environ["GITHUB_REPOSITORY"]
 ISSUE_NUMBER = int(os.environ["ISSUE_NUMBER"])
 ISSUE_BODY = os.environ["ISSUE_BODY"]
 
-gh = Github(os.environ["GITHUB_TOKEN"])
+gh = Github(auth=Auth.Token(os.environ["GITHUB_TOKEN"]))
 repo = gh.get_repo(REPO)
 
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel("gemini-1.5-pro")
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 match = re.search(r'suggestion_id: (.+?) -->', ISSUE_BODY)
 suggestion_id = match.group(1).strip() if match else f"issue-{ISSUE_NUMBER}"
@@ -22,9 +22,9 @@ swift_files = []
 priority = [target_file] if target_file else []
 
 context_files = [
-    "positive/App/ContentView.swift",
-    "positive/Features/Home/Views/HomeView.swift",
-    "positive/Shared/Components/BackgroundView.swift",
+    "positive/positive/App/ContentView.swift",
+    "positive/positive/Features/Home/Views/HomeView.swift",
+    "positive/positive/Shared/Components/BackgroundView.swift",
 ]
 
 seen = set()
@@ -41,10 +41,11 @@ with open("agents/prompts/code_prompt.txt") as f:
 
 prompt = prompt.replace("{{SUGGESTION}}", ISSUE_BODY).replace("{{CODEBASE}}", codebase)
 
-response = model.generate_content(
-    prompt,
-    generation_config=genai.GenerationConfig(
-        temperature=0.2,        # low temp = more precise, less creative
+response = client.models.generate_content(
+    model="gemini-2.0-flash",
+    contents=prompt,
+    config=types.GenerateContentConfig(
+        temperature=0.2,
         max_output_tokens=8192,
     )
 )
@@ -53,7 +54,6 @@ raw = response.text.strip()
 raw = re.sub(r'^```json|^```|```$', '', raw, flags=re.MULTILINE).strip()
 result = json.loads(raw)
 
-# Write changed files
 for change in result["changes"]:
     os.makedirs(os.path.dirname(change["file"]), exist_ok=True)
     with open(change["file"], "w") as f:
@@ -61,7 +61,6 @@ for change in result["changes"]:
 
 print(f"Written {len(result['changes'])} file(s)")
 
-# Git — create branch and PR
 branch = f"agent/{suggestion_id}"
 subprocess.run(["git", "config", "user.email", "agent@users.noreply.github.com"])
 subprocess.run(["git", "config", "user.name", "Code Agent"])
@@ -77,7 +76,6 @@ pr = repo.create_pull(
     base="main"
 )
 
-# Update backlog
 with open("backlog.json") as f:
     backlog = json.load(f)
 
