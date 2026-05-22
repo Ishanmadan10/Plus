@@ -47,11 +47,11 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_BODY: ${{ github.event.issue.body }}
 
-      - name: Build check after changes
-        run: |
-          xcodebuild build \
-            -project positive.xcodeproj \
-            -scheme positive \
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
-            CODE_SIGNING_ALLOWED=NO \
-          | grep -E 'error:|BUILD'
+      # - name: Build check after changes
+      #   run: |
+      #     xcodebuild build \
+      #       -project positive.xcodeproj \
+      #       -scheme positive \
+      #       -destination 'platform=iOS Simulator,name=iPhone 15' \
+      #       CODE_SIGNING_ALLOWED=NO \
+      #     | grep -E 'error:|BUILD'

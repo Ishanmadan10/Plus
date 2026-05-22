@@ -1,6 +1,7 @@
 # Positive — iOS App
 
 A calm, positive daily companion app built with **SwiftUI** for iOS.
+AIzaSyA3uCPdV1WnTh3Dn7WtJDFVcVnyU_4L3eA
 
 ## Project Structure
 
