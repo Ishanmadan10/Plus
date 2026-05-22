@@ -451,7 +451,6 @@ struct GymSectionView: View {
             .impactOccurred()
     }
 
-// Add this private function alongside saveSession():
 private func restoreSessionIfNeeded() {
     guard let day = selectedDay else { return }
     
