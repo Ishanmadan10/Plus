@@ -1,3 +1,124 @@
 {
-  "suggestions": []
+  "suggestions": [
+    {
+      "id": "sug_001",
+      "title": "Display empty state for habits list",
+      "what": "Show a 'No habits yet! Tap '+' to add your first habit.' message when the habit list is empty.",
+      "why": "Guides new users, prevents blank screens, and encourages initial engagement with the habit tracking feature.",
+      "ui_impact": "A centered text message and an illustrative icon will appear in the `HabitChecklistView` when no habits have been added.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_002",
+      "title": "Display empty state for task lists",
+      "what": "Show a 'No tasks added yet. Use the field below to add one.' message when the `tasks` array is empty.",
+      "why": "Provides clear guidance in Work and Generic sections, preventing confusion and prompting user action.",
+      "ui_impact": "A centered text message and an icon will appear in the `TaskListView` when no tasks are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/TaskListView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_003",
+      "title": "Display empty state for grocery list",
+      "what": "Show a 'Your list is empty! Add an item below.' message when the `items` array is empty.",
+      "why": "Informs users when there's no content and clearly prompts them to add items, improving usability.",
+      "ui_impact": "A centered text message and an icon (e.g., 'cart.fill') will appear in the scroll view area when the grocery list is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_004",
+      "title": "Display empty state for prayers list",
+      "what": "Show a 'No prayers added yet. Tap '+' to add one.' message when the `prayers` array is empty.",
+      "why": "Guides users to add their spiritual practices, avoiding a blank screen and making the feature more approachable.",
+      "ui_impact": "A centered text message and an icon (e.g., 'sparkles') will appear in the scroll view area when no prayers are listed.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/SpiritualitySectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_005",
+      "title": "Enhance empty state for gym workout days",
+      "what": "When `store.days` is empty, replace the 'Select a workout day above' message with a prominent call to action to add the first workout day.",
+      "why": "Directly guides new users to set up their gym tracking, significantly reducing initial friction and improving onboarding.",
+      "ui_impact": "A larger, more central message like 'No workout days yet! Tap the '+' button to add your first workout plan.' will appear, possibly with an animated pointer to the plus button.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_006",
+      "title": "Add placeholder text to journal editor",
+      "what": "Display 'What's on your mind today?' as a placeholder in the `JournalEditorView` when `entryText` is empty.",
+      "why": "Encourages users to start writing and makes the blank editor less intimidating, improving the journaling experience.",
+      "ui_impact": "A light gray placeholder text will be visible in the text editor when no content has been entered.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_007",
+      "title": "Display empty state for 'Thought of Day'",
+      "what": "Show a default positive message or a prompt to add a thought if `vm.thoughtOfDay` is empty.",
+      "why": "Prevents a large blank space on the home dashboard and maintains a positive, engaging tone even without user input.",
+      "ui_impact": "A default message like 'Embrace the day!' or 'Tap to add your daily thought' will appear instead of a blank space.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_008",
+      "title": "Display error state for weather data",
+      "what": "Show a 'Weather unavailable' message with an optional retry button if weather data fetching fails or returns an error.",
+      "why": "Informs the user about data issues and provides a way to refresh, preventing a blank or incomplete weather display and improving reliability.",
+      "ui_impact": "A small text message 'Weather unavailable. Tap to retry.' will appear below the greeting instead of temperature/city/condition, with a tappable area to trigger a refresh.",
+      "backend_impact": "HomeViewModel needs to expose an error state and a retry mechanism.",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "medium",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_009",
+      "title": "Add accessibility for habit swipe-to-delete",
+      "what": "Implement `accessibilityActions` for the `HabitRow` to allow VoiceOver users to delete habits without relying on the swipe gesture.",
+      "why": "Ensures users with visual impairments or motor difficulties can easily manage their habits, making the app more inclusive.",
+      "ui_impact": "No visual change, but VoiceOver users will hear 'Delete' as an available action when a habit row is selected, accessible via rotor actions.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_010",
+      "title": "Add haptic feedback to main home buttons",
+      "what": "Implement light haptic feedback when the Checklist, Control Centre, and Gallery buttons are tapped.",
+      "why": "Enhances the interactive experience and provides satisfying tactile confirmation for primary navigation actions on the home screen.",
+      "ui_impact": "A subtle vibration will occur when any of the three main circular buttons at the bottom of `HomeView` are pressed.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
+    }
+  ]
 }
