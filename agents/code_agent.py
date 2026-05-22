@@ -4,7 +4,9 @@ import re
 import subprocess
 import time
 
-from openai import OpenAI, RateLimitError, APIError
+from google import genai
+from google.genai import types
+from google.genai.errors import ClientError
 from github import Github, Auth
 
 # -----------------------------
@@ -38,95 +40,74 @@ IS_DEFAULT_BODY = not ISSUE_BODY
 if not ISSUE_BODY:
     ISSUE_BODY = DEFAULT_BODY
 
-GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
-
-gh = Github(auth=Auth.Token(GITHUB_TOKEN))
+gh = Github(auth=Auth.Token(os.environ["GITHUB_TOKEN"]))
 repo = gh.get_repo(REPO)
 
-# -----------------------------
-# GITHUB MODELS CLIENT
-# GitHub Models uses the OpenAI SDK pointed at GitHub's endpoint.
-# Authentication is your existing GITHUB_TOKEN — no new secrets needed.
-# Free limits: 150 req/day for GPT-4o, 15 req/min
-# -----------------------------
-client = OpenAI(
-    base_url="https://models.inference.ai.azure.com",
-    api_key=GITHUB_TOKEN,
-)
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# Model fallback order — all free with GitHub token
 MODELS = [
-    "gpt-4o",           # strongest, 150 req/day
-    "gpt-4o-mini",      # lighter, higher limits
-    "meta-llama-3.3-70b-instruct",  # open source fallback
+    "gemini-2.5-flash",
+     "gemini-2.5-pro",  
+    "gemini-2.5-flash-lite",
 ]
 
 # -----------------------------
-# MODEL CALL
+# GEMINI CALL
 # -----------------------------
-def call_model(prompt: str, max_tokens: int = 8192, json_mode: bool = False) -> str | None:
+def call_gemini(prompt: str, config):
     for model in MODELS:
         try:
             print(f"Trying model: {model}")
 
-            kwargs = {
-                "model": model,
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": max_tokens,
-                "temperature": 0.2,
-            }
+            response = client.models.generate_content(
+                model=model,
+                contents=prompt,
+                config=config
+            )
 
-            if json_mode:
-                kwargs["response_format"] = {"type": "json_object"}
-
-            response = client.chat.completions.create(**kwargs)
-
-            text = response.choices[0].message.content
-            if not text:
-                print(f"Model {model} returned empty response, trying next")
+            if not response.text:
                 continue
 
-            return text.strip()
+            return response.text.strip()
 
-        except RateLimitError as e:
-            print(f"Model {model} rate limited: {e}")
-            # Don't sleep and retry same model — move to next
-            continue
-
-        except APIError as e:
-            print(f"Model {model} API error: {e}")
+        except ClientError as e:
+            print(f"Model {model} failed: {e}")
             time.sleep(1)
-            continue
 
         except Exception as e:
-            print(f"Model {model} unexpected error: {e}")
+            print(f"Unexpected error {model}: {e}")
             time.sleep(1)
-            continue
 
-    print("All models failed")
     return None
 
 # -----------------------------
 # SAFE JSON PARSER
 # -----------------------------
 def parse_json_response(raw_text: str):
+
     if not raw_text:
         raise ValueError("Empty response")
 
-    # Remove markdown fences
-    cleaned = raw_text.replace("```json", "").replace("```", "").strip()
+    # remove markdown fences
+    cleaned = raw_text.replace("```json", "")
+    cleaned = cleaned.replace("```", "")
+    cleaned = cleaned.strip()
 
-    # Find outermost JSON object
+    # find first {
     start = cleaned.find("{")
+
+    # find last }
     end = cleaned.rfind("}")
 
     if start == -1 or end == -1:
         raise ValueError("No JSON object found")
 
-    return json.loads(cleaned[start:end + 1])
+    json_str = cleaned[start:end + 1]
+
+    return json.loads(json_str)
 
 # -----------------------------
-# EXTRACT SUGGESTION ID
+# EXTRACT IDS
 # -----------------------------
 match = re.search(r'suggestion_id: (.+?) -->', ISSUE_BODY)
 
@@ -144,14 +125,20 @@ def load_repo():
 
     for root, _, files in os.walk("."):
 
+        # skip junk folders
         if any(skip in root for skip in [
-            ".git", "Pods", "build", ".build", "DerivedData"
+            ".git",
+            "Pods",
+            "build",
+            ".build",
+            "DerivedData"
         ]):
             continue
 
         for file in files:
             if file.endswith(".swift"):
                 path = os.path.normpath(os.path.join(root, file))
+
                 try:
                     with open(path, "r", encoding="utf-8") as f:
                         repo_map[path] = f.read()
@@ -162,31 +149,28 @@ def load_repo():
 
 repo_map = load_repo()
 
-# Truncate large files to stay within token limits
-MAX_FILE_LINES = 200
-
 codebase = "\n\n".join(
-    f"// FILE: {path}\n" + (
-        content
-        if len(content.splitlines()) <= MAX_FILE_LINES
-        else "\n".join(content.splitlines()[:MAX_FILE_LINES]) + "\n// ... truncated (file continues)"
-    )
+    f"// FILE: {path}\n{content}"
     for path, content in repo_map.items()
 )
 
+# lightweight architectural summary
 repo_summary = "\n".join(
     f"{path} | {len(content.splitlines())} lines"
     for path, content in repo_map.items()
 )
 
+# existing files (used for safety check)
 EXISTING_FILES = set(repo_map.keys())
 
 print(f"Loaded {len(repo_map)} Swift files")
 
 # -----------------------------
 # DECISION STEP
-# Skip entirely for autonomous runs — we always want an improvement
 # -----------------------------
+
+# When running autonomously with no specific issue, skip the decision gate
+# entirely — we know we want an improvement, so just proceed.
 if IS_DEFAULT_BODY:
     print("Autonomous run (no issue body) — skipping decision gate")
 else:
@@ -198,7 +182,7 @@ The codebase is real and in active development.
 Err on the side of YES — only return should_change: false if the request
 is completely impossible, nonsensical, or dangerous.
 
-Return ONLY valid JSON with no other text.
+Return ONLY valid JSON.
 
 Format:
 {{
@@ -213,21 +197,31 @@ REPOSITORY STRUCTURE:
 {repo_summary}
 """
 
-    decision_raw = call_model(decision_prompt, max_tokens=256, json_mode=True)
+    decision_raw = call_gemini(
+        decision_prompt,
+        types.GenerateContentConfig(
+            temperature=0.1,
+            max_output_tokens=256,
+            response_mime_type="application/json",
+        )
+    )
 
     if decision_raw is None:
-        print("Decision call failed — proceeding anyway")
+        print("Decision fallback triggered — proceeding anyway")
     else:
         try:
             decision = parse_json_response(decision_raw)
-            print("Decision:", decision)
-
-            if not decision.get("should_change", True):
-                print("No change required:", decision.get("reason", ""))
-                exit(0)
-
         except Exception as e:
-            print(f"Decision JSON parse failed ({e}) — proceeding anyway")
+            print("Decision JSON parse failed — proceeding anyway")
+            print(decision_raw)
+            print(e)
+            decision = {"should_change": True, "reason": "parse fallback"}
+
+        print("Decision:", decision)
+
+        if not decision.get("should_change", False):
+            print("No change required:", decision.get("reason", ""))
+            exit(0)
 
 # -----------------------------
 # LOAD CODE PROMPT
@@ -247,17 +241,28 @@ FULL CODEBASE:
 {codebase}
 """
 
-raw = call_model(generation_prompt, max_tokens=8192, json_mode=True)
+raw = call_gemini(
+    generation_prompt,
+    types.GenerateContentConfig(
+        temperature=0.2,
+        max_output_tokens=8192,
+        response_mime_type="application/json",
+    )
+)
 
 if raw is None:
-    print("Generation failed — all models exhausted")
-    exit(0)
+    raw = json.dumps({
+        "summary": "no-op fallback",
+        "description": "AI unavailable",
+        "changes": []
+    })
 
 try:
     result = parse_json_response(raw)
 except Exception as e:
-    print(f"JSON parse failed: {e}")
+    print("JSON parse failed")
     print(raw)
+    print(e)
     exit(1)
 
 if not result.get("changes"):
@@ -281,16 +286,18 @@ for change in result["changes"]:
     # Normalize path separators
     file_path = os.path.normpath(file_path)
 
-    # Block path traversal and absolute paths
+    # Safety: block path traversal or absolute paths
     if os.path.isabs(file_path) or ".." in file_path.split(os.sep):
         print(f"Skipping dangerous path: {file_path}")
         continue
 
-    # Swift files only
+    # Safety: must be a Swift file
     if not file_path.endswith(".swift"):
         print(f"Skipping non-Swift file: {file_path}")
         continue
 
+    # Safety: must be within repo root (existing file OR a new Swift file)
+    # New files are allowed as long as they pass the above checks
     if file_path not in EXISTING_FILES:
         print(f"New file will be created: {file_path}")
 
@@ -315,14 +322,40 @@ if written_files == 0:
 # -----------------------------
 branch = f"agent/{suggestion_id}"
 
-subprocess.run(["git", "config", "user.email", "agent@users.noreply.github.com"], check=True)
-subprocess.run(["git", "config", "user.name", "Code Agent"], check=True)
-subprocess.run(["git", "checkout", "-b", branch], check=True)
-subprocess.run(["git", "add", "-A"], check=True)
+subprocess.run(
+    ["git", "config", "user.email", "agent@users.noreply.github.com"],
+    check=True
+)
 
-commit_message = result.get("summary", "AI generated changes")
-subprocess.run(["git", "commit", "-m", f"feat: {commit_message}"], check=True)
-subprocess.run(["git", "push", "origin", branch], check=True)
+subprocess.run(
+    ["git", "config", "user.name", "Code Agent"],
+    check=True
+)
+
+subprocess.run(
+    ["git", "checkout", "-b", branch],
+    check=True
+)
+
+subprocess.run(
+    ["git", "add", "-A"],
+    check=True
+)
+
+commit_message = result.get(
+    "summary",
+    "AI generated changes"
+)
+
+subprocess.run(
+    ["git", "commit", "-m", f"feat: {commit_message}"],
+    check=True
+)
+
+subprocess.run(
+    ["git", "push", "origin", branch],
+    check=True
+)
 
 # -----------------------------
 # PR
@@ -344,11 +377,13 @@ pr = repo.create_pull(
 # BACKLOG UPDATE
 # -----------------------------
 if os.path.exists("backlog.json"):
+
     try:
         with open("backlog.json", "r", encoding="utf-8") as f:
             backlog = json.load(f)
 
         for s in backlog.get("suggestions", []):
+
             if s.get("id") == suggestion_id:
                 s["status"] = "implemented"
                 s["pr"] = pr.number
@@ -357,6 +392,7 @@ if os.path.exists("backlog.json"):
             json.dump(backlog, f, indent=2)
 
     except Exception as e:
-        print(f"Failed to update backlog.json: {e}")
+        print("Failed to update backlog.json")
+        print(e)
 
 print(f"PR #{pr.number} opened: {pr.html_url}")

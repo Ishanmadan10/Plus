@@ -9,7 +9,6 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
-  models: read
 
 jobs:
   implement:
@@ -23,8 +22,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install openai PyGithub
+      - run: pip install google-genai PyGithub
 
       - name: Build check before changes
         run: |
@@ -39,7 +37,7 @@ jobs:
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 10
-          max_attempts: 2
+          max_attempts: 3
           retry_wait_seconds: 60
           command: python agents/code_agent.py
         env:
