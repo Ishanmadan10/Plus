@@ -60,16 +60,29 @@ if len(pending) >= 3:
 # Priority files to scan
 # -----------------------------
 priority_files = [
-    "positive/positive/App/ContentView.swift",
-    "positive/positive/Features/Home/Views/HomeView.swift",
-    "positive/positive/Features/Home/Views/GreetingView.swift",
-    "positive/positive/Features/Home/Components/ContentCards.swift",
-    "positive/positive/Features/Home/Components/PillButton.swift",
-    "positive/positive/Features/Habits/Views/HabitChecklistView.swift",
-    "positive/positive/Features/Habits/Views/TaskListView.swift",
-    "positive/positive/Features/Emotion/Views/EmotionalPage.swift",
-    "positive/positive/Features/SectionDetail/Views/GenericSectionView.swift",
-    "positive/positive/Shared/Components/BackgroundView.swift",
+    # App
+    "positive/App/ContentView.swift",
+    "positive/App/positiveApp.swift",
+    # Home
+    "positive/Features/Home/Views/HomeView.swift",
+    "positive/Features/Home/Views/GreetingView.swift",
+    "positive/Features/Home/Components/ContentCards.swift",
+    "positive/Features/Home/Components/PillButton.swift",
+    # Habits
+    "positive/Features/Habits/Views/HabitChecklistView.swift",
+    "positive/Features/Habits/Views/TaskListView.swift",
+    # Emotion
+    "positive/Features/Emotion/Views/EmotionalPage.swift",
+    # Section detail views (journal, gym, groceries, spirituality, work)
+    "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+    "positive/Features/SectionDetail/Views/GymSectionView.swift",
+    "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+    "positive/Features/SectionDetail/Views/SpiritualitySectionView.swift",
+    "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+    "positive/Features/SectionDetail/Views/GenericSectionView.swift",
+    "positive/Features/SectionDetail/Views/SectionDetailView.swift",
+    # Shared
+    "positive/Shared/Components/BackgroundView.swift",
 ]
 
 swift_files = []
