@@ -1,4 +1,9 @@
-import os, json, re, subprocess, time
+import os
+import json
+import re
+import subprocess
+import time
+
 from google import genai
 from google.genai import types
 from google.genai.errors import ClientError
@@ -8,8 +13,11 @@ from github import Github, Auth
 # ENV / GITHUB SETUP
 # -----------------------------
 REPO = os.environ["GITHUB_REPOSITORY"]
-ISSUE_NUMBER = int(os.environ["ISSUE_NUMBER"])
-ISSUE_BODY = os.environ["ISSUE_BODY"]
+
+issue_number_raw = os.environ.get("ISSUE_NUMBER", "").strip()
+ISSUE_NUMBER = int(issue_number_raw) if issue_number_raw else None
+
+ISSUE_BODY = os.environ.get("ISSUE_BODY", "")
 
 gh = Github(auth=Auth.Token(os.environ["GITHUB_TOKEN"]))
 repo = gh.get_repo(REPO)
@@ -21,6 +29,9 @@ MODELS = [
     "gemini-2.5-flash-lite",
 ]
 
+# -----------------------------
+# GEMINI CALL
+# -----------------------------
 def call_gemini(prompt: str, config):
     for model in MODELS:
         try:
@@ -48,7 +59,12 @@ def call_gemini(prompt: str, config):
 # EXTRACT IDS
 # -----------------------------
 match = re.search(r'suggestion_id: (.+?) -->', ISSUE_BODY)
-suggestion_id = match.group(1).strip() if match else f"issue-{ISSUE_NUMBER}"
+
+suggestion_id = (
+    match.group(1).strip()
+    if match
+    else f"manual-{int(time.time())}"
+)
 
 # -----------------------------
 # LOAD FULL REPO
@@ -60,10 +76,11 @@ def load_repo():
         for file in files:
             if file.endswith(".swift"):
                 path = os.path.join(root, file)
+
                 try:
                     with open(path, "r") as f:
                         repo_map[path] = f.read()
-                except:
+                except Exception:
                     continue
 
     return repo_map
@@ -110,7 +127,11 @@ if decision_raw is None:
     print("Decision fallback triggered")
     exit(0)
 
-decision = json.loads(decision_raw)
+try:
+    decision = json.loads(decision_raw)
+except Exception:
+    print("Decision JSON parse failed")
+    exit(1)
 
 print("Decision:", decision)
 
@@ -144,12 +165,18 @@ if raw is None:
         "changes": []
     })
 
-raw = re.sub(r'^```json|^```|```$', '', raw, flags=re.MULTILINE).strip()
+raw = re.sub(
+    r'^```json|^```|```$',
+    '',
+    raw,
+    flags=re.MULTILINE
+).strip()
 
 try:
     result = json.loads(raw)
-except:
+except Exception:
     print("JSON parse failed")
+    print(raw)
     exit(1)
 
 if not result.get("changes"):
@@ -163,7 +190,7 @@ for change in result["changes"]:
     file_path = change["file"]
 
     if file_path not in ALLOWED_FILES:
-        print(f"Skipping: {file_path}")
+        print(f"Skipping unauthorized file: {file_path}")
         continue
 
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -178,20 +205,48 @@ print(f"Written {len(result['changes'])} files")
 # -----------------------------
 branch = f"agent/{suggestion_id}"
 
-subprocess.run(["git", "config", "user.email", "agent@users.noreply.github.com"])
-subprocess.run(["git", "config", "user.name", "Code Agent"])
+subprocess.run(
+    ["git", "config", "user.email", "agent@users.noreply.github.com"],
+    check=True
+)
 
-subprocess.run(["git", "checkout", "-b", branch], check=True)
-subprocess.run(["git", "add", "-A"], check=True)
-subprocess.run(["git", "commit", "-m", f"feat: {result['summary']}"], check=True)
-subprocess.run(["git", "push", "origin", branch], check=True)
+subprocess.run(
+    ["git", "config", "user.name", "Code Agent"],
+    check=True
+)
+
+subprocess.run(
+    ["git", "checkout", "-b", branch],
+    check=True
+)
+
+subprocess.run(
+    ["git", "add", "-A"],
+    check=True
+)
+
+subprocess.run(
+    ["git", "commit", "-m", f"feat: {result['summary']}"],
+    check=True
+)
+
+subprocess.run(
+    ["git", "push", "origin", branch],
+    check=True
+)
 
 # -----------------------------
 # PR
 # -----------------------------
+pr_body = (
+    f"Closes #{ISSUE_NUMBER}\n\n{result['description']}"
+    if ISSUE_NUMBER
+    else result["description"]
+)
+
 pr = repo.create_pull(
     title=result["summary"],
-    body=f"Closes #{ISSUE_NUMBER}\n\n{result['description']}",
+    body=pr_body,
     head=branch,
     base="main"
 )
@@ -199,15 +254,16 @@ pr = repo.create_pull(
 # -----------------------------
 # BACKLOG UPDATE
 # -----------------------------
-with open("backlog.json") as f:
-    backlog = json.load(f)
+if os.path.exists("backlog.json"):
+    with open("backlog.json") as f:
+        backlog = json.load(f)
 
-for s in backlog["suggestions"]:
-    if s["id"] == suggestion_id:
-        s["status"] = "implemented"
-        s["pr"] = pr.number
+    for s in backlog.get("suggestions", []):
+        if s.get("id") == suggestion_id:
+            s["status"] = "implemented"
+            s["pr"] = pr.number
 
-with open("backlog.json", "w") as f:
-    json.dump(backlog, f, indent=2)
+    with open("backlog.json", "w") as f:
+        json.dump(backlog, f, indent=2)
 
 print(f"PR #{pr.number} opened: {pr.html_url}")
