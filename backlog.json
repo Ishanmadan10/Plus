@@ -120,7 +120,7 @@
       "file": "positive/Features/Home/Views/HomeView.swift",
       "effort": "small",
       "priority": 6,
-      "status": "pending"
+      "status": "implemented"
     }
   ]
 }

@@ -99,6 +99,9 @@ struct HomeView: View {
                         withAnimation(.spring(response: 0.45, dampingFraction: 0.82)) {
                             showHabits = true
                         }
+                        // Add haptic feedback
+                        let impact = UIImpactFeedbackGenerator(style: .light)
+                        impact.impactOccurred()
                     } label: {
                         ZStack {
                             Circle()
@@ -111,6 +114,7 @@ struct HomeView: View {
                     }
                     .padding(.leading, 28)
                     .padding(.bottom, 48)
+                    .accessibilityLabel("Checklist button")
 
                     Spacer()
 
@@ -119,6 +123,9 @@ struct HomeView: View {
                         withAnimation(.spring(response: 0.45, dampingFraction: 0.82)) {
                             showControlCentre = true
                         }
+                        // Add haptic feedback
+                        let impact = UIImpactFeedbackGenerator(style: .light)
+                        impact.impactOccurred()
                     } label: {
                         ZStack {
                             Circle()
@@ -134,6 +141,7 @@ struct HomeView: View {
                         }
                     }
                     .padding(.bottom, 44)
+                    .accessibilityLabel("Control Centre button")
 
                     Spacer()
 
@@ -142,6 +150,9 @@ struct HomeView: View {
                         withAnimation(.spring(response: 0.45, dampingFraction: 0.82)) {
                             showOverlay.toggle()
                         }
+                        // Add haptic feedback
+                        let impact = UIImpactFeedbackGenerator(style: .light)
+                        impact.impactOccurred()
                     } label: {
                         ZStack {
                             Circle()
@@ -156,6 +167,7 @@ struct HomeView: View {
                     }
                     .padding(.trailing, 28)
                     .padding(.bottom, 48)
+                    .accessibilityLabel("Gallery button")
                 }
             }
 
