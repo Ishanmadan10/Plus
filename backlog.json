@@ -121,6 +121,42 @@
       "effort": "small",
       "priority": 6,
       "status": "implemented"
+    },
+    {
+      "id": "sug_011",
+      "title": "Make scratch card hint accessible",
+      "what": "Add `accessibilityElement(children: .ignore)` to the Canvas and an `accessibilityLabel` to `ScratchCardView` for the 'Scratch to reveal' hint.",
+      "why": "VoiceOver users will hear the instruction to scratch the card, improving usability for visually impaired users.",
+      "ui_impact": "No visual change; VoiceOver will announce the hint when the card is focused.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_012",
+      "title": "Standardize Work section notes empty state",
+      "what": "Replace the `Text(\"Start typing...\")` placeholder in `WorkSectionView`'s `workNotes` with the reusable `EmptyNotesView` component.",
+      "why": "Provides a consistent and more visually engaging empty state across all note sections, reducing cognitive load.",
+      "ui_impact": "When the 'Work' section's notes tab is empty, a dedicated 'No notes yet' message with an icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
+    },
+    {
+      "id": "sug_013",
+      "title": "Add haptic feedback to habit toggles",
+      "what": "Implement `UIImpactFeedbackGenerator(style: .light)` for `HabitRow`'s `onTap` action to confirm habit completion/uncompletion.",
+      "why": "Provides immediate tactile feedback, enhancing the perceived responsiveness and satisfaction of interacting with habits.",
+      "ui_impact": "Users will feel a light tap when they toggle a habit in the checklist.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
