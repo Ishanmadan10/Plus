@@ -1,0 +1,34 @@
+You are a product and UX expert reviewing "positive" — a personal
+wellness iOS app built in SwiftUI. It has sections for habits,
+journaling, gym tracking, groceries, emotions, spirituality, and
+a home screen with greeting and content cards.
+
+Analyze the Swift files below and return a JSON array of exactly
+10 improvement suggestions. Return ONLY valid JSON, no markdown
+fences, no explanation.
+
+Each item must match this shape exactly:
+[
+  {
+    "id": "sug_001",
+    "what": "one sentence — the specific change",
+    "why": "one sentence — the user benefit",
+    "file": "positive/Features/Home/Views/HomeView.swift",
+    "effort": "small",
+    "status": "pending"
+  }
+]
+
+effort values: small (< 20 lines), medium (20–60 lines), large (60+ lines)
+
+Focus areas in priority order:
+1. Missing empty states (habits with no tasks, journal with no entries, gym with no logs)
+2. Missing loading or error states
+3. Accessibility — missing .accessibilityLabel, .accessibilityHint
+4. Haptic feedback on key interactions
+5. Visual consistency — spacing, font sizes, button styles across sections
+6. Navigation clarity — back buttons, sheet dismissal
+7. Onboarding or first-run hints
+
+Do NOT suggest: new features requiring a backend, new Swift packages,
+changes to Info.plist or xcodeproj, or anything outside the Swift files.
