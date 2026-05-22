@@ -69,50 +69,56 @@ struct GroceriesSectionView: View {
                     .padding(.bottom, 10)
 
                 ScrollView {
+                    if items.isEmpty {
+                        EmptyNotesView(
+                            message: "Your list is empty! Add an item below.",
+                            icon: "cart.fill"
+                        )
+                    } else {
+                        LazyVStack(spacing: 10) {
 
-                    LazyVStack(spacing: 10) {
+                            ForEach($items) { $item in
 
-                        ForEach($items) { $item in
+                                GroceryRow(
+                                    item: $item,
+                                    accent: accent,
+                                    isSelected:
+                                        selectedItemID == item.id,
+                                    onSelect: {
 
-                            GroceryRow(
-                                item: $item,
-                                accent: accent,
-                                isSelected:
-                                    selectedItemID == item.id,
-                                onSelect: {
+                                        withAnimation(
+                                            .spring(
+                                                response: 0.3,
+                                                dampingFraction: 0.75
+                                            )
+                                        ) {
 
-                                    withAnimation(
-                                        .spring(
-                                            response: 0.3,
-                                            dampingFraction: 0.75
-                                        )
-                                    ) {
-
-                                        selectedItemID =
-                                            (selectedItemID == item.id)
-                                            ? nil
-                                            : item.id
-                                    }
-                                },
-                                onDelete: {
-
-                                    withAnimation {
-
-                                        if selectedItemID == item.id {
-
-                                            selectedItemID = nil
+                                            selectedItemID =
+                                                (selectedItemID == item.id)
+                                                ? nil
+                                                : item.id
                                         }
+                                    },
+                                    onDelete: {
 
-                                        items.removeAll {
-                                            $0.id == item.id
+                                        withAnimation {
+
+                                            if selectedItemID == item.id {
+
+                                                selectedItemID = nil
+                                            }
+
+                                            items.removeAll {
+                                                $0.id == item.id
+                                            }
                                         }
                                     }
-                                }
-                            )
-                            .padding(.horizontal, 20)
+                                )
+                                .padding(.horizontal, 20)
+                            }
                         }
+                        .padding(.bottom, 12)
                     }
-                    .padding(.bottom, 12)
                 }
 
                 HStack(spacing: 10) {
