@@ -19,8 +19,7 @@ ISSUE_NUMBER = int(issue_number_raw) if issue_number_raw else None
 
 ISSUE_BODY = os.environ.get("ISSUE_BODY", "").strip()
 
-if not ISSUE_BODY:
-    ISSUE_BODY = """
+DEFAULT_BODY = """
 Perform one meaningful improvement to the iOS app.
 
 Priority order:
@@ -35,6 +34,11 @@ Do not make cosmetic-only changes.
 Do not rewrite the whole app.
 Return only high-impact improvements.
 """
+
+IS_DEFAULT_BODY = not ISSUE_BODY
+
+if not ISSUE_BODY:
+    ISSUE_BODY = DEFAULT_BODY
 
 gh = Github(auth=Auth.Token(os.environ["GITHUB_TOKEN"]))
 repo = gh.get_repo(REPO)
@@ -78,9 +82,6 @@ def call_gemini(prompt: str, config):
 # -----------------------------
 # SAFE JSON PARSER
 # -----------------------------
-# -----------------------------
-# SAFE JSON PARSER
-# -----------------------------
 def parse_json_response(raw_text: str):
 
     if not raw_text:
@@ -103,6 +104,7 @@ def parse_json_response(raw_text: str):
     json_str = cleaned[start:end + 1]
 
     return json.loads(json_str)
+
 # -----------------------------
 # EXTRACT IDS
 # -----------------------------
@@ -146,10 +148,6 @@ def load_repo():
 
 repo_map = load_repo()
 
-# YES:
-# this scans ALL swift files recursively
-# across the whole repository
-
 codebase = "\n\n".join(
     f"// FILE: {path}\n{content}"
     for path, content in repo_map.items()
@@ -161,20 +159,27 @@ repo_summary = "\n".join(
     for path, content in repo_map.items()
 )
 
-ALLOWED_FILES = set(repo_map.keys())
+# existing files (used for safety check)
+EXISTING_FILES = set(repo_map.keys())
 
 print(f"Loaded {len(repo_map)} Swift files")
 
 # -----------------------------
 # DECISION STEP
 # -----------------------------
-decision_prompt = f"""
+
+# When running autonomously with no specific issue, skip the decision gate
+# entirely — we know we want an improvement, so just proceed.
+if IS_DEFAULT_BODY:
+    print("Autonomous run (no issue body) — skipping decision gate")
+else:
+    decision_prompt = f"""
 You are a senior iOS architect.
 
-Decide whether this feature request should be implemented.
-
-You are given the repository structure
-to understand the architecture.
+Decide whether this feature request or improvement should be implemented.
+The codebase is real and in active development.
+Err on the side of YES — only return should_change: false if the request
+is completely impossible, nonsensical, or dangerous.
 
 Return ONLY valid JSON.
 
@@ -191,32 +196,31 @@ REPOSITORY STRUCTURE:
 {repo_summary}
 """
 
-decision_raw = call_gemini(
-    decision_prompt,
-    types.GenerateContentConfig(
-        temperature=0.1,
-        max_output_tokens=256,
-        response_mime_type="application/json",
+    decision_raw = call_gemini(
+        decision_prompt,
+        types.GenerateContentConfig(
+            temperature=0.1,
+            max_output_tokens=256,
+            response_mime_type="application/json",
+        )
     )
-)
 
-if decision_raw is None:
-    print("Decision fallback triggered")
-    exit(0)
+    if decision_raw is None:
+        print("Decision fallback triggered — proceeding anyway")
+    else:
+        try:
+            decision = parse_json_response(decision_raw)
+        except Exception as e:
+            print("Decision JSON parse failed — proceeding anyway")
+            print(decision_raw)
+            print(e)
+            decision = {"should_change": True, "reason": "parse fallback"}
 
-try:
-    decision = parse_json_response(decision_raw)
-except Exception as e:
-    print("Decision JSON parse failed")
-    print(decision_raw)
-    print(e)
-    exit(1)
+        print("Decision:", decision)
 
-print("Decision:", decision)
-
-if not decision.get("should_change", False):
-    print("No change required")
-    exit(0)
+        if not decision.get("should_change", False):
+            print("No change required:", decision.get("reason", ""))
+            exit(0)
 
 # -----------------------------
 # LOAD CODE PROMPT
@@ -261,7 +265,7 @@ except Exception as e:
     exit(1)
 
 if not result.get("changes"):
-    print("No changes")
+    print("No changes returned by model")
     exit(0)
 
 # -----------------------------
@@ -275,15 +279,30 @@ for change in result["changes"]:
     content = change.get("content")
 
     if not file_path or content is None:
-        print("Skipping malformed change")
+        print("Skipping malformed change (missing file or content)")
         continue
 
-    # safety restriction
-    if file_path not in ALLOWED_FILES:
-        print(f"Skipping unauthorized file: {file_path}")
+    # Normalize path separators
+    file_path = os.path.normpath(file_path)
+
+    # Safety: block path traversal or absolute paths
+    if os.path.isabs(file_path) or ".." in file_path.split(os.sep):
+        print(f"Skipping dangerous path: {file_path}")
         continue
 
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    # Safety: must be a Swift file
+    if not file_path.endswith(".swift"):
+        print(f"Skipping non-Swift file: {file_path}")
+        continue
+
+    # Safety: must be within repo root (existing file OR a new Swift file)
+    # New files are allowed as long as they pass the above checks
+    if file_path not in EXISTING_FILES:
+        print(f"New file will be created: {file_path}")
+
+    dir_path = os.path.dirname(file_path)
+    if dir_path:
+        os.makedirs(dir_path, exist_ok=True)
 
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(content)
@@ -294,7 +313,7 @@ for change in result["changes"]:
 print(f"Written {written_files} files")
 
 if written_files == 0:
-    print("No valid file changes")
+    print("No valid file changes applied")
     exit(0)
 
 # -----------------------------
