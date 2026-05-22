@@ -35,7 +35,8 @@
       "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
       "effort": "small",
       "priority": 1,
-      "status": "pending"
+      "status": "implemented",
+      "pr": "pending-merge"
     },
     {
       "id": "sug_004",
