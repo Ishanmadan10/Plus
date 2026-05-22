@@ -209,8 +209,7 @@ if written_files == 0:
 # -----------------------------
 for s in backlog["suggestions"]:
     if s["id"] == suggestion_id:
-        s["status"] = "implemented"
-        s["pr"] = "pending-merge"
+        s["status"] = "implemented"     
 
 with open("backlog.json", "w") as f:
     json.dump(backlog, f, indent=2)
