@@ -136,7 +136,7 @@ def load_repo():
 
         for file in files:
             if file.endswith(".swift"):
-                path = os.path.join(root, file)
+                path = os.path.normpath(os.path.join(root, file))
 
                 try:
                     with open(path, "r", encoding="utf-8") as f:
