@@ -54,11 +54,8 @@ struct JournalEditorView: View {
                                 .cornerRadius(14)
 
                             Button {
-
                                 onDeleteImage()
-
                             } label: {
-
                                 Image(systemName: "xmark.circle.fill")
                                     .font(.system(size: 24))
                                     .foregroundColor(.white)
@@ -70,15 +67,27 @@ struct JournalEditorView: View {
                     }
 
                     // EDITABLE TEXT
-                    TextEditor(text: $entryText)
-                        .scrollContentBackground(.hidden)
-                        .background(.clear)
-                        .foregroundColor(selectedColor)
-                        .font(.system(size: 15, design: .rounded))
-                        .lineSpacing(14)
-                        .focused($focused)
-                        .frame(minHeight: 500)
-                        .padding(.horizontal, 16)
+                    ZStack(alignment: .topLeading) {
+
+                        if entryText.isEmpty {
+                            Text("What's on your mind today?")
+                                .font(.system(size: 15, design: .rounded))
+                                .foregroundColor(.white.opacity(0.25))
+                                .padding(.top, 8)
+                                .padding(.leading, 20)
+                                .allowsHitTesting(false)
+                        }
+
+                        TextEditor(text: $entryText)
+                            .scrollContentBackground(.hidden)
+                            .background(.clear)
+                            .foregroundColor(selectedColor)
+                            .font(.system(size: 15, design: .rounded))
+                            .lineSpacing(14)
+                            .focused($focused)
+                            .frame(minHeight: 500)
+                            .padding(.horizontal, 16)
+                    }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
