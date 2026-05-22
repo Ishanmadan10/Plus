@@ -20,7 +20,9 @@ struct HabitChecklistView: View {
 
                 // MARK: - Header
                 HStack {
-                    Button { onDismiss() } label: {
+                    Button {
+                        onDismiss()
+                    } label: {
                         Image(systemName: "chevron.down")
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundColor(.white.opacity(0.8))
@@ -246,6 +248,9 @@ private struct HabitRow: View {
                 } else {
                     onTap()
                 }
+            }
+            .accessibilityAction(named: "Delete") {
+                onDelete()
             }
         }
     }

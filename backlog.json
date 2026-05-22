@@ -108,7 +108,7 @@
       "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
       "effort": "small",
       "priority": 3,
-      "status": "pending"
+      "status": "implemented"
     },
     {
       "id": "sug_010",
