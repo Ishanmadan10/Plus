@@ -72,7 +72,7 @@
       "file": "positive/Features/SectionDetail/Views/JournalEditorView.swift",
       "effort": "small",
       "priority": 1,
-      "status": "pending"
+      "status": "implemented"
     },
     {
       "id": "sug_007",
