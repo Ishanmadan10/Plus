@@ -1,4 +1,5 @@
-import os, json, re, subprocess, anthropic
+import os, json, re, subprocess
+import google.generativeai as genai
 from github import Github
 
 REPO = os.environ["GITHUB_REPOSITORY"]
@@ -7,27 +8,29 @@ ISSUE_BODY = os.environ["ISSUE_BODY"]
 
 gh = Github(os.environ["GITHUB_TOKEN"])
 repo = gh.get_repo(REPO)
-client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+model = genai.GenerativeModel("gemini-1.5-pro")
 
 match = re.search(r'suggestion_id: (.+?) -->', ISSUE_BODY)
 suggestion_id = match.group(1).strip() if match else f"issue-{ISSUE_NUMBER}"
 
-# Read the file mentioned in the issue
 file_match = re.search(r'\*\*File to change:\*\* `(.+?)`', ISSUE_BODY)
 target_file = file_match.group(1) if file_match else None
 
 swift_files = []
 priority = [target_file] if target_file else []
 
-# Always include key context files
 context_files = [
     "positive/App/ContentView.swift",
     "positive/Features/Home/Views/HomeView.swift",
     "positive/Shared/Components/BackgroundView.swift",
 ]
 
+seen = set()
 for path in priority + context_files:
-    if path and os.path.exists(path) and path not in [f.split("\n")[0].replace("// FILE: ", "") for f in swift_files]:
+    if path and os.path.exists(path) and path not in seen:
+        seen.add(path)
         with open(path) as f:
             swift_files.append(f"// FILE: {path}\n{f.read()}")
 
@@ -38,14 +41,16 @@ with open("agents/prompts/code_prompt.txt") as f:
 
 prompt = prompt.replace("{{SUGGESTION}}", ISSUE_BODY).replace("{{CODEBASE}}", codebase)
 
-response = client.messages.create(
-    model="claude-sonnet-4-20250514",
-    max_tokens=1000,
-    messages=[{"role": "user", "content": prompt}]
+response = model.generate_content(
+    prompt,
+    generation_config=genai.GenerationConfig(
+        temperature=0.2,        # low temp = more precise, less creative
+        max_output_tokens=8192,
+    )
 )
 
-raw = response.content[0].text.strip()
-raw = re.sub(r'^```json|```$', '', raw, flags=re.MULTILINE).strip()
+raw = response.text.strip()
+raw = re.sub(r'^```json|^```|```$', '', raw, flags=re.MULTILINE).strip()
 result = json.loads(raw)
 
 # Write changed files
@@ -72,7 +77,7 @@ pr = repo.create_pull(
     base="main"
 )
 
-# Update backlog status
+# Update backlog
 with open("backlog.json") as f:
     backlog = json.load(f)
 
