@@ -42,7 +42,7 @@ if len(pending) < 3:
         prompt = f.read()
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=prompt + "\n\n" + codebase,
         config=types.GenerateContentConfig(
             temperature=0.4,
