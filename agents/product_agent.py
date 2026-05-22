@@ -107,7 +107,7 @@ raw = call_gemini(
     prompt,
     types.GenerateContentConfig(
         temperature=0.4,
-        max_output_tokens=4096,
+        max_output_tokens=8192,
     )
 )
 
