@@ -6,11 +6,14 @@ final class HomeViewModel: ObservableObject {
 
     // MARK: - Time of day
     @Published var timeOfDay: TimeOfDay = .current
-    @Published var backgroundTimeOfDay: TimeOfDay = .forBackground  // ✅ added
+    @Published var backgroundTimeOfDay: TimeOfDay = .forBackground
 
     // MARK: - Weather
     let weather = WeatherService()
     private var weatherCancellable: AnyCancellable?
+
+    // MARK: - Weather error state
+    @Published var weatherError: Bool = false
 
     let thoughtOfDay: String  = QuoteLibrary.current
     let reminder: String      = DailyContent.todayReminder
@@ -20,8 +23,9 @@ final class HomeViewModel: ObservableObject {
     @Published var hasScratched: Bool {
         didSet { saveScratchState() }
     }
-    // Add this to HomeViewModel.swift
+
     @Published var allTasks: [String: [String]] = [:]
+
     // MARK: - Animation phases
     @Published var greetingPhase: GreetingPhase = .centred
     @Published var currentCard: CardIndex = .scratch
@@ -43,7 +47,20 @@ final class HomeViewModel: ObservableObject {
         weatherCancellable = weather.objectWillChange
             .sink { [weak self] _ in
                 self?.objectWillChange.send()
+                guard let self = self else { return }
+                if !self.weather.isLoading,
+                   self.weather.conditionNow == "Weather unavailable" {
+                    self.weatherError = true
+                } else {
+                    self.weatherError = false
+                }
             }
+    }
+
+    // MARK: - Retry weather
+    func retryWeather() {
+        weatherError = false
+        weather.refresh()
     }
 
     // MARK: - Greeting animation
@@ -55,7 +72,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Refresh time every minute (handles midnight rollovers)
+    // MARK: - Refresh time every minute
     private var timer: AnyCancellable?
     private func refreshTimeOfDay() {
         timer = Timer.publish(every: 60, on: .main, in: .common)
@@ -69,7 +86,7 @@ final class HomeViewModel: ObservableObject {
                         self?.timeOfDay = newGreeting
                     }
                 }
-                if newBg != self?.backgroundTimeOfDay {     // ✅ added
+                if newBg != self?.backgroundTimeOfDay {
                     withAnimation(.easeInOut(duration: 1.5)) {
                         self?.backgroundTimeOfDay = newBg
                     }

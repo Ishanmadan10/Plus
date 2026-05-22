@@ -5,7 +5,7 @@ struct HomeView: View {
     @StateObject private var vm = HomeViewModel()
     @StateObject private var habitStore = HabitStore()
     @StateObject private var sectionStore = SectionStore()
-    @StateObject private var noteStore = NoteStore()          // ✅ lifted here so it persists
+    @StateObject private var noteStore = NoteStore()
 
     @State private var showOverlay = false
     @State private var showHabits = false
@@ -31,6 +31,21 @@ struct HomeView: View {
 
                     if vm.weather.isLoading {
                         ProgressView().tint(.white).padding(.top, 4)
+                    } else if vm.weatherError {
+                        // MARK: - Weather error state
+                        Button {
+                            vm.retryWeather()
+                        } label: {
+                            VStack(spacing: 4) {
+                                Text("Weather unavailable")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white.opacity(0.5))
+                                Text("Tap to retry")
+                                    .font(.caption)
+                                    .foregroundColor(.white.opacity(0.35))
+                            }
+                        }
+                        .padding(.top, 4)
                     } else {
                         HStack(spacing: 6) {
                             if let temp = vm.weather.temperature { Text("\(temp)°C") }
@@ -144,16 +159,6 @@ struct HomeView: View {
                 }
             }
 
-//            // MARK: - Photo Gallery
-//            if showOverlay {
-//                PhotoGalleryOverlay {
-//                    withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
-//                        showOverlay = false
-//                    }
-//                }
-//                .zIndex(5)
-//            }
-
             // MARK: - Control Centre
             if showControlCentre {
                 ControlCentreView(
@@ -184,7 +189,7 @@ struct HomeView: View {
                         get: { vm.allTasks[section.title] ?? [] },
                         set: { vm.allTasks[section.title] = $0 }
                     ),
-                    noteStore: noteStore,                      // ✅ passed in, not recreated
+                    noteStore: noteStore,
                     onDismiss: {
                         withAnimation(.spring(response: 0.45, dampingFraction: 0.85)) {
                             selectedSection = nil

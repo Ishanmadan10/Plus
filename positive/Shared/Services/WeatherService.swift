@@ -20,6 +20,25 @@ class WeatherService: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
 
+    // MARK: - Refresh (retry)
+    func refresh() {
+        isLoading = true
+        temperature = nil
+        conditionNow = ""
+        conditionTonight = ""
+        cityName = ""
+
+        switch locationManager.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.requestLocation()
+        default:
+            Task {
+                await fetchWeather(lat: 12.9716, lon: 77.5946)
+                await reverseGeocode(lat: 12.9716, lon: 77.5946)
+            }
+        }
+    }
+
     // MARK: - CLLocationManagerDelegate
 
     nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -28,7 +47,6 @@ class WeatherService: NSObject, ObservableObject, CLLocationManagerDelegate {
             case .authorizedWhenInUse, .authorizedAlways:
                 locationManager.requestLocation()
             default:
-                // Fallback to Bangalore if denied
                 await fetchWeather(lat: 12.9716, lon: 77.5946)
                 await reverseGeocode(lat: 12.9716, lon: 77.5946)
             }
@@ -121,7 +139,6 @@ class WeatherService: NSObject, ObservableObject, CLLocationManagerDelegate {
     // MARK: - Tonight Forecast from Hourly Data
 
     private func tonightForecast(from hourly: OpenMeteoHourly) -> String {
-        // Evening hours: index 18–23 (6 PM – midnight)
         let eveningIndices = Array(18..<min(24, hourly.precipitation_probability.count))
 
         guard !eveningIndices.isEmpty else { return "Clear tonight" }
