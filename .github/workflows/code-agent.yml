@@ -22,7 +22,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install google-genai PyGithub
+      - name: Install dependencies
+        run: pip install openai PyGithub
 
       - name: Build check before changes
         run: |
