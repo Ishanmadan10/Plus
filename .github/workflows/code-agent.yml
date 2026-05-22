@@ -7,7 +7,7 @@ on:
 
 jobs:
   implement:
-    if: github.event.label.name == 'approved'
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'approved'
     runs-on: macos-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
           timeout_minutes: 10
           max_attempts: 3
           retry_wait_seconds: 60
-          command: python agents/product_agent.py
+          command: python agents/code_agent.py
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
