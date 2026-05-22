@@ -44,7 +44,7 @@ Focus ONLY on real user value improvements.
 
 Return ONLY a valid JSON array — no markdown, no explanation, no preamble.
 
-Return EXACTLY 10 suggestions.
+Return EXACTLY 3 suggestions.
 
 Each item must follow this exact schema:
 
@@ -90,3 +90,4 @@ Assign a number 1–10. Lower = more important. Base it on:
 - Every suggestion must be realistically implementable in SwiftUI
 - The "file" field must be the exact file path where the change goes
 - IDs must be unique — use format sug_001, sug_002, etc.
+- Keep each field under 100 characters. Be concise.
