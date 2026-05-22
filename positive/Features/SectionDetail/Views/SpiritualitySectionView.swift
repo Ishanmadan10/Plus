@@ -92,27 +92,43 @@ struct SpiritualitySectionView: View {
                 }
 
                 ScrollView {
+                    if prayers.isEmpty {
+                        VStack(spacing: 10) {
+                            Image(systemName: "sparkles")
+                                .font(.largeTitle)
+                                .foregroundColor(.white.opacity(0.6))
+                                .accessibilityHidden(true)
 
-                    LazyVStack(spacing: 12) {
+                            Text("No prayers added yet. Tap '+' to add one.")
+                                .font(.headline)
+                                .foregroundColor(.white.opacity(0.7))
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(.top, 50)
+                    } else {
+                        LazyVStack(spacing: 12) {
 
-                        ForEach($prayers) { $prayer in
+                            ForEach($prayers) { $prayer in
 
-                            PrayerCardRow(
-                                prayer: $prayer,
-                                accent: accent
-                            ) {
+                                PrayerCardRow(
+                                    prayer: $prayer,
+                                    accent: accent
+                                ) {
 
-                                withAnimation {
+                                    withAnimation {
 
-                                    prayers.removeAll {
-                                        $0.id == prayer.id
+                                        prayers.removeAll {
+                                            $0.id == prayer.id
+                                        }
                                     }
                                 }
+                                .padding(.horizontal, 20)
                             }
-                            .padding(.horizontal, 20)
                         }
+                        .padding(.bottom, 30)
                     }
-                    .padding(.bottom, 30)
                 }
             }
         }
