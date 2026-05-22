@@ -19,7 +19,6 @@ client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 MODELS = [
     "gemini-2.5-flash",
-    "gemini-2.5-pro", 
     "gemini-2.5-flash-lite",
 ]
 
@@ -73,7 +72,7 @@ priority_files = [
     "positive/Features/Habits/Views/TaskListView.swift",
     # Emotion
     "positive/Features/Emotion/Views/EmotionalPage.swift",
-    # Section detail views (journal, gym, groceries, spirituality, work)
+    # Section detail views
     "positive/Features/SectionDetail/Views/JournalSectionView.swift",
     "positive/Features/SectionDetail/Views/GymSectionView.swift",
     "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
@@ -121,13 +120,27 @@ if raw is None:
         "why": "Blank screens confuse users and reduce perceived quality of the app.",
         "ui_impact": "Empty state views added to habit list, task list, and emotion log.",
         "backend_impact": "None — purely presentational.",
-        "file": "positive/positive/Features/Habits/Views/HabitChecklistView.swift",
+        "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
         "effort": "small",
         "priority": 2,
         "status": "pending"
     }])
 
+# Strip markdown fences
 raw = re.sub(r'^```json|^```|```$', '', raw, flags=re.MULTILINE).strip()
+
+# Extract just the JSON array
+start = raw.find("[")
+end = raw.rfind("]")
+if start == -1 or end == -1:
+    print("No JSON array found in response")
+    print(raw)
+    exit(1)
+
+raw = raw[start:end + 1]
+
+# Fix trailing commas before ] or } (common Gemini mistake)
+raw = re.sub(r',\s*([\]\}])', r'\1', raw)
 
 try:
     new_suggestions = json.loads(raw)
