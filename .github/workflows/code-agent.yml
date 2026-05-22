@@ -3,6 +3,7 @@ name: Code Agent — Implement Approved Suggestion
 on:
   issues:
     types: [labeled]
+  workflow_dispatch:
 
 jobs:
   implement:
