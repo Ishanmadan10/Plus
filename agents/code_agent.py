@@ -97,6 +97,17 @@ def load_repo():
     repo_map = {}
 
     for root, _, files in os.walk("."):
+
+        # skip junk folders
+        if any(skip in root for skip in [
+            ".git",
+            "Pods",
+            "build",
+            ".build",
+            "DerivedData"
+        ]):
+            continue
+
         for file in files:
             if file.endswith(".swift"):
                 path = os.path.join(root, file)
@@ -111,12 +122,24 @@ def load_repo():
 
 repo_map = load_repo()
 
+# YES:
+# this scans ALL swift files recursively
+# across the whole repository
+
 codebase = "\n\n".join(
     f"// FILE: {path}\n{content}"
     for path, content in repo_map.items()
 )
 
+# lightweight architectural summary
+repo_summary = "\n".join(
+    f"{path} | {len(content.splitlines())} lines"
+    for path, content in repo_map.items()
+)
+
 ALLOWED_FILES = set(repo_map.keys())
+
+print(f"Loaded {len(repo_map)} Swift files")
 
 # -----------------------------
 # DECISION STEP
@@ -124,28 +147,32 @@ ALLOWED_FILES = set(repo_map.keys())
 decision_prompt = f"""
 You are a senior iOS architect.
 
-Decide whether this change should be implemented.
+Decide whether this feature request should be implemented.
+
+You are given the repository structure
+to understand the architecture.
 
 Return ONLY valid JSON.
 
 Format:
 {{
   "should_change": true,
-  "reason": "string"
+  "reason": "short reason"
 }}
 
-SUGGESTION:
+FEATURE REQUEST:
 {ISSUE_BODY}
 
-CODEBASE:
-{codebase}
+REPOSITORY STRUCTURE:
+{repo_summary}
 """
 
 decision_raw = call_gemini(
     decision_prompt,
     types.GenerateContentConfig(
-        temperature=0.2,
-        max_output_tokens=1024,
+        temperature=0.1,
+        max_output_tokens=256,
+        response_mime_type="application/json",
     )
 )
 
@@ -178,11 +205,19 @@ prompt = base_prompt.replace("{{SUGGESTION}}", ISSUE_BODY)
 # -----------------------------
 # MAIN GENERATION
 # -----------------------------
+generation_prompt = f"""
+{prompt}
+
+FULL CODEBASE:
+{codebase}
+"""
+
 raw = call_gemini(
-    prompt + "\n\nCODEBASE:\n" + codebase,
+    generation_prompt,
     types.GenerateContentConfig(
         temperature=0.2,
         max_output_tokens=8192,
+        response_mime_type="application/json",
     )
 )
 
@@ -211,6 +246,7 @@ if not result.get("changes"):
 written_files = 0
 
 for change in result["changes"]:
+
     file_path = change.get("file")
     content = change.get("content")
 
@@ -218,6 +254,7 @@ for change in result["changes"]:
         print("Skipping malformed change")
         continue
 
+    # safety restriction
     if file_path not in ALLOWED_FILES:
         print(f"Skipping unauthorized file: {file_path}")
         continue
@@ -228,6 +265,7 @@ for change in result["changes"]:
         f.write(content)
 
     written_files += 1
+    print(f"Updated: {file_path}")
 
 print(f"Written {written_files} files")
 
@@ -260,7 +298,10 @@ subprocess.run(
     check=True
 )
 
-commit_message = result.get("summary", "AI generated changes")
+commit_message = result.get(
+    "summary",
+    "AI generated changes"
+)
 
 subprocess.run(
     ["git", "commit", "-m", f"feat: {commit_message}"],
@@ -292,11 +333,13 @@ pr = repo.create_pull(
 # BACKLOG UPDATE
 # -----------------------------
 if os.path.exists("backlog.json"):
+
     try:
         with open("backlog.json", "r", encoding="utf-8") as f:
             backlog = json.load(f)
 
         for s in backlog.get("suggestions", []):
+
             if s.get("id") == suggestion_id:
                 s["status"] = "implemented"
                 s["pr"] = pr.number
