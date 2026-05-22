@@ -17,7 +17,24 @@ REPO = os.environ["GITHUB_REPOSITORY"]
 issue_number_raw = os.environ.get("ISSUE_NUMBER", "").strip()
 ISSUE_NUMBER = int(issue_number_raw) if issue_number_raw else None
 
-ISSUE_BODY = os.environ.get("ISSUE_BODY", "")
+ISSUE_BODY = os.environ.get("ISSUE_BODY", "").strip()
+
+if not ISSUE_BODY:
+    ISSUE_BODY = """
+Perform one meaningful improvement to the iOS app.
+
+Priority order:
+1. Fix compile/runtime issues
+2. Reduce duplicated code
+3. Improve architecture
+4. Improve SwiftUI performance
+5. Improve accessibility
+6. Improve maintainability
+
+Do not make cosmetic-only changes.
+Do not rewrite the whole app.
+Return only high-impact improvements.
+"""
 
 gh = Github(auth=Auth.Token(os.environ["GITHUB_TOKEN"]))
 repo = gh.get_repo(REPO)
