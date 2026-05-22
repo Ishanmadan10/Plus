@@ -89,24 +89,41 @@ struct HabitChecklistView: View {
 
                 // MARK: - Habit list
                 ScrollView {
-                    LazyVStack(spacing: 10) {
-                        ForEach(store.habits) { habit in
-                            HabitRow(habit: habit,
-                                onTap: {
-                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                        store.toggle(habit)
-                                    }
-                                },
-                                onDelete: {
-                                    withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
-                                        store.delete(habit)
-                                    }
-                                }
-                            )
+                    if store.habits.isEmpty {
+                        VStack(spacing: 16) {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.system(size: 48))
+                                .foregroundColor(.white.opacity(0.2))
+                                .accessibilityHidden(true)
+
+                            Text("No habits yet! Tap '+' to add your first habit.")
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundColor(.white.opacity(0.4))
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 40)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(.top, 50)
+                    } else {
+                        LazyVStack(spacing: 10) {
+                            ForEach(store.habits) { habit in
+                                HabitRow(habit: habit,
+                                    onTap: {
+                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                            store.toggle(habit)
+                                        }
+                                    },
+                                    onDelete: {
+                                        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+                                            store.delete(habit)
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 16)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 16)
                 }
                 // ✅ lets scroll happen even when finger starts on a row
                 .simultaneousGesture(DragGesture().onChanged { _ in
