@@ -77,13 +77,19 @@ for root, _, files in os.walk("."):
 print(f"Loaded {len(swift_files)} Swift files for analysis")
 codebase = "\n\n".join(swift_files)
 
+existing_ids_list = [s["id"] for s in backlog["suggestions"]]
+highest = len(existing_ids_list)
+
 # -----------------------------
 # Load prompt
 # -----------------------------
 with open("agents/prompts/product_prompt.txt") as f:
     prompt_template = f.read()
 
-prompt = prompt_template + "\n\nCODEBASE:\n" + codebase
+prompt = prompt_template \
+    + f"\n\nEXISTING SUGGESTION IDs (do NOT reuse these): {existing_ids_list}" \
+    + f"\n\nStart new IDs from sug_{highest+1:03d}" \
+    + "\n\nCODEBASE:\n" + codebase
 
 # -----------------------------
 # Generate suggestions
