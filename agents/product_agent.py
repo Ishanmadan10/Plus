@@ -1,4 +1,4 @@
-import os, json, re, time
+import os, json, re, time, subprocess
 from google import genai
 from google.genai import types
 from google.genai.errors import ClientError
@@ -19,6 +19,7 @@ client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 MODELS = [
     "gemini-2.5-flash",
+    "gemini-2.5-pro", 
     "gemini-2.5-flash-lite",
 ]
 
@@ -89,8 +90,11 @@ for path in priority_files:
     if os.path.exists(path):
         with open(path) as f:
             swift_files.append(f"// FILE: {path}\n{f.read()}")
+    else:
+        print(f"Skipping missing file: {path}")
 
 codebase = "\n\n".join(swift_files)
+print(f"Loaded {len(swift_files)} files for analysis")
 
 # -----------------------------
 # Load prompt
@@ -157,7 +161,6 @@ added = 0
 
 for s in new_suggestions:
     if s.get("id") not in existing_ids:
-        # Ensure required fields exist
         s.setdefault("status", "pending")
         s.setdefault("priority", 5)
         s.setdefault("ui_impact", "")
@@ -165,7 +168,66 @@ for s in new_suggestions:
         backlog["suggestions"].append(s)
         added += 1
 
+if added == 0:
+    print("No new suggestions to add — all already exist in backlog")
+    exit(0)
+
+print(f"Generated {added} new suggestions")
+
+# -----------------------------
+# Write updated backlog locally
+# -----------------------------
 with open("backlog.json", "w") as f:
     json.dump(backlog, f, indent=2)
 
-print(f"Added {added} new suggestions to backlog")
+# -----------------------------
+# Raise a PR with the updated backlog
+# -----------------------------
+branch = f"agent/backlog-update-{int(time.time())}"
+
+subprocess.run(["git", "config", "user.email", "agent@users.noreply.github.com"], check=True)
+subprocess.run(["git", "config", "user.name", "Code Agent"], check=True)
+subprocess.run(["git", "checkout", "-b", branch], check=True)
+subprocess.run(["git", "add", "backlog.json"], check=True)
+
+diff_check = subprocess.run(["git", "diff", "--cached", "--quiet"], check=False)
+if diff_check.returncode == 0:
+    print("No changes to backlog.json — skipping PR")
+    exit(0)
+
+subprocess.run(["git", "commit", "-m", "chore: add new product suggestions to backlog"], check=True)
+subprocess.run(["git", "push", "origin", branch], check=True)
+
+# Build PR body listing all new suggestions
+suggestion_lines = "\n".join(
+    f"- **[P{s.get('priority', '?')}] {s.get('title', s.get('id'))}** — {s.get('what', '')}"
+    for s in new_suggestions
+    if s.get("id") not in existing_ids or True
+)
+
+pr_body = f"""## Product Agent — Backlog Update
+
+The product agent analyzed the codebase and generated **{added} new suggestions**.
+
+Review the suggestions below, then merge this PR so the code agent can start implementing them.
+
+---
+
+### New Suggestions
+
+{suggestion_lines}
+
+---
+
+> After merging, trigger the code agent to implement the highest priority item.
+"""
+
+pr = repo.create_pull(
+    title=f"[Product Agent] {added} new suggestions added to backlog",
+    body=pr_body,
+    head=branch,
+    base="main"
+)
+
+print(f"PR #{pr.number} opened: {pr.html_url}")
+print(f"Review and merge to add suggestions to backlog")
