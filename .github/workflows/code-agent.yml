@@ -4,6 +4,8 @@ on:
   issues:
     types: [labeled]
   workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *'  
   
 permissions:
   contents: write
@@ -12,7 +14,7 @@ permissions:
 
 jobs:
   implement:
-    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'approved'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.event.label.name == 'approved'
     runs-on: macos-latest
 
     steps:
