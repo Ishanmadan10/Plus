@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Restore Gym Session State on Appear",
+      "what": "Call `restoreSessionIfNeeded()` in `GymSectionView`'s `onAppear` to load today's log.",
+      "why": "Prevents loss of user's in-progress workout selections and notes if they navigate away or close the app.",
+      "ui_impact": "When a workout day is selected, current day's saved progress (checkboxes, notes, etc.) will pre-fill.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add an `accessibilityLabel` to the `foilOverlay` in `ScratchCardView` when unscratched.",
+      "why": "Enhances accessibility for VoiceOver users, informing them the card is interactive and scratchable.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Scratch to reveal content' when card is focused.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Haptic Feedback to Grocery Item Selection",
+      "what": "Implement light haptic feedback when a grocery item is tapped to be selected or deselected.",
+      "why": "Provides tactile confirmation for the user's interaction, making the app feel more responsive and polished.",
+      "ui_impact": "No visual change. User will feel a light tap when toggling grocery item selection.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
