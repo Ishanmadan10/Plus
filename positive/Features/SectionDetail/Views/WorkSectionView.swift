@@ -312,7 +312,7 @@ struct WorkSectionView: View {
                     .overlay(
                         VStack(spacing: 0) {
 
-                            ForEach(0..<12, id: \.self) { _ in
+                            ForEach(0..<12, id: \.self) {
 
                                 VStack(spacing: 0) {
 
@@ -333,10 +333,8 @@ struct WorkSectionView: View {
 
                 if recent.isEmpty {
 
-                    Text("Start typing...")
-                        .font(.system(size: 15, design: .rounded))
-                        .foregroundColor(.white.opacity(0.18))
-                        .padding(20)
+                    EmptyNotesView(accentColor: accent, sectionName: "Work")
+                    .padding(20)
 
                 } else {
 
