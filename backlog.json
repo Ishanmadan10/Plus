@@ -144,7 +144,7 @@
       "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
       "effort": "small",
       "priority": 5,
-      "status": "pending"
+      "status": "implemented"
     },
     {
       "id": "sug_013",
