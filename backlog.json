@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Gym Day exercises",
+      "what": "When a selected Gym Day has no exercises, display a clear message guiding the user to add exercises.",
+      "why": "Improves user experience by clearly indicating how to populate an empty workout day.",
+      "ui_impact": "A centered text message like 'No exercises yet! Tap 'Add exercise' to begin.' will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Display notification permission status in Home",
+      "what": "Show a dismissible banner in HomeView if notification permission is denied, explaining the impact on reminders.",
+      "why": "Users understand why reminders aren't working and can enable them, improving app functionality.",
+      "ui_impact": "A small, persistent banner at the top or bottom of HomeView when notification permission is denied.",
+      "backend_impact": "NotificationManager needs a @Published property for permission status.",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Enhance accessibility for custom checkboxes",
+      "what": "Add `accessibilityLabel` and `accessibilityValue` to `GroceryRow` (and `PrayerCardRow`) checkboxes, and hide decorative images.",
+      "why": "Improves VoiceOver experience by providing clear, descriptive feedback on interactive elements and removing clutter.",
+      "ui_impact": "None (visual). VoiceOver will read 'Item name, selected/not selected' and ignore decorative icons.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
