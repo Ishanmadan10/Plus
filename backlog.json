@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add Control Centre empty state",
+      "what": "Display a clear empty state message in `ControlCentreView` when no custom sections exist.",
+      "why": "Guides new users on how to populate their 'My Space' with their first section.",
+      "ui_impact": "A large icon and descriptive text will appear when `sectionStore.sections` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance accessibility for custom checkboxes",
+      "what": "Implement `accessibilityElement`, `accessibilityLabel`, and `accessibilityValue` for the custom checkbox in `GroceryRow`.",
+      "why": "Provides clear, descriptive feedback to VoiceOver users about the item's state and interactivity.",
+      "ui_impact": "No visual change; improves VoiceOver experience for visually impaired users.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Journal section dismiss button",
+      "what": "Integrate a standard 'chevron.down' dismiss button into the `JournalSectionView` header.",
+      "why": "Improves navigation consistency and discoverability for dismissing the journal view.",
+      "ui_impact": "A standard dismiss button will appear in the top-left of the `JournalSectionView` header.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
