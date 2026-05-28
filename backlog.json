@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for no sections",
+      "what": "Display a clear message and icon in Control Centre when no custom sections exist.",
+      "why": "Guides users to create their first section, improving discoverability and reducing confusion.",
+      "ui_impact": "A centered VStack with an icon and text will appear instead of an empty grid.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance CalendarStrip DayCell accessibility",
+      "what": "Ensure sufficient contrast for future dates and add `accessibilityLabel` to `DayCell`.",
+      "why": "Makes the calendar strip usable for users with low vision or those using VoiceOver.",
+      "ui_impact": "Future dates will be slightly more visible; VoiceOver will announce cell details.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Hide decorative ContentCard emojis from VoiceOver",
+      "what": "Add `accessibilityHidden(true)` to the emoji `Text(icon)` in `ContentCard`.",
+      "why": "Prevents redundant or distracting announcements by VoiceOver for purely decorative emojis.",
+      "ui_impact": "No visual change; VoiceOver will skip the emoji text.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/ContentCards.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
