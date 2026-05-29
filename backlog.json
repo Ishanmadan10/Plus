@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Explicit empty state for sections",
+      "what": "Display a clear message and icon in ControlCentreView when no sections exist.",
+      "why": "Improves discoverability and user experience for new users or after deleting all sections.",
+      "ui_impact": "A centered icon and text message will appear above the 'Add section' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Implement Dynamic Type for all text",
+      "what": "Replace fixed `.system(size: ...)` font modifiers with `Text` styles or scaled custom fonts.",
+      "why": "Ensures text scales according to user's accessibility settings, improving readability for all users.",
+      "ui_impact": "Text sizes will dynamically adjust based on system text size settings.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/ContentCards.swift",
+      "effort": "large",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal dismiss gesture",
+      "what": "Modify JournalSectionView's drag-to-dismiss to only activate when content is scrolled to top.",
+      "why": "Reduces accidental dismissals and improves fluidity of interacting with the journal's text editor.",
+      "ui_impact": "Users can scroll journal content freely; dismissal requires dragging from top when scrolled up.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
