@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Gym Day Manager",
+      "what": "Display a clear message and icon when no workout days are defined in Gym Day Manager.",
+      "why": "Guides new users on how to add their first workout day, improving discoverability and onboarding.",
+      "ui_impact": "A centered 'No workout days yet! Tap '+' to add one.' message with an icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card VoiceOver accessibility",
+      "what": "Add an `accessibilityElement` to `ScratchCardView` to announce its purpose and state to VoiceOver.",
+      "why": "Ensures visually impaired users can understand and interact with the unique scratch card feature.",
+      "ui_impact": "No visual change. VoiceOver will announce card state (e.g., 'Scratch card, tap to reveal').",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Remove non-functional 'Gallery' button from Home",
+      "what": "Remove the rightmost circular button in `HomeView`'s bottom navigation, as its `showOverlay` state is unused.",
+      "why": "Eliminates a confusing and non-functional UI element, reducing user frustration and improving clarity.",
+      "ui_impact": "The 'plus/xmark' button at the bottom right of the Home screen will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
