@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for gym day exercises",
+      "what": "Display a message and icon when a selected gym day has no exercises.",
+      "why": "Guides users to add exercises, improving usability for new or empty workout days.",
+      "ui_impact": "A centered message 'No exercises yet! Tap 'Add exercise' below.' with an icon.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance accessibility for interactive elements",
+      "what": "Add dynamic `accessibilityLabel` to PillButton, descriptive labels to Journal toolbar menus, and a clear toggle label to HabitRow.",
+      "why": "Improves usability for VoiceOver users, making interactive elements understandable.",
+      "ui_impact": "No visual change; VoiceOver will announce clearer descriptions for buttons and toggles.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize full-screen sheet dismissal",
+      "what": "Remove redundant drag-to-dismiss handles from Journal and Generic Notes tabs, relying on the existing 'chevron.down' button.",
+      "why": "Reduces UX confusion by providing a single, consistent, and explicit way to dismiss full-screen sheets.",
+      "ui_impact": "The small capsule drag handle at the top of Journal and Generic Notes tabs will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
