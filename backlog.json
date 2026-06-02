@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Habits",
+      "what": "When no habits are added, display a friendly message and a prompt to add one.",
+      "why": "Users will know how to proceed when they first open the habits section.",
+      "ui_impact": "A new view with text and an icon will appear when `store.habits` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Gym",
+      "what": "When no workout days are created, display a message and a prompt to add a day.",
+      "why": "Users will understand how to start using the gym tracking feature.",
+      "ui_impact": "A new view with text and an icon will appear when `store.days` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for saving",
+      "what": "Provide subtle haptic feedback when a workout session is saved.",
+      "why": "Confirms to the user that their action was successful.",
+      "ui_impact": "A light haptic feedback will be triggered on save.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
