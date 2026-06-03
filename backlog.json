@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Auto-save gym session on day switch",
+      "what": "Implement logic to automatically save current workout progress when the user switches to a different workout day.",
+      "why": "Prevents accidental data loss, ensuring user's input for exercises, notes, and cardio metrics is retained.",
+      "ui_impact": "User's entered data will persist for a workout day even if they temporarily navigate to another day.",
+      "backend_impact": "GymStore's saveLog will be called proactively when selectedDayID changes.",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add VoiceOver actions for swipe-to-delete",
+      "what": "Implement accessibilityAction for 'Delete' on swipe-to-delete rows in habit, task, grocery, and prayer lists.",
+      "why": "Enables VoiceOver users to easily delete items without relying on visual swipe gestures.",
+      "ui_impact": "No visual change; VoiceOver users will hear a 'Delete' action when interacting with list items.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Show empty state for gym day with no exercises",
+      "what": "Display a clear message and icon when a selected gym day has no exercises defined.",
+      "why": "Guides users on how to add exercises to their workout plan, improving discoverability and onboarding.",
+      "ui_impact": "Instead of a blank space, a friendly message and icon will appear, prompting action.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
     }
   ]
 }
