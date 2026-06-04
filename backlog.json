@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Restore Gym Session on Day Selection",
+      "what": "Call `restoreSessionIfNeeded()` in `onAppear` and when `selectedDayID` changes in `GymSectionView`.",
+      "why": "Prevents data loss and improves continuity when users switch workout days or re-enter the view.",
+      "ui_impact": "Completed exercises, notes, and cardio stats will persist for today's selected workout day.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refactor Work Section for UI Consistency",
+      "what": "Replace `workChecklist` and `workNotes` in `WorkSectionView` with `GenericChecklistTab` and `GenericNotesTab`.",
+      "why": "Ensures consistent UI/UX for checklists and notes across all sections, reducing code duplication.",
+      "ui_impact": "Work section's checklist and notes tabs will match the generic section's design and behavior.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "large",
+      "priority": 5,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve Calendar Day Cell Accessibility",
+      "what": "Add `accessibilityLabel` to `DayCell` in `CalendarStrip` to describe date and completion ratio.",
+      "why": "Visually impaired users can understand daily habit completion status, enhancing app usability.",
+      "ui_impact": "No visual change; VoiceOver will announce details like 'Tuesday, 15th, 75% complete'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
