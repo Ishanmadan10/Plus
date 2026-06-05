@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show loading indicator for journal photos",
+      "what": "Display a `ProgressView` in `JournalEditorView` while a selected photo is loading.",
+      "why": "Provides visual feedback, reassuring the user the photo is being processed.",
+      "ui_impact": "A small `ProgressView` will appear where the image would be, then replaced by the image.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalEditorView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance calendar day cell accessibility",
+      "what": "Add `accessibilityLabel` to `DayCell` in `CalendarStrip` to describe completion status.",
+      "why": "Screen reader users will understand habit completion for each day, not just the date.",
+      "ui_impact": "No visual change; improves experience for accessibility users.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal view dismissal gesture",
+      "what": "Remove the `highPriorityGesture` from `JournalSectionView`'s main `VStack` and apply a drag gesture only to the `Capsule` drag handle.",
+      "why": "Prevents accidental dismissal when users intend to scroll the journal entry, improving content interaction.",
+      "ui_impact": "Users must drag the top `Capsule` or tap the dismiss button to close the journal view; dragging other content will scroll it.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
