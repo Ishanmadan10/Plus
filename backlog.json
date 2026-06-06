@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Control Centre empty state",
+      "what": "Display a clear message and icon when no custom sections exist in Control Centre.",
+      "why": "Guides new users and clarifies state when all sections are deleted, improving usability.",
+      "ui_impact": "A centered icon and text message will appear above the 'Add section' button when sections are empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Pill Button accessibility label",
+      "what": "Dynamically update the PillButton's accessibility label to reflect its current action (e.g., 'Open menu', 'Close menu').",
+      "why": "Improves usability for VoiceOver users, making the button's function clear at a glance.",
+      "ui_impact": "No visual change; VoiceOver will announce a more descriptive label.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for habit toggles",
+      "what": "Introduce light haptic feedback when a user taps to complete or uncomplete a habit in the checklist.",
+      "why": "Provides satisfying tactile confirmation for user interactions, enhancing engagement.",
+      "ui_impact": "No visual change; user feels a subtle vibration.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
