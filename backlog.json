@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Habits",
+      "what": "Display a helpful message and illustration when no habits are added.",
+      "why": "Guides new users and clarifies the purpose of the section when empty.",
+      "ui_impact": "A new view will appear in HabitChecklistView when `store.habits` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Gym History",
+      "what": "Show a message when no gym sessions have been logged.",
+      "why": "Informs users that they need to log a workout before history is available.",
+      "ui_impact": "A new view will appear in GymHistoryView when `store.logs` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add empty state for Gym Days",
+      "what": "Display a message when no workout days have been created.",
+      "why": "Guides users to create their first workout plan.",
+      "ui_impact": "A new view will appear in GymSectionView when `store.days` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
     }
   ]
 }
