@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Gym Days",
+      "what": "Display a clear message and icon when no gym days are defined in the manager view.",
+      "why": "Informs users how to get started and improves usability for new users.",
+      "ui_impact": "A centered icon and text will appear when the list of gym days is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility",
+      "what": "Add an `accessibilityLabel` to the `foilOverlay` describing the scratch interaction.",
+      "why": "Enhances usability for VoiceOver users, making the interactive element discoverable.",
+      "ui_impact": "No visual change; improves screen reader experience for the scratch card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Streamline Journal View dismissal",
+      "what": "Remove the redundant drag handle and rely solely on the top-left dismiss button for closing the journal.",
+      "why": "Reduces visual clutter, simplifies navigation, and prevents potential gesture conflicts with scrolling.",
+      "ui_impact": "The `Capsule` drag handle at the top of the journal view will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
