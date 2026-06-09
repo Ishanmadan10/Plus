@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Habit Checklist",
+      "what": "When there are no habits, display a message encouraging the user to add one.",
+      "why": "Provides clear guidance to new users and improves the experience when the list is empty.",
+      "ui_impact": "A centered text and icon will appear in the Habit Checklist view when no habits are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Gym History",
+      "what": "When no gym sessions have been logged, display a helpful empty state message.",
+      "why": "Guides users on how to start logging workouts and clarifies the purpose of the screen.",
+      "ui_impact": "A centered text and icon will appear in the Gym History view when no logs exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback to card swipe",
+      "what": "Provide subtle haptic feedback when the user swipes between content cards on the home screen.",
+      "why": "Enhances the tactile feel of the app and confirms successful navigation between cards.",
+      "ui_impact": "A light haptic feedback will be triggered when the user swipes the content cards.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
