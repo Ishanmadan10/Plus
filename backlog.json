@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Empty state for Habits list",
+      "what": "Add a view to display when the habits list is empty.",
+      "why": "Users will understand how to add habits and won't be confused by a blank screen.",
+      "ui_impact": "A message and illustration will appear when no habits are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Empty state for Gym History",
+      "what": "Display a message when there are no gym sessions logged.",
+      "why": "Provides clear guidance to users on how to start logging workouts.",
+      "ui_impact": "A message like 'No sessions logged yet' will be shown when the history is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add loading state for weather",
+      "what": "Show a loading indicator while fetching weather data.",
+      "why": "Informs the user that data is being fetched, improving perceived performance.",
+      "ui_impact": "A `ProgressView` will be visible while weather data is loading.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
     }
   ]
 }
