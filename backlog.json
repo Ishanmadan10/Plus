@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Habits list",
+      "what": "When the Habits list is empty, display a helpful message and an illustration.",
+      "why": "Users need guidance on how to start adding habits when they first open the app.",
+      "ui_impact": "A new view will appear when `store.habits` is empty, showing an illustration and text.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Gym History",
+      "what": "When no gym sessions are logged, display a clear empty state message.",
+      "why": "Users need to know that no history exists and how to start logging sessions.",
+      "ui_impact": "The Gym History view will show an illustration and text when `store.logs` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for toggling habits",
+      "what": "Provide subtle haptic feedback when a user checks or unchecks a habit.",
+      "why": "Haptics provide delightful confirmation and improve the tactile feel of interacting with the app.",
+      "ui_impact": "A light haptic feedback will trigger when a habit's completion status is toggled.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
