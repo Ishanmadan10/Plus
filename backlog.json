@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Generic Task List Empty State",
+      "what": "Change `TaskListView`'s empty state message to 'No tasks added yet. Add one to get started.'",
+      "why": "Makes the component more reusable and less coupled to its parent's layout, improving clarity.",
+      "ui_impact": "The empty state text in `TaskListView` will be a more general prompt.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/TaskListView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Show Loading for Journal Photo",
+      "what": "In `JournalEditorView`, display a `ProgressView` while `selectedImage` is loading from `photoItem`.",
+      "why": "Provides visual feedback to the user that an image is being processed, preventing perceived unresponsiveness.",
+      "ui_impact": "A circular loading indicator will temporarily appear in the image's spot until the photo loads.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalEditorView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve Pill Button Accessibility Label",
+      "what": "Add a dynamic `accessibilityLabel` to `PillButton` to announce 'Open menu' or 'Close menu'.",
+      "why": "Enhances usability for VoiceOver users by providing a clear description of the button's function.",
+      "ui_impact": "No visual change; VoiceOver will announce the button's state and action more clearly.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
