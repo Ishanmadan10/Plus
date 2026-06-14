@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve PillButton Accessibility State",
+      "what": "Add `accessibilityLabel` and `accessibilityValue` to `PillButton` to convey its open/closed state.",
+      "why": "Users with screen readers will understand the button's purpose and current state, improving navigation.",
+      "ui_impact": "No visual change; screen readers will announce 'Add new items, currently expanded' or 'collapsed'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add explicit 'Done' button to Journal Header",
+      "what": "Modify `JournalSectionView` to pass a 'Done' button to the `SectionHeader`'s `trailing` parameter, which calls `onDismiss()`.",
+      "why": "Provides clear user feedback and control for saving and exiting the journal entry, reducing ambiguity.",
+      "ui_impact": "A 'Done' button will appear in the top right of the journal screen, next to the title.",
+      "backend_impact": "Call `onDismiss()` on button tap.",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Remove Redundant Journal Drag Handle",
+      "what": "Remove the `Capsule` drag handle and the `highPriorityGesture` from `JournalSectionView`, relying solely on the `SectionHeader`'s built-in dismissal.",
+      "why": "Improves UI consistency across all section detail views, making navigation predictable and reducing cognitive load.",
+      "ui_impact": "The `Capsule` drag handle at the top of the journal view will be removed. Dismissal will be via the `chevron.down` button.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
