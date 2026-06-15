@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Control Centre empty state guidance",
+      "what": "Display a prominent message when no custom sections exist in Control Centre.",
+      "why": "Guides new users on how to customize their app, reducing confusion and improving discoverability.",
+      "ui_impact": "A centered icon and text message will appear when `sectionStore.sections` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Scratch Card accessibility for VoiceOver",
+      "what": "Add an `accessibilityLabel` to the `ScratchCardView`'s foil overlay when it's present.",
+      "why": "Visually impaired users will understand the interactive nature of the scratch card, improving usability.",
+      "ui_impact": "No visual change; VoiceOver will announce the purpose of the scratch card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback to key user actions",
+      "what": "Implement haptic feedback for habit completion, grocery item addition, and new section creation.",
+      "why": "Provides immediate, tactile confirmation of user actions, making the app feel more responsive and polished.",
+      "ui_impact": "Users will feel a subtle vibration on their device when performing these actions.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
