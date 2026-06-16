@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display explicit empty state for sections",
+      "what": "Show a clear message with an icon when no custom sections exist in Control Centre.",
+      "why": "Guides new users on how to create their first section, reducing initial confusion.",
+      "ui_impact": "A centered 'No sections yet! Tap '+' to add one.' message will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Dismiss keyboard on background tap in checklists",
+      "what": "Add an `onTapGesture` to the main content area of `GenericChecklistTab` to dismiss the keyboard.",
+      "why": "Improves user experience by allowing easy keyboard dismissal without needing to tap specific buttons.",
+      "ui_impact": "Tapping outside the task input field will hide the keyboard.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GenericChecklistTab.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for habit toggles",
+      "what": "Implement light haptic feedback when a user taps to toggle a habit's completion status in `HabitRow`.",
+      "why": "Provides tactile confirmation for user actions, making the app feel more responsive and polished.",
+      "ui_impact": "A subtle vibration will occur when a habit is marked complete or incomplete.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
