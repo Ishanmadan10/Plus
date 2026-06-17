@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Journal color picker accessibility",
+      "what": "Add descriptive `accessibilityLabel` to each color option within the Journal's toolbar color menu.",
+      "why": "Screen reader users can understand and select text colors, enhancing inclusivity.",
+      "ui_impact": "No visual change; screen readers will announce color names.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add accessibility labels to icon-only buttons",
+      "what": "Provide `accessibilityLabel` for SF Symbol buttons (e.g., dismiss, add, edit, trash, history, manage) across various views.",
+      "why": "Enhances usability for screen reader users by clearly describing button functions.",
+      "ui_impact": "No visual change; screen readers will announce button actions.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/SectionHeader.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Confine Journal dismiss gesture to drag handle",
+      "what": "Move the drag-to-dismiss gesture from the entire `VStack` to the dedicated `Capsule` drag handle in `JournalSectionView`.",
+      "why": "Prevents accidental dismissal when scrolling journal content, improving interaction with the text editor.",
+      "ui_impact": "Drag-to-dismiss will only activate when interacting with the top capsule.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
