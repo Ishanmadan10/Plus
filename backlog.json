@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Control Centre sections",
+      "what": "Display a guiding message and icon when no custom sections exist in ControlCentreView.",
+      "why": "Helps first-time users understand how to add sections, improving discoverability and onboarding.",
+      "ui_impact": "A centered message with an icon will appear when sectionStore.sections is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Journal Editor placeholder accessibility",
+      "what": "Add an accessibility label to the TextEditor in JournalEditorView when it is empty.",
+      "why": "Ensures screen reader users understand the text field's purpose, improving accessibility for all.",
+      "ui_impact": "No visual change. VoiceOver will announce the placeholder text for the empty editor.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalEditorView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Fix JournalSectionView drag-to-dismiss gesture",
+      "what": "Relocate the drag-to-dismiss gesture from the entire content VStack to the dedicated drag handle.",
+      "why": "Prevents accidental dismissal when scrolling journal entries, significantly reducing UX friction.",
+      "ui_impact": "Journal content will scroll smoothly. Dismissal requires dragging specifically from the top handle.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
