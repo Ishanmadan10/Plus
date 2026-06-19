@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Accessibility for Pickers & Toggles",
+      "what": "Add descriptive accessibilityLabel to icon/color picker buttons in AddSectionSheet and to checkbox/radio buttons in PrayerCardRow, GymExerciseRow, GroceryRow.",
+      "why": "Enhances VoiceOver usability, allowing visually impaired users to understand button purpose and state.",
+      "ui_impact": "No visual change; improved VoiceOver announcements for interactive elements.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Drag-to-Dismiss to Habit Checklist",
+      "what": "Implement a drag-down gesture for HabitChecklistView to dismiss it, mirroring JournalSectionView and GenericNotesTab.",
+      "why": "Provides a consistent and intuitive dismissal method, reducing navigation friction for users.",
+      "ui_impact": "Users can drag the sheet down from the top to dismiss it, in addition to tapping the 'chevron.down' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Haptic Feedback to Toggles & Forms",
+      "what": "Integrate UIImpactFeedbackGenerator for PrayerCardRow checkbox, GroceryRow selection, HabitRow toggle, and 'Add' buttons in AddSectionSheet and QuickInputOverlay.",
+      "why": "Provides tactile confirmation for user interactions, making the app feel more responsive and polished.",
+      "ui_impact": "No visual change; users will feel a light tap when interacting with these elements.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/PrayerCardRow.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
