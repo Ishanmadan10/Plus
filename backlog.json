@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve empty state for Gym Day Manager",
+      "what": "Add a dedicated empty state message and icon in `GymDayManagerView` when `store.days` is empty, guiding the user to add their first day.",
+      "why": "Provides clear guidance to users when they first open the 'Manage Days' screen, reducing confusion and improving discoverability of the 'add day' functionality.",
+      "ui_impact": "A centered icon (e.g., 'dumbbell') and instructional text will appear in the list area when no gym days are defined.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for Scratch Card",
+      "what": "Add an `accessibilityLabel` to the `ScratchCardView` when it's unrevealed, describing its purpose and how to interact with it.",
+      "why": "Visually impaired users can understand that there's a hidden thought and how to reveal it, making the feature usable for everyone.",
+      "ui_impact": "No visual change. Screen readers will announce the label, e.g., 'Scratch card, scratch to reveal a daily thought'.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Remove confusing drag-to-dismiss from GenericNotesTab",
+      "what": "Remove the drag handle (capsule) and associated `DragGesture` from `GenericNotesTab` as it's a sub-tab, not a full-screen modal, and its current implementation is confusing.",
+      "why": "Eliminates a redundant and confusing gesture that doesn't align with standard iOS navigation patterns for tabbed content, improving predictability.",
+      "ui_impact": "The small capsule drag handle at the top of the `GenericNotesTab` will be removed, and the tab content will no longer respond to drag-down gestures for dismissal.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GenericNotesTab.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
