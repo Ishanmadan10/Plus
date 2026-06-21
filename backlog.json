@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Control Centre empty state",
+      "what": "Display a clear empty state message and visual guidance in ControlCentreView when no custom sections exist.",
+      "why": "Improves discoverability and guides new users to create their first section, reducing initial confusion.",
+      "ui_impact": "A centered message and icon will appear, replacing the empty grid space, with the 'Add section' button below.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for custom checkboxes",
+      "what": "Add accessibility traits and values to custom checkbox/radio button UI components for screen readers.",
+      "why": "Ensures screen reader users understand the purpose and current state of interactive elements, improving inclusivity.",
+      "ui_impact": "No visual change; improves VoiceOver experience for custom toggles.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize drag-down dismissal for modals",
+      "what": "Implement a consistent drag-down gesture for dismissing full-screen modal views like ControlCentreView.",
+      "why": "Provides a more intuitive and consistent navigation experience across the app, especially for one-handed use.",
+      "ui_impact": "Users can drag down from the top of modal overlays to dismiss them, in addition to tapping the 'chevron.down' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
