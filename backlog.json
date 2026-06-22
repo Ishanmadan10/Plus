@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show friendly empty state in Control Centre",
+      "what": "Display a welcoming message and icon when no sections exist in Control Centre.",
+      "why": "Guides new users and improves experience when all sections are deleted.",
+      "ui_impact": "A centered icon and text will appear when sections are empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility for VoiceOver",
+      "what": "Add an invisible accessibility button to reveal content for VoiceOver users.",
+      "why": "Ensures visually impaired users can access the 'thought of the day' content.",
+      "ui_impact": "No visual change, but VoiceOver will announce a 'Reveal thought' action.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Unify add item UI with QuickInputOverlay component",
+      "what": "Replace the custom `AddSectionSheet` with the reusable `QuickInputOverlay` component.",
+      "why": "Provides a consistent, predictable experience for adding new items across the app.",
+      "ui_impact": "The 'Add section' flow will use a standardized, centered input overlay.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
