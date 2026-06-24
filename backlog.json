@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Gym History",
+      "what": "When no gym logs exist, display a clear message indicating this.",
+      "why": "Users will understand that no past workouts have been logged yet, guiding them to start.",
+      "ui_impact": "The GymHistoryView will show a centered message like 'No sessions logged yet' when empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Habit Checklist",
+      "what": "When no habits are added, display a helpful empty state message.",
+      "why": "Users will be guided on how to add their first habit, improving onboarding.",
+      "ui_impact": "The HabitChecklistView will show a centered message like 'No habits yet! Tap '+' to add your first habit.' when empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback to key actions",
+      "what": "Provide subtle haptic feedback when toggling habits and saving gym sessions.",
+      "why": "Haptics provide tactile confirmation of user actions, enhancing the feeling of responsiveness and success.",
+      "ui_impact": "Tapping a habit to toggle completion and tapping 'Save Session' in Gym will trigger a light haptic.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
