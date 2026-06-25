@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Habits",
+      "what": "When no habits are added, display a helpful message and a call to action.",
+      "why": "Users need guidance on how to start adding habits when the list is empty.",
+      "ui_impact": "A new view with text and an icon will appear when store.habits is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add loading and error states for Weather",
+      "what": "Show a loading indicator when fetching weather and a retry option if it fails.",
+      "why": "Provides better feedback to the user about the weather data status.",
+      "ui_impact": "A ProgressView will show during loading, and a retry button will appear on error.",
+      "backend_impact": "Modify HomeViewModel to handle loading and error states more explicitly.",
+      "file": "positive/Features/Home/ViewModels/HomeViewModel.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve accessibility for buttons",
+      "what": "Add more descriptive accessibility labels to interactive elements like buttons.",
+      "why": "Enhances usability for users relying on assistive technologies like VoiceOver.",
+      "ui_impact": "Buttons will have more informative labels read aloud by screen readers.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
