@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state in Control Centre",
+      "what": "Display a clear message and icon when no sections are added in ControlCentreView.",
+      "why": "Guides new users to create their first section, improving discoverability and first-time experience.",
+      "ui_impact": "A centered message 'No sections yet! Tap '+' to add one.' with an icon will appear if no sections exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add tap-to-reveal for scratch card",
+      "what": "Implement a tap gesture on the ScratchCardView to reveal its content, and enhance VoiceOver labels.",
+      "why": "Enhances accessibility for users with motor impairments or those using VoiceOver, making the feature usable for everyone.",
+      "ui_impact": "The scratch card will reveal its content on a single tap. VoiceOver will announce instructions and the card's state.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Adjust Add Section sheet for keyboard",
+      "what": "Modify the AddSectionSheet to ensure input fields and the 'Add Section' button remain visible when the keyboard is active.",
+      "why": "Prevents UI elements from being obscured by the keyboard, reducing friction and improving usability for adding new sections.",
+      "ui_impact": "The sheet's content will automatically adjust or scroll to keep the active text field and button in view when the keyboard appears.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
