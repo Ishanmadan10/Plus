@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show error for Journal image load",
+      "what": "Display an error message or icon if a selected photo fails to load into the journal editor.",
+      "why": "Informs the user if their chosen image could not be processed, preventing confusion and allowing them to retry.",
+      "ui_impact": "A small error icon or text (e.g., 'Image failed to load') will appear if photo processing fails.",
+      "backend_impact": "Add a @State variable to track image loading errors.",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card VoiceOver",
+      "what": "Add `accessibilityLabel` to describe the scratch card and use `accessibilityLiveRegion(.assertive)` to announce the revealed thought.",
+      "why": "Ensures VoiceOver users understand the card's purpose and are informed when the hidden content is revealed.",
+      "ui_impact": "No visual change; VoiceOver will provide clearer feedback.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Remove confusing Notes tab drag",
+      "what": "Remove the `Capsule` drag handle and the `DragGesture` from `GenericNotesTab`.",
+      "why": "Eliminates confusing navigation cues for a tab content view, preventing accidental interactions and improving clarity.",
+      "ui_impact": "The subtle drag handle `Capsule` will be removed, and the view will no longer respond to vertical drag gestures.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GenericNotesTab.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
