@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add an `accessibilityLabel` and `accessibilityHint` to the `ScratchCardView` when the foil overlay is active.",
+      "why": "Users with visual impairments can understand the card's purpose and how to reveal its content.",
+      "ui_impact": "No visual change; screen readers will provide more context for interaction.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine Journal Drag-to-Dismiss Gesture",
+      "what": "Modify `JournalSectionView`'s drag gesture to only trigger dismiss when the internal `ScrollView` is at its top and dragging further down.",
+      "why": "Prevents accidental dismissal when trying to scroll journal content, improving navigation fluidity.",
+      "ui_impact": "Smoother and more intuitive dismissal behavior for the journal sheet.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consolidate Work Section Checklist/Notes",
+      "what": "Refactor `WorkSectionView` to use the existing `GenericChecklistTab` and `GenericNotesTab` components.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent UX across similar section types.",
+      "ui_impact": "No visual change, but the underlying code structure will be cleaner and more consistent.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
