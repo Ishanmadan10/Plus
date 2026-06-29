@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Pagination Dots Accessibility",
+      "what": "Add `accessibilityLabel` to `PaginationDotsView` to announce current card position.",
+      "why": "VoiceOver users understand their position within the card sequence, improving navigation context.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Showing card 1 of 3' instead of just 'circle'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PaginationAndHint.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add `accessibilityLabel` and `accessibilityHint` to `foilOverlay` in `ScratchCardView`.",
+      "why": "VoiceOver users understand the card's purpose and how to interact with it.",
+      "ui_impact": "No visual change. VoiceOver will announce interaction instructions for the scratch card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Color Picker Accessibility Labels",
+      "what": "Add `accessibilityLabel` to color `Button`s in `AddSectionSheet` to announce the color.",
+      "why": "VoiceOver users can identify and select colors, making section creation accessible.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Red color' instead of 'circle'.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
