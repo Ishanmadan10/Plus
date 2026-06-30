@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card accessibility",
+      "what": "Add VoiceOver accessibility label to the scratch card's foil overlay.",
+      "why": "Visually impaired users can understand how to interact with the card to reveal content.",
+      "ui_impact": "No visual change, but VoiceOver will announce 'Scratch to reveal thought of the day'.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Unify Journal section dismissal",
+      "what": "Remove the custom drag handle and drag-to-dismiss gesture from `JournalSectionView`.",
+      "why": "Standardizes dismissal with the existing 'chevron.down' button in `SectionHeader`, improving consistency.",
+      "ui_impact": "The drag handle capsule will be removed from the top of the Journal section.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for data changes",
+      "what": "Implement light haptic feedback for adding/deleting items in lists like habits, groceries, and tasks.",
+      "why": "Provides tactile confirmation for user actions, making the app feel more responsive and polished.",
+      "ui_impact": "Users will feel a subtle vibration when adding or deleting list items.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
