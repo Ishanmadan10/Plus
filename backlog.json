@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre sections",
+      "what": "Display a dedicated message and icon when no custom sections exist in ControlCentreView.",
+      "why": "Guides new users or those who've cleared sections, improving onboarding and clarity.",
+      "ui_impact": "A centered 'No sections yet!' message with an icon will appear if sections are empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Implement placeholder for HomeView 'Gallery' button",
+      "what": "Add a simple overlay view (e.g., 'Gallery coming soon!') when the 'Gallery' button is tapped.",
+      "why": "Provides clear feedback for a currently non-functional button, preventing user confusion and frustration.",
+      "ui_impact": "A new full-screen overlay with a message and dismiss button will appear when tapped.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve ScratchCardView accessibility for VoiceOver",
+      "what": "Add an accessibility action to reveal the scratch card content and make hint text accessible.",
+      "why": "Enables users with motor impairments or VoiceOver to access the 'Thought of the Day' feature.",
+      "ui_impact": "No visual change, but VoiceOver will announce an action like 'Double tap to reveal thought'.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
