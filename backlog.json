@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state for no sections",
+      "what": "Show a 'No sections yet' message when `sectionStore.sections` is empty.",
+      "why": "Guides new users, clarifies app state, and reduces confusion.",
+      "ui_impact": "A central message with an icon will appear when no sections are added.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add accessible reveal for ScratchCard",
+      "what": "Implement a 'Reveal' button or VoiceOver action to unveil content, complementing scratch gesture.",
+      "why": "Ensures users with motor impairments or VoiceOver can access hidden content.",
+      "ui_impact": "A small, subtle 'Reveal' button will appear on the scratch card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize swipe-down dismissal for modals",
+      "what": "Implement a consistent swipe-down gesture for all full-screen modal views.",
+      "why": "Improves navigation fluidity, consistency, and user expectation across the app.",
+      "ui_impact": "Users can swipe down from anywhere on modals to dismiss them, in addition to buttons.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "large",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
