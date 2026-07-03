@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Clearer Empty State for Sections",
+      "what": "Display a descriptive message when no custom or default sections exist in Control Centre.",
+      "why": "Guides users on how to add their first section, improving discoverability and reducing confusion.",
+      "ui_impact": "A centered text message and icon will appear above the 'Add section' button if no sections exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Journal Color Picker Accessibility",
+      "what": "Add descriptive text to the Label for each color option in the Journal Toolbar's color picker.",
+      "why": "Enhances accessibility for VoiceOver users, allowing them to understand the purpose of each color selection.",
+      "ui_impact": "No visual change; VoiceOver will announce 'White color', 'Yellow color', etc.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal Editor Keyboard Dismissal",
+      "what": "Remove the aggressive `onTapGesture` from `JournalSectionView` to allow default keyboard dismissal.",
+      "why": "Prevents accidental keyboard dismissal when interacting with the journal entry text, improving the editing experience.",
+      "ui_impact": "Tapping within the `TextEditor` will no longer dismiss the keyboard; only taps outside the editor will.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
