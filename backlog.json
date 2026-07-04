@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Control Centre button accessibility",
+      "what": "Add `accessibilityLabel` to header buttons and 'Add section' button in `ControlCentreView` for VoiceOver users.",
+      "why": "Enhances usability for VoiceOver users, making navigation and actions clear and understandable.",
+      "ui_impact": "No visual change, but VoiceOver will accurately announce the purpose of each button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add swipe-to-delete for Gym exercises",
+      "what": "Implement swipe-to-delete functionality for `GymExerciseRow` within `GymSectionView` to allow users to remove exercises from a selected day.",
+      "why": "Empowers users to easily manage and customize their workout routines directly within the day's view.",
+      "ui_impact": "Each `GymExerciseRow` will reveal a red 'Trash' button on a left swipe, consistent with other lists.",
+      "backend_impact": "Calls existing `store.deleteExercise(dayID: UUID, exerciseID: UUID)`.",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consistent Journal toolbar positioning",
+      "what": "Refactor `JournalSectionView` to keep the `JournalToolbar` consistently positioned at the bottom, using an overlay and adjusting for keyboard presence.",
+      "why": "Provides a smoother and more predictable user experience by eliminating visual jumps when the keyboard appears/disappears.",
+      "ui_impact": "The toolbar will remain fixed at the bottom, sliding up with the keyboard without disappearing/reappearing.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
