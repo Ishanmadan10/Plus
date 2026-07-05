@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add `accessibilityLabel` and `accessibilityHint` to `ScratchCardView` to describe interaction.",
+      "why": "Visually impaired users understand scratch-off mechanic and hidden content.",
+      "ui_impact": "No visual change; screen readers announce card's purpose.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Accessibility Label to Content Card Icons",
+      "what": "Provide `accessibilityLabel` for emoji `Text(icon)` in `ContentCard` for descriptive meaning.",
+      "why": "Improves understanding for visually impaired users by describing the card's theme.",
+      "ui_impact": "No visual change; screen readers announce icon's description.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/ContentCards.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Accessibility Label to Section Delete Button",
+      "what": "Add `accessibilityLabel` to the delete button (`Image(systemName: \"minus\")`) in `SectionCard`.",
+      "why": "Ensures visually impaired users understand the button's purpose (e.g., \"Delete section\").",
+      "ui_impact": "No visual change; screen readers announce button's function.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
