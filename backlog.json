@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre sections",
+      "what": "Display a clear message and icon when no custom sections are present.",
+      "why": "Guides new users and clarifies the state when all sections have been deleted.",
+      "ui_impact": "A centered icon and text will appear if `sectionStore.sections` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility for VoiceOver",
+      "what": "Add an accessibility label to the scratch card and an action to reveal its content.",
+      "why": "Enables visually impaired users to understand and interact with the scratch card.",
+      "ui_impact": "VoiceOver will announce 'Scratch to reveal' and offer a 'Reveal content' action.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for data modification actions",
+      "what": "Implement subtle UIImpactFeedbackGenerator.impactOccurred() on add/delete actions.",
+      "why": "Provides tactile confirmation for user actions, making the app feel more responsive.",
+      "ui_impact": "Users will feel a subtle vibration when adding/deleting sections, habits, or items.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
