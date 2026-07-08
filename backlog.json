@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty states for Habit Checklist",
+      "what": "When there are no habits, display a friendly message and a prompt to add one.",
+      "why": "Users will understand how to start using the habit tracking feature when it's empty.",
+      "ui_impact": "Displays a message like 'No habits yet! Tap '+' to add your first habit.' when the habit list is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Gym History",
+      "what": "When no gym sessions have been logged, display a clear message guiding the user.",
+      "why": "Users will know how to start logging workouts when the history is empty.",
+      "ui_impact": "Displays a message like 'No sessions logged yet. Complete a workout and tap Save Session.' when the gym history is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for saving journal entry",
+      "what": "Provide subtle haptic feedback when a journal entry is saved.",
+      "why": "Confirms to the user that their journal entry has been successfully saved.",
+      "ui_impact": "A light haptic feedback will be triggered when the 'Save' button in the journal editor is tapped.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/NoteEditorView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
