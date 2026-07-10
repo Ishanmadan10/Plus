@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Habits",
+      "what": "When no habits are added, display a helpful message and prompt to add one.",
+      "why": "Users will understand how to start using the habit feature when it's empty.",
+      "ui_impact": "A new view with text and an icon will appear in HabitChecklistView when `store.habits` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Gym History",
+      "what": "When no gym sessions are logged, display a helpful message.",
+      "why": "Users will know how to start logging workouts if the history is empty.",
+      "ui_impact": "A new view with text and an icon will appear in GymHistoryView when `store.logs` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback to pill button",
+      "what": "Add haptic feedback when the pill button (add/close) is tapped.",
+      "why": "Provides tactile confirmation for user actions, improving perceived responsiveness.",
+      "ui_impact": "A subtle vibration will occur when the pill button is tapped.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
