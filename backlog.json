@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Gym Days",
+      "what": "Display a clear message and icon when no gym days exist in the manager.",
+      "why": "Guides users on how to add their first workout day, reducing confusion.",
+      "ui_impact": "A central message with an icon will replace the list and hint text when no days are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Pill Button accessibility label",
+      "what": "Add dynamic accessibility labels to the PillButton, describing its current state (e.g., 'Open quick actions', 'Close quick actions').",
+      "why": "Enhances usability for VoiceOver users by clearly communicating the button's function.",
+      "ui_impact": "No visual change, but VoiceOver will announce a descriptive label based on `isOpen` state.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for habit actions",
+      "what": "Implement subtle haptic feedback when adding or toggling a habit in the Habit Checklist.",
+      "why": "Provides tactile confirmation for user interactions, making the app feel more responsive and polished.",
+      "ui_impact": "Users will feel a light vibration when they tap to complete/uncomplete a habit or add a new one.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
