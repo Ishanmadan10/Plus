@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Empty state for Habits",
+      "what": "Add a visual cue when no habits are present in the Habit Checklist.",
+      "why": "Users will understand how to add habits when the list is empty.",
+      "ui_impact": "Displays an illustration and text when the habits list is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Empty state for Gym History",
+      "what": "Display a message when no gym sessions have been logged.",
+      "why": "Users will know where to find their workout history and how to start logging.",
+      "ui_impact": "Shows a message and illustration when the gym history is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "priority": 1,
+      "status": "pending",
+      "effort": "small"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback to key actions",
+      "what": "Implement subtle haptic feedback for button taps and state changes.",
+      "why": "Provides tactile confirmation and enhances the user's sense of interaction.",
+      "ui_impact": "Users will feel a slight vibration on actions like toggling habits or saving entries.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "priority": 6,
+      "status": "pending",
+      "effort": "small"
     }
   ]
 }
