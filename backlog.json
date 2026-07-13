@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add Empty State to Control Centre Sections Grid",
+      "what": "Display a 'No sections yet' message with an icon when sectionStore.sections is empty.",
+      "why": "Clearly communicates to the user that they need to add sections, improving discoverability.",
+      "ui_impact": "A centered message and icon will appear above the 'Add section' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine Journal Section Drag Dismissal Area",
+      "what": "Move drag-to-dismiss gesture from full ZStack to header/drag handle in JournalSectionView.",
+      "why": "Prevents accidental dismissal when scrolling journal content, improving writing experience.",
+      "ui_impact": "Journal content will scroll smoothly; dismissal triggers only from the top area.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve Journal Toolbar Color Picker Accessibility",
+      "what": "Add meaningful accessibilityLabel to each color option button in JournalToolbar.",
+      "why": "Enables visually impaired users to understand and select text colors using VoiceOver.",
+      "ui_impact": "No visual change; VoiceOver will announce the color name (e.g., 'White color').",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
