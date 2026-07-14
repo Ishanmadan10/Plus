@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Gym Day Manager",
+      "what": "Display a message and icon when no gym days exist in `GymDayManagerView`.",
+      "why": "Guides users to create their first workout day, improving discoverability and UX.",
+      "ui_impact": "A centered message 'No workout days yet! Tap '+' to add one.' will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance ScratchCardView accessibility",
+      "what": "Add an `accessibilityLabel` to the `ScratchCardView`'s scratchable area.",
+      "why": "Ensures visually impaired users can understand how to interact with the scratch card.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Scratch to reveal' when interacting.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Clarify HabitRow completion state for VoiceOver",
+      "what": "Add an `accessibilityLabel` to the `HabitRow` button that includes its completion status.",
+      "why": "Visually impaired users will clearly understand if a habit is completed or not.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Habit title, completed' or 'not completed'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
