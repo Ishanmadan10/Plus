@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve accessibility for interactive list items",
+      "what": "Add `accessibilityLabel` and `accessibilityValue` to `HabitRow`, `GroceryRow`, and `PrayerCardRow`.",
+      "why": "Ensures VoiceOver users receive clear auditory feedback on item purpose and current state (e.g., 'completed', 'selected').",
+      "ui_impact": "No visual change; VoiceOver interactions will be more informative.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Auto-select valid Gym day after management",
+      "what": "Modify `GymSectionView` to re-evaluate `selectedDayID` on appear and `store.days` changes, selecting the first valid day if current is invalid.",
+      "why": "Prevents an empty state from showing if the previously selected workout day was deleted, ensuring a continuous user experience.",
+      "ui_impact": "If the selected day is deleted, another existing day will be automatically selected and displayed.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for key interactions",
+      "what": "Implement `UIImpactFeedbackGenerator(style: .light)` for toggling habit completion, grocery item selection, and prayer completion.",
+      "why": "Provides tactile confirmation for user actions, making the app feel more responsive and satisfying to interact with.",
+      "ui_impact": "No visual change; users will feel a subtle vibration upon interaction.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
