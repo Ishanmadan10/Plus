@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Journal Toolbar Color Picker Accessibility",
+      "what": "Add descriptive `accessibilityLabel` to color selection buttons in `JournalToolbar`.",
+      "why": "VoiceOver users will understand each color option, improving usability.",
+      "ui_impact": "No visual change. VoiceOver will announce 'White color button', etc.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Habit Row Swipe-to-Delete Accessibility",
+      "what": "Add `accessibilityAction(named: 'Delete')` to `HabitRow` for VoiceOver users.",
+      "why": "Users relying on accessibility features can easily delete habits without needing a swipe gesture.",
+      "ui_impact": "No visual change. VoiceOver users will hear 'Delete' as an action for habit rows.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Clarify Section Header Dismiss Button Accessibility",
+      "what": "Add `accessibilityLabel('Dismiss')` to the `chevron.down` button in `SectionHeader`.",
+      "why": "Improves clarity for VoiceOver users on how to close a section view.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Dismiss button' for the chevron.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/SectionHeader.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
