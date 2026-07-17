@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Control Centre: Empty Sections Guidance",
+      "what": "Display a clear empty state message with an icon in `ControlCentreView` when no sections exist, guiding the user to add their first section.",
+      "why": "Helps new users understand how to start using sections and makes the UI feel more complete.",
+      "ui_impact": "A centered message 'No sections yet! Tap '+' to add one.' with an icon will appear above the 'Add section' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Journal: Photo Loading Indicator",
+      "what": "Show a `ProgressView` in `JournalEditorView` while an image is being loaded from `PhotosPicker`.",
+      "why": "Provides visual feedback during asynchronous image loading, preventing perceived unresponsiveness.",
+      "ui_impact": "A small `ProgressView` will temporarily appear where the selected image would be, fading out when the image loads.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Scratch Card: Accessibility Label",
+      "what": "Add `accessibilityElement(children: .combine)` and dynamic `accessibilityLabel` to `ScratchCardView` to announce its state.",
+      "why": "Improves accessibility for visually impaired users, clearly communicating the card's interactive nature and content.",
+      "ui_impact": "No visual changes; screen readers will announce 'Scratch card, scratch to reveal a thought for the day' when covered, and the thought when revealed.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
