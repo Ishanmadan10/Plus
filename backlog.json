@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state in Gym Day Manager",
+      "what": "Display a centered message and icon when `GymDayManagerView` has no workout days.",
+      "why": "Clearly guides users to add their first workout day, improving initial experience.",
+      "ui_impact": "A message like 'No workout days yet! Tap '+' to add one.' with a dumbbell icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for custom list items",
+      "what": "Add `accessibilityAddTraits(.isToggle)` and `accessibilityValue` to selection buttons in `GroceryRow` and `PrayerCardRow`.",
+      "why": "Provides clear and consistent feedback to VoiceOver users about the selected/completed state.",
+      "ui_impact": "None (changes VoiceOver announcements only).",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize DatePicker in Work section",
+      "what": "Replace the custom `DatePicker` implementation in `WorkSectionView`'s checklist tab with the reusable `ReminderDatePicker` component.",
+      "why": "Ensures consistent UI/UX for date pickers across all checklist sections and reduces code duplication.",
+      "ui_impact": "The date picker UI in the Work section will visually match the `ReminderDatePicker` component.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
