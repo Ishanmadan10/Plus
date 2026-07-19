@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add accessible 'Reveal' button to Scratch Card",
+      "what": "Implement a button within ScratchCardView that, when tapped, reveals the hidden content.",
+      "why": "Ensures content is accessible to all users, including those with motor impairments or using VoiceOver.",
+      "ui_impact": "A small 'Reveal' button will appear on the Scratch Card when not yet scratched.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add dismiss button and remove drag handle in Notes tabs",
+      "what": "Add a 'Done' button to `GenericNotesTab` header and remove drag-down gesture from `GenericNotesTab` and `JournalSectionView`.",
+      "why": "Improves discoverability and reliability of navigation, making dismissal clear and consistent.",
+      "ui_impact": "`GenericNotesTab` gains a dismiss button. Both `GenericNotesTab` and `JournalSectionView` lose the drag handle.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GenericNotesTab.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Show empty state for Gym Day with no exercises",
+      "what": "Display an explicit empty state message and a prominent 'Add Exercise' button when a selected GymDay has no exercises.",
+      "why": "Clearly communicates to the user that they need to add exercises, reducing confusion and friction.",
+      "ui_impact": "A centered message and a more visible 'Add exercise' button will appear if a Gym Day is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
     }
   ]
 }
