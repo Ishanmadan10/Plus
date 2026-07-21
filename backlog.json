@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add accessibility action for swipe-to-delete",
+      "what": "Implement an accessibility action for the 'Delete' button on swipeable rows.",
+      "why": "Users of VoiceOver can easily delete items without complex swipe gestures.",
+      "ui_impact": "No visual change, but VoiceOver users will hear 'Delete' action available.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve JournalSectionView drag-to-dismiss gesture",
+      "what": "Change the `highPriorityGesture` on `JournalSectionView` to a standard gesture on the drag handle.",
+      "why": "Prevents accidental dismissal when trying to scroll the journal's TextEditor content.",
+      "ui_impact": "Scrolling the journal content will be smoother, dismissal requires dragging the top handle.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor WorkSectionView to use GenericSectionView",
+      "what": "Replace the duplicated `WorkSectionView` implementation with a `GenericSectionView` instance.",
+      "why": "Ensures consistent UI/UX for checklist and notes across all generic sections, reducing code duplication.",
+      "ui_impact": "The 'Work' section will look and behave identically to other generic sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
