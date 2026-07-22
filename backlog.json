@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Control Centre sections",
+      "what": "Display a clear message and icon when no custom sections exist in Control Centre.",
+      "why": "Guides new users to create their first section, improving discoverability and usability.",
+      "ui_impact": "A centered 'No sections yet' message with an icon will appear instead of an empty grid.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Gym Day Manager",
+      "what": "Show a clear message and icon when no gym days are defined in the manager view.",
+      "why": "Prevents a blank list, making the app more intuitive and guiding users to add workout days.",
+      "ui_impact": "A centered 'No workout days' message with an icon will appear instead of an empty list.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve JournalSectionView dismissal UX",
+      "what": "Refactor the sheet dismissal gesture to prevent conflicts with the internal text editor's scrolling.",
+      "why": "Eliminates accidental dismissals when users try to scroll journal content, improving the text editing experience.",
+      "ui_impact": "The drag-down gesture will be removed or confined to a dedicated 'Done' button or a smaller drag handle.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
