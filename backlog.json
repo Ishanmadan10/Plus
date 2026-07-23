@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for no sections",
+      "what": "Display a clear message and icon when no sections are created in Control Centre.",
+      "why": "Guides users to add their first section, improving discoverability and first-time experience.",
+      "ui_impact": "A centered message 'No sections yet! Tap '+' to add one.' with an icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve scratch card accessibility for VoiceOver",
+      "what": "Add `accessibilityElement` and `accessibilityAction` to the scratch card foil overlay.",
+      "why": "Allows VoiceOver users to reveal the hidden thought without complex gestures.",
+      "ui_impact": "No visual change, but VoiceOver will announce 'Scratch to reveal, double tap to reveal content.'",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal view drag-to-dismiss gesture",
+      "what": "Limit the `highPriorityGesture` for dismissal to the top drag handle area in `JournalSectionView`.",
+      "why": "Prevents accidental dismissal when users try to scroll the `TextEditor` content.",
+      "ui_impact": "Smoother, more predictable scrolling within the journal entry, reducing accidental dismissals.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
