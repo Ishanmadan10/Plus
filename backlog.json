@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add `accessibilityLabel` and `accessibilityAction` to `ScratchCardView` for VoiceOver users to reveal content.",
+      "why": "Enables visually impaired users to easily interact with and reveal the daily thought.",
+      "ui_impact": "No visual change. VoiceOver users get clear instructions and an action.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Fix Journal View Scrolling Conflict",
+      "what": "Move the drag-to-dismiss gesture from the main `VStack` to the `Capsule` drag handle in `JournalSectionView`.",
+      "why": "Prevents accidental dismissal when users try to scroll journal entries, improving content interaction.",
+      "ui_impact": "Users can reliably scroll journal content without triggering the dismiss gesture.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor Work Section for UI Consistency",
+      "what": "Refactor `WorkSectionView` to use `GenericChecklistTab` and `GenericNotesTab` directly, removing duplicated logic.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent UI/UX for checklist and notes features.",
+      "ui_impact": "No visual change, but ensures consistent behavior and styling for checklist and notes tabs.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
