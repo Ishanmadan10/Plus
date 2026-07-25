@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve sheet dismissal gesture",
+      "what": "Restrict the drag-to-dismiss gesture to the top drag handle `Capsule` in `JournalSectionView`.",
+      "why": "Users can smoothly scroll content within the journal without accidentally dismissing the sheet.",
+      "ui_impact": "Vertical scrolling within the journal editor will no longer trigger sheet dismissal.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add accessibility labels to pickers",
+      "what": "Provide descriptive `accessibilityLabel`s for icon, color, and mood selection buttons in `AddSectionSheet` and `JournalToolbar`.",
+      "why": "Enhances usability for VoiceOver users, ensuring all interactive elements are clearly understood.",
+      "ui_impact": "No visual change, but VoiceOver will announce the purpose/value of each button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Enhance initial Gym empty state",
+      "what": "Replace the generic 'No workout days yet!' message in `GymSectionView` with an engaging, actionable empty state.",
+      "why": "Improves first-time user experience by clearly guiding them to add their initial workout day.",
+      "ui_impact": "A new empty state view will appear, with clear instructions and a prompt to add a day.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
     }
   ]
 }
