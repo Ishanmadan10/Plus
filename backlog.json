@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Control Centre: Add empty state message",
+      "what": "Display a clear message and icon when no custom sections exist.",
+      "why": "Guides users to add their first section, improving discoverability and first-time experience.",
+      "ui_impact": "A centered 'No sections yet! Tap '+' to add one.' message will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for interactive elements",
+      "what": "Add `accessibilityAction` for swipe-to-delete rows and descriptive labels for Journal color picker.",
+      "why": "Enhances usability for VoiceOver users, making all actions discoverable and understandable.",
+      "ui_impact": "No visual change, but VoiceOver will announce actions and element purposes.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consolidate WorkSectionView into GenericSectionView",
+      "what": "Remove `WorkSectionView` and route 'Work' section to `GenericSectionView`.",
+      "why": "Ensures consistent UX across similar sections and simplifies codebase maintenance.",
+      "ui_impact": "The 'Work' section will look and behave identically to other generic checklist/notes sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/SectionDetailView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
