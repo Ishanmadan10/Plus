@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for no sections",
+      "what": "Display a clear message and icon when no sections are added in Control Centre.",
+      "why": "Guides new users on how to add sections and improves first-time experience.",
+      "ui_impact": "A centered icon (e.g., 'square.grid.2x2') and text 'No sections yet! Tap '+' to add one.' will appear if sections are empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve habit completion accessibility",
+      "what": "Add `accessibilityValue` to `HabitRow` to announce 'completed' or 'not completed' status.",
+      "why": "Visually impaired users can understand habit status via screen readers, improving inclusivity.",
+      "ui_impact": "No visual change, but screen readers will announce 'Habit title, completed' or 'Habit title, not completed'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor Work section to use generic tabs",
+      "what": "Replace duplicated `workChecklist` and `workNotes` in `WorkSectionView` with `GenericChecklistTab` and `GenericNotesTab`.",
+      "why": "Reduces code duplication, improves maintainability, and ensures UI consistency across sections.",
+      "ui_impact": "No visual change, but the underlying code is cleaner and more modular.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
