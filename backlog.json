@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Confirm section deletion in Control Centre",
+      "what": "Add a confirmation alert before deleting a section in ControlCentreView.",
+      "why": "Prevents accidental deletion of entire sections and their associated data, improving user confidence.",
+      "ui_impact": "A confirmation alert will appear when the user taps the delete button for a section.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Journal Toolbar accessibility for menus",
+      "what": "Add descriptive accessibility labels to emoji and color menu items in JournalToolbar.",
+      "why": "Enables users relying on VoiceOver to understand and interact with mood and color selection options.",
+      "ui_impact": "No visual change, but VoiceOver will announce meaningful descriptions for menu options.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add consistent dismiss button to Journal",
+      "what": "Add a standard 'chevron.down' dismiss button to the JournalSectionView header, matching other sections.",
+      "why": "Provides a clear, consistent, and discoverable way to dismiss the Journal view, reducing UX friction.",
+      "ui_impact": "A 'chevron.down' button will appear in the top-left of the JournalSectionView header.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
