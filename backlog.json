@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Consistent Swipe-Down Dismissal for Modals",
+      "what": "Implement a swipe-down-to-dismiss gesture for all full-screen modal views.",
+      "why": "Users can intuitively dismiss overlays, reducing friction and improving navigation consistency.",
+      "ui_impact": "All full-screen modals will respond to a downward drag gesture for dismissal.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Haptic Feedback for Key Interactions",
+      "what": "Introduce subtle haptic feedback for actions like adding items, deleting, and toggling states.",
+      "why": "Provides immediate tactile confirmation of user input, enhancing perceived responsiveness.",
+      "ui_impact": "Users will feel a slight vibration on successful completion of interactive actions.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve Accessibility for List Item Toggles",
+      "what": "Combine interactive list items (e.g., grocery rows) into a single, labeled VoiceOver element.",
+      "why": "Enhances usability for VoiceOver users by making interactive list items clearer and easier to use.",
+      "ui_impact": "No visual change, but VoiceOver will announce rows as a single interactive element with state.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
