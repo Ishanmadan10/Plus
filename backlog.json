@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve HabitRow toggle accessibility",
+      "what": "Add an `accessibilityAction` to `HabitRow` for toggling habit completion.",
+      "why": "Enables VoiceOver users to easily mark habits as complete or incomplete.",
+      "ui_impact": "No visual change; VoiceOver users get an explicit action.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine JournalSectionView drag-to-dismiss",
+      "what": "Change `JournalSectionView`'s dismissal gesture to `simultaneousGesture` to allow content scrolling.",
+      "why": "Prevents accidental dismissal when users intend to scroll journal entry content.",
+      "ui_impact": "Smoother scrolling within the journal editor; no visual change.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize 'add new item' UI pattern",
+      "what": "Refactor 'add new item' UI in `HabitChecklistView` and `SpiritualitySectionView` to use `QuickInputOverlay`.",
+      "why": "Creates a consistent, predictable experience for adding any new item across the app.",
+      "ui_impact": "New item input will consistently appear as a modal overlay.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
