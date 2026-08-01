@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state in Gym Day Manager",
+      "what": "Show a clear message and icon when no gym days are defined in GymDayManagerView.",
+      "why": "Guides new users on how to start, reducing confusion and improving first-time experience.",
+      "ui_impact": "A centered message 'No workout days yet!' with an icon will appear instead of a blank list.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance HabitRow accessibility for VoiceOver",
+      "what": "Add accessibility modifiers to the HabitRow to clearly announce its toggle state and actions.",
+      "why": "Improves usability for visually impaired users by clearly indicating the habit's completion status and actions.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Habit title, Completed/Not completed, button' and actions.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Auto-focus text fields in add sheets",
+      "what": "Automatically set focus to the primary text input field when AddSectionSheet and AddPrayerView appear.",
+      "why": "Reduces user taps and speeds up data entry, improving efficiency and user flow.",
+      "ui_impact": "Keyboard will automatically appear and the cursor will be in the text field upon sheet presentation.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
