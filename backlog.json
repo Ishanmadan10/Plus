@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Control Centre sections",
+      "what": "Display a clear message and icon when no custom sections are present.",
+      "why": "Guides users on how to add sections, improving clarity and first-time experience.",
+      "ui_impact": "A centered icon and text will appear when `sectionStore.sections` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Journal color picker accessibility",
+      "what": "Add descriptive `accessibilityLabel` to color options in the Journal Toolbar menu.",
+      "why": "Screen reader users will understand the purpose of each color button, improving usability.",
+      "ui_impact": "No visual change; accessibility labels are added to color menu buttons.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Journal Section View dismissal",
+      "what": "Remove the custom drag-to-dismiss gesture and drag handle, relying on the header's dismiss button.",
+      "why": "Ensures consistent navigation patterns across all section views, reducing user friction.",
+      "ui_impact": "The drag handle and custom swipe-down gesture will be removed; dismissal uses the header button.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
