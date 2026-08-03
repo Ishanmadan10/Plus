@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add an `accessibilityLabel` to `ScratchCardView` that dynamically updates based on `isRevealed` state.",
+      "why": "Ensures VoiceOver users understand the card's purpose and content, improving inclusivity.",
+      "ui_impact": "Invisible change; VoiceOver will announce card status and revealed content.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Calendar Day Completion Accessibility",
+      "what": "Add an `accessibilityLabel` to `DayCell` that announces the date and its habit completion status.",
+      "why": "Provides crucial information to visually impaired users about their daily habit progress.",
+      "ui_impact": "Invisible change; VoiceOver will announce date and completion percentage.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Keep Habit Add Field Open After Entry",
+      "what": "Modify `addHabit()` to clear `newHabit` text and keep the input field visible and focused.",
+      "why": "Reduces friction and speeds up the process for users adding multiple habits consecutively.",
+      "ui_impact": "After adding a habit, the text field clears but remains visible and active.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
