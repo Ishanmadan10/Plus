@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Standardize Groceries Empty State",
+      "what": "Replace the ad-hoc empty state in `GroceriesSectionView` with a dedicated `EmptyStateView` component.",
+      "why": "Provides a consistent, visually appealing, and properly laid out message when the grocery list is empty.",
+      "ui_impact": "A dedicated empty state view will appear in the `ScrollView` when `items` is empty, replacing the current `VStack`.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Interactive List Items",
+      "what": "Add `accessibilityAction(named: 'Delete')` to `GroceryRow` and `PrayerCardRow`. Implement dynamic `accessibilityLabel` for checkbox/radio button elements in `GroceryRow`, `PrayerCardRow`, and `GymExerciseRow`. Add subtle haptic feedback on tap for toggling state and on successful deletion for `GroceryRow`, `PrayerCardRow`, `TaskRow`, and `HabitRow`.",
+      "why": "Improves usability for VoiceOver users and provides tactile feedback for interactive elements, confirming actions.",
+      "ui_impact": "No visual change. VoiceOver will announce states and actions more clearly. Users will feel a subtle vibration on interaction.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal Drag-to-Dismiss Gesture",
+      "what": "Change the `highPriorityGesture` for drag-to-dismiss in `JournalSectionView` to a `simultaneousGesture` or restrict it to the `Capsule` drag handle.",
+      "why": "Prevents the drag-to-dismiss gesture from interfering with scrolling within the `JournalEditorView`, improving content interaction.",
+      "ui_impact": "The main content area of the journal editor will become more responsive to vertical scrolling.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
