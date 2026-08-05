@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre",
+      "what": "Display a message and icon when no custom sections exist in ControlCentreView.",
+      "why": "Guides users to create sections, preventing a blank or confusing state.",
+      "ui_impact": "A centered icon and text will appear when no sections are created.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility",
+      "what": "Add `accessibilityLabel` and `accessibilityHint` to `ScratchCardView` for VoiceOver.",
+      "why": "Enables visually impaired users to understand and interact with the scratch card.",
+      "ui_impact": "No visual change, but VoiceOver will announce card content and interaction.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Unify checklist input and reminder UI",
+      "what": "Extract task input, reminder button, and date picker into a reusable `TaskInputBar` component.",
+      "why": "Ensures consistent UX across all checklist sections and simplifies future maintenance.",
+      "ui_impact": "The input bar for tasks will look and behave identically in all checklist sections.",
+      "backend_impact": "Logic for scheduling notifications will be passed as a closure.",
+      "file": "positive/Features/SectionDetail/Views/GenericChecklistTab.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
