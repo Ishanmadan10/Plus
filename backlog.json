@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Gym Day Manager",
+      "what": "Display a clear message and icon when no workout days are added in `GymDayManagerView`'s `List`.",
+      "why": "Guides users to add their first workout plan, preventing confusion from an empty list.",
+      "ui_impact": "A centered message 'No workout days yet! Tap '+' to add one.' with an icon will appear instead of an empty list.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility hint",
+      "what": "Replace the Canvas-drawn 'Scratch to reveal \u2728' text in `ScratchCardView` with a standard SwiftUI `Text` view.",
+      "why": "Ensures VoiceOver users can perceive the instruction for interacting with the scratch card.",
+      "ui_impact": "The 'Scratch to reveal \u2728' text will be a standard SwiftUI `Text` view, visually similar but properly exposed to accessibility APIs.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal drag-to-dismiss gesture",
+      "what": "Modify `JournalSectionView`'s drag-to-dismiss gesture to apply only to the header and drag handle, not the entire content area.",
+      "why": "Prevents accidental dismissals when scrolling or typing in the journal editor, improving user control.",
+      "ui_impact": "Dragging to dismiss will only work when starting the gesture from the top header or drag handle, allowing normal scrolling within the editor.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
