@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Fix Notes List View Title Escaping",
+      "what": "Correct string interpolation in `NotesListView` header title.",
+      "why": "Improves accessibility and readability by fixing a broken title display.",
+      "ui_impact": "The title will correctly display 'SectionName Notes' instead of '\\(sectionName) Notes'.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/NotesListView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Remove Unused 'Gallery' Button from Home",
+      "what": "Remove the 'Gallery' button and its associated `showOverlay` state from `HomeView`.",
+      "why": "Reduces user confusion and cleans up the UI by removing an unfunctional element.",
+      "ui_impact": "The third button on the Home screen's bottom row will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Work Section Tabs with Generic Components",
+      "what": "Refactor `WorkSectionView` to reuse `GenericChecklistTab` and `GenericNotesTab` components.",
+      "why": "Ensures UI consistency, reduces code duplication, and simplifies future maintenance.",
+      "ui_impact": "No visual change, but the underlying implementation for Work section tabs will be standardized.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "large",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
