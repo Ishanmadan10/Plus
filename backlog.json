@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show loading for journal images",
+      "what": "Introduce `isLoadingImage` state in `JournalSectionView` and display `ProgressView` in `JournalEditorView` while true.",
+      "why": "Provides immediate visual feedback, preventing user uncertainty during image processing.",
+      "ui_impact": "A `ProgressView` will appear over the image area during loading.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve ContentCard VoiceOver experience",
+      "what": "Wrap `ContentCard`'s emoji, label, and text in an `accessibilityElement` with a combined `accessibilityLabel`.",
+      "why": "Ensures VoiceOver reads the card's content as a cohesive thought, not fragmented elements.",
+      "ui_impact": "No visual change; VoiceOver behavior improves for users.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/ContentCards.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Streamline adding multiple sections",
+      "what": "In `AddSectionSheet`, after successfully adding a section, clear input fields but keep the sheet open.",
+      "why": "Reduces taps and friction for users who want to add several sections consecutively.",
+      "ui_impact": "`AddSectionSheet` remains visible with cleared fields after successful add.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
