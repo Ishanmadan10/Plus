@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state for Gym day with no exercises",
+      "what": "Add a clear message when a selected Gym day has no exercises defined.",
+      "why": "Guides users to add exercises, reducing confusion and improving first-time experience.",
+      "ui_impact": "A centered message like 'No exercises yet. Tap 'Add exercise' to begin.' will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for custom selection controls",
+      "what": "Add `accessibilityAddTraits(.isToggle)` and `accessibilityValue` to custom `GroceryRow` selection.",
+      "why": "Ensures VoiceOver users understand the interactive state (selected/unselected) of items.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Selected' or 'Not selected' for grocery items.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Preserve unsaved Gym session progress per day",
+      "what": "Store unsaved session state (exercises, notes, cardio) for each day when switching tabs.",
+      "why": "Prevents data loss and allows seamless switching between workout days without losing progress.",
+      "ui_impact": "Checkboxes, notes, and cardio fields will retain unsaved values when returning to a day.",
+      "backend_impact": "Introduce new @State dictionaries to hold unsaved session data per GymDay.id.",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
