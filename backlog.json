@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Control Centre: Empty state for sections",
+      "what": "Display a clear empty state message when no sections are added in ControlCentreView.",
+      "why": "Guides new users on how to add content, reducing confusion and improving onboarding.",
+      "ui_impact": "A centered icon and text will appear when 'My Space' has no sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Journal: Show loading for image selection",
+      "what": "Display a ProgressView in JournalEditorView when a photo is selected and loading.",
+      "why": "Provides visual feedback that the app is processing, preventing perceived unresponsiveness.",
+      "ui_impact": "A small circular loading indicator will appear where the image will be.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalEditorView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Accessibility: Hide decorative empty state icons",
+      "what": "Add `.accessibilityHidden(true)` to purely decorative SF Symbols in empty states.",
+      "why": "Prevents screen readers from announcing redundant visual elements, improving experience for visually impaired users.",
+      "ui_impact": "None, visual appearance remains unchanged.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
