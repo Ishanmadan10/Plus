@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Accessibility for Icon Buttons",
+      "what": "Add `accessibilityLabel` to icon-only buttons in the Control Centre header for VoiceOver.",
+      "why": "Visually impaired users will understand the purpose of buttons, improving app usability.",
+      "ui_impact": "No visual change; VoiceOver will announce button purpose (e.g., 'Dismiss Control Centre').",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Retain In-Progress Gym Session Data",
+      "what": "Implement logic in `GymSectionView` to load and pre-fill today's session data for the selected day.",
+      "why": "Users can seamlessly resume workout tracking without losing progress if they navigate away.",
+      "ui_impact": "Exercise checkboxes, notes, and cardio fields will reflect saved progress on re-entry.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Haptic Feedback for Adding Habits",
+      "what": "Add light haptic feedback when a new habit is successfully added in `HabitChecklistView`.",
+      "why": "Provides immediate, tactile confirmation that the action was successful, enhancing polish.",
+      "ui_impact": "Users will feel a subtle vibration when they successfully add a habit.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 7,
+      "status": "pending"
     }
   ]
 }
