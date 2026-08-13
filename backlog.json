@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state for no sections",
+      "what": "Show a clear message and a prominent 'Add your first section' button when `sectionStore.sections` is empty in Control Centre.",
+      "why": "Guides new users on how to get started and improves clarity when the list of sections is empty.",
+      "ui_impact": "A centered text message and a larger 'Add section' button will appear instead of an empty grid with a small '+' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve contrast for future dates in habit calendar",
+      "what": "Increase the opacity or change the color of the day numbers for future dates in the `DayCell` to meet accessibility contrast guidelines.",
+      "why": "Ensures readability for users with visual impairments and improves overall legibility of the habit calendar.",
+      "ui_impact": "Future dates in the calendar strip will be slightly brighter or a different color, making them easier to read.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Make Journal drag handle functional for dismissal",
+      "what": "Move the drag-to-dismiss gesture from the entire `JournalSectionView` to the visible `Capsule` drag handle at the top of the view.",
+      "why": "Clearly defines the dismissable area, prevents accidental dismissal during content scrolling, and improves intuitive navigation.",
+      "ui_impact": "Users will only be able to drag the journal view down by interacting directly with the `Capsule` at the top, allowing normal scrolling within the `TextEditor`.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
