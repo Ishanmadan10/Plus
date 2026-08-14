@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve calendar day cell accessibility",
+      "what": "Add `accessibilityLabel` to `DayCell` to describe its date and habit completion status for VoiceOver.",
+      "why": "Visually impaired users can understand daily habit progress without relying on color cues.",
+      "ui_impact": "No visual change; VoiceOver will read descriptive text like 'Tuesday, 15th, all habits completed'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Make scratch card accessible",
+      "what": "Add `accessibilityLabel` to `ScratchCardView` to describe its interactive state and revealed content.",
+      "why": "Visually impaired users can interact with and understand the scratch card content.",
+      "ui_impact": "No visual change; VoiceOver will describe 'Scratch card, tap to reveal' or the revealed thought.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for adding sections",
+      "what": "Implement `UIImpactFeedbackGenerator` on the 'Add section' button in `ControlCentreView` and the 'Add Section' button in `AddSectionSheet`.",
+      "why": "Provides tactile confirmation to the user that their action (adding a new section) has been registered.",
+      "ui_impact": "No visual change; user will feel a light tap when adding a section.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
