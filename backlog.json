@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Scratch Card Accessibility",
+      "what": "Add an `accessibilityElement` and `accessibilityAction` to the `foilOverlay` in `ScratchCardView`.",
+      "why": "VoiceOver users can understand the scratch card's purpose and reveal its content.",
+      "ui_impact": "Invisible change for sighted users; VoiceOver will announce the card and offer an action.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Consistent Drag-Down Dismiss for Overlays",
+      "what": "Implement a drag-down gesture for all full-screen overlays to dismiss them consistently.",
+      "why": "Provides a more intuitive and consistent navigation experience across all modal sheets.",
+      "ui_impact": "Users can swipe down from anywhere on the screen to dismiss, in addition to tapping the button.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Lined Paper Background",
+      "what": "Create a reusable `LinedBackgroundView` component for consistent lined paper drawing.",
+      "why": "Ensures visual consistency and reduces code duplication for journal and notes sections.",
+      "ui_impact": "Lined paper background will look identical and be implemented uniformly across the app.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalEditorView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
