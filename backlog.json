@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add accessibility labels to Control Centre buttons",
+      "what": "Add `accessibilityLabel` to the dismiss and edit toggle buttons in `ControlCentreView`.",
+      "why": "Improves usability for VoiceOver users, making the app more inclusive and navigable.",
+      "ui_impact": "No visual change; VoiceOver will announce the purpose of the buttons.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Implement consistent drag-to-dismiss for overlays",
+      "what": "Add a vertical drag-to-dismiss gesture to `ControlCentreView` for consistent navigation.",
+      "why": "Provides an intuitive and consistent way for users to dismiss full-screen views, reducing friction.",
+      "ui_impact": "Users can drag the view down from the top to dismiss it, in addition to the button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback to habit toggles",
+      "what": "Integrate `UIImpactFeedbackGenerator(style: .light)` into the `onTap` action of `HabitRow`.",
+      "why": "Provides immediate tactile confirmation for habit completion, enhancing responsiveness and polish.",
+      "ui_impact": "No visual change; users will feel a subtle vibration when toggling a habit.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
