@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Implement Dynamic Type for text elements",
+      "what": "Update fixed font sizes in `ContentCard` to support Dynamic Type by adding `relativeTo` parameter.",
+      "why": "Improves readability for users with varying text size preferences, enhancing accessibility.",
+      "ui_impact": "Text within content cards will scale automatically with system text size settings.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/ContentCards.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add consistent drag-to-dismiss for section views",
+      "what": "Implement a vertical drag-down gesture for `WorkSectionView` to dismiss it, mirroring `JournalSectionView`'s behavior.",
+      "why": "Provides a more intuitive and consistent dismissal method across full-screen section views.",
+      "ui_impact": "Users can drag down the entire `WorkSectionView` to dismiss it, with a visual drag effect.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize 'Add Section' button style",
+      "what": "Change the 'Add section' button in `ControlCentreView` from a dashed border to a solid border for visual consistency.",
+      "why": "Ensures a unified design language for 'add new item' actions across the application.",
+      "ui_impact": "The 'Add section' button will have a solid stroke, matching other 'add' elements like in Gym.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
