@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Control Centre sections",
+      "what": "Display a clear empty state message in ControlCentreView when no custom sections exist, guiding users to add their first section.",
+      "why": "Improves user onboarding and clarity, preventing a blank or confusing grid when all default sections are deleted or for new users.",
+      "ui_impact": "A central message like \"No custom sections yet! Tap '+' to create your first space.\" with an icon will appear above the \"Add section\" button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Display empty state for gym day exercises",
+      "what": "Implement an empty state view within GymSectionView to display a message when a selected workout day has no exercises defined.",
+      "why": "Clearly communicates to the user why the exercise list is empty and guides them to add exercises, reducing confusion.",
+      "ui_impact": "When a day with no exercises is selected, a message like \"No exercises for this day. Tap 'Add exercise' below.\" will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve Scratch Card accessibility for VoiceOver",
+      "what": "Add accessibilityElement and accessibilityLabel to ScratchCardView's foil overlay, including an accessibilityAction to reveal content.",
+      "why": "Enables VoiceOver users to understand and interact with the scratch-off element, providing an equitable experience.",
+      "ui_impact": "No visual changes. VoiceOver will announce \"Scratch card. Scratch to reveal a daily thought.\" and offer a \"Reveal content\" action.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
