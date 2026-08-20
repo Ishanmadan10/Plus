@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Pill Button Accessibility",
+      "what": "Add a dynamic `accessibilityLabel` to `PillButton` indicating its open/close state.",
+      "why": "VoiceOver users will clearly understand the button's purpose and current state.",
+      "ui_impact": "No visual change; VoiceOver announces 'Open menu' or 'Close menu'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Make Scratch Card Accessible",
+      "what": "Add `accessibilityElement` and `accessibilityLabel` to `ScratchCardView` to describe its state.",
+      "why": "VoiceOver users can understand the card's content and whether it's revealed or needs scratching.",
+      "ui_impact": "No visual change; VoiceOver announces 'Scratch to reveal' or 'Thought: [content]'.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Replace Drag-Down Dismissal with Button",
+      "what": "Remove drag-down gesture for dismissing `JournalSectionView` and add a 'Done' button to its header.",
+      "why": "Prevents accidental dismissal or conflict with scrolling, making navigation more predictable.",
+      "ui_impact": "Drag handle removed; 'Done' button appears in the top-right of the header.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
