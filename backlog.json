@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre sections",
+      "what": "Display a clear message and icon when no custom sections are added in ControlCentreView.",
+      "why": "Guides users on how to add sections when the grid is empty, improving discoverability.",
+      "ui_impact": "A centered text message and icon will appear if `sectionStore.sections` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Update PillButton accessibility label dynamically",
+      "what": "Change the `accessibilityLabel` of the PillButton based on its `isOpen` state.",
+      "why": "Improves accessibility for VoiceOver users by clearly communicating the button's current function.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Open menu' or 'Close menu'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Reuse GenericChecklistTab in WorkSectionView",
+      "what": "Refactor `WorkSectionView` to use the existing `GenericChecklistTab` component for its checklist tab.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent checklist UI/logic.",
+      "ui_impact": "No visual change, but the checklist implementation will be unified.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
