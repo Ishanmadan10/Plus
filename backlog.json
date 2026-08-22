@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add alternative reveal for Scratch Card",
+      "what": "Implement a 'Tap to reveal' button or long-press gesture for `ScratchCardView`.",
+      "why": "Ensures users with motor impairments can access the daily thought, improving accessibility.",
+      "ui_impact": "A small button or a long-press indicator will appear on the scratch card, offering an alternative interaction.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine Journal drag-to-dismiss gesture",
+      "what": "Adjust the drag gesture in `JournalSectionView` to be less aggressive or apply it only to the drag handle.",
+      "why": "Prevents accidental dismissal of the journal while trying to scroll its content, reducing UX friction.",
+      "ui_impact": "The journal view will dismiss only with a clear downward drag from the top handle, not from within the text editor.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize empty state UI patterns",
+      "what": "Create a reusable `EmptyStateView` component for consistent icons, typography, and messaging across all empty data screens.",
+      "why": "Improves visual consistency and makes the app feel more polished and professional.",
+      "ui_impact": "All empty data screens (e.g., Groceries, Notes, Habits) will share a unified look and feel for their placeholder content.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/EmptyNotesView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
