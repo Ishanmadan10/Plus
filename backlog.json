@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Control Centre Empty State",
+      "what": "Display a centered icon and text message when no sections are added in the Control Centre.",
+      "why": "Guides new users by clearly indicating how to get started with sections.",
+      "ui_impact": "A large icon and descriptive text will appear when no sections exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Checkbox/Radio Accessibility",
+      "what": "Add `accessibilityLabel` and `accessibilityValue` to interactive circle/checkbox elements.",
+      "why": "Enhances VoiceOver usability by clearly announcing the state and action of these toggles.",
+      "ui_impact": "No visual change; improves screen reader experience for interactive elements.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize 'Add Item' Button Style",
+      "what": "Apply a consistent dashed border style to the 'Add exercise' button in GymSectionView.",
+      "why": "Creates a cohesive visual language for adding new entities, improving discoverability.",
+      "ui_impact": "The 'Add exercise' button will visually feature a dashed border.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
