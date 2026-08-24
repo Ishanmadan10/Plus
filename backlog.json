@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state message for sections",
+      "what": "Display a clear message in ControlCentreView when no sections exist, guiding users to add one.",
+      "why": "Improves usability for new users and after deleting all sections, reducing confusion.",
+      "ui_impact": "Text and icon appear in the center of the screen when no sections are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Display empty state message for gym days",
+      "what": "Show a message in GymDayManagerView when no gym days are defined, instructing users to add one.",
+      "why": "Guides users on how to set up their gym tracking when starting fresh or after clearing all days.",
+      "ui_impact": "Text and icon appear in the center of the screen when no gym days are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Journal section dismissal",
+      "what": "Replace the drag-down gesture for dismissing JournalSectionView with a standard 'chevron.down' button in the header.",
+      "why": "Improves navigation consistency and accessibility across all section detail views.",
+      "ui_impact": "JournalSectionView will have a SectionHeader with a dismiss button instead of a drag handle.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
