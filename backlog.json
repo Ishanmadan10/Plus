@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add accessibility to Scratch Card reveal",
+      "what": "Implement an `accessibilityAction` on `ScratchCardView` to programmatically reveal content for VoiceOver users.",
+      "why": "Ensures users with visual impairments can access the 'thought of the day' content, improving inclusivity.",
+      "ui_impact": "For VoiceOver users, a 'Reveal thought' action will appear; visually, the card instantly reveals.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Consistent drag-to-dismiss for section views",
+      "what": "Apply a consistent drag-to-dismiss gesture to the main content `VStack` of `GenericSectionView` (and similar section views) and remove the nested drag gesture from `GenericNotesTab`.",
+      "why": "Provides intuitive navigation for dismissing full-screen content, reducing cognitive load and improving consistency.",
+      "ui_impact": "Users can drag down from any section detail screen to dismiss it; `GenericNotesTab` will no longer have its own drag handle.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GenericSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Enhance 'Add' button accessibility and consistency",
+      "what": "Replace `plus.circle.fill` icons with a text label 'Add' or a more descriptive icon with an `accessibilityLabel` for inline input fields.",
+      "why": "Improves accessibility for VoiceOver users and creates a more consistent UI pattern across all 'add item' actions.",
+      "ui_impact": "Inline 'add' buttons will show a text label (e.g., 'Add') instead of just a plus icon.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
