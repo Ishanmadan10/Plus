@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Habit Row checkbox accessibility",
+      "what": "Add `accessibilityLabel` and `accessibilityValue` to the habit completion button in `HabitRow`.",
+      "why": "Visually impaired users will understand the habit's status (completed/not completed) and interact with it effectively.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Habit title, completed/not completed, button'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Control Centre empty state",
+      "what": "Display a prominent empty state message and a larger 'Add Section' button when no custom sections exist in `ControlCentreView`.",
+      "why": "Guides new users more clearly and provides better visual feedback when all sections have been removed.",
+      "ui_impact": "When `sectionStore.sections` is empty, a central message and a larger 'Add Section' button will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consolidate Journal toolbar display",
+      "what": "Refactor `JournalSectionView` to use a single `JournalToolbar` instance, displayed consistently at the bottom using `safeAreaInset`.",
+      "why": "Eliminates redundant code, ensures consistent UI behavior, and provides a smoother user experience when the keyboard appears/disappears.",
+      "ui_impact": "The toolbar will always be present at the bottom, animating smoothly above the keyboard when active.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
