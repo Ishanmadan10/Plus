@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add accessibility labels for icon/color pickers",
+      "what": "Add `accessibilityLabel` to buttons in `AddSectionSheet`'s icon and color grid pickers.",
+      "why": "Screen reader users will clearly understand which icon or color option they are selecting.",
+      "ui_impact": "No visual change; VoiceOver will announce the purpose of each selection button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Isolate drag-to-dismiss to Journal's handle",
+      "what": "Move the `DragGesture` for dismissal from the main `ZStack` to only the `Capsule` drag handle in `JournalSectionView`.",
+      "why": "Prevents accidental dismissal when scrolling the journal content, improving interaction with the internal `ScrollView`.",
+      "ui_impact": "Users must drag the top handle to dismiss the view, not anywhere on the screen.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consolidate Work section checklist/notes views",
+      "what": "Refactor `WorkSectionView` to reuse `GenericChecklistTab` and `GenericNotesTab` components instead of duplicating their logic.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent UX across all checklist/note sections.",
+      "ui_impact": "No visual change, but the underlying implementation will be more robust and consistent.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
