@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve scratch card VoiceOver accessibility",
+      "what": "Replace Canvas hint text with SwiftUI Text and manage accessibility visibility for hidden/revealed states.",
+      "why": "VoiceOver users will understand the card's purpose and access the hidden thought once revealed.",
+      "ui_impact": "Hidden thought becomes accessible to VoiceOver after scratching; hint text is also accessible.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Fix Journal drag-to-dismiss conflict",
+      "what": "Move the `highPriorityGesture` for dismissing `JournalSectionView` from the main `VStack` to the top `Capsule` drag handle.",
+      "why": "Users can scroll the journal's text content without accidentally dismissing the entire view.",
+      "ui_impact": "Vertical scrolling within the journal's TextEditor will be smooth and predictable.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add empty state for Control Centre sections",
+      "what": "Display a central message and icon when no custom sections are added in `ControlCentreView`.",
+      "why": "Guides new users to create their first section, improving discoverability and onboarding.",
+      "ui_impact": "A 'No sections yet! Tap '+' to add your first space.' message appears in the grid.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
     }
   ]
 }
