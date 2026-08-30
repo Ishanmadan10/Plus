@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Consistent empty state for Work Notes",
+      "what": "Replace 'Start typing...' placeholder with EmptyNotesView in WorkSectionView's notes tab.",
+      "why": "Provides a clearer, more consistent empty state across the app, guiding users to create content.",
+      "ui_impact": "When Work Notes are empty, a larger icon and text will appear centrally.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Inform user about denied notification permission",
+      "what": "Check notification authorization when scheduling a reminder; if denied, show an alert.",
+      "why": "Prevents silent failures and guides users to enable notifications for reminders.",
+      "ui_impact": "An alert will appear if a user tries to set a reminder with denied permissions.",
+      "backend_impact": "`NotificationManager` checks status; `GenericChecklistTab` presents alert.",
+      "file": "positive/Features/SectionDetail/Views/GenericChecklistTab.swift",
+      "effort": "medium",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add accessibility labels to icon-only buttons",
+      "what": "Add `accessibilityLabel` to icon-only buttons in `SectionHeader` and similar components.",
+      "why": "Improves usability for VoiceOver users by providing clear descriptions of button actions.",
+      "ui_impact": "No visual change; VoiceOver will announce explicit labels for these buttons.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/SectionHeader.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
