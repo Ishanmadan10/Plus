@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for no sections",
+      "what": "Display a clear message and icon when no sections are defined in Control Centre.",
+      "why": "Guides new users and provides feedback when all sections are deleted.",
+      "ui_impact": "A centered VStack with an icon and explanatory text will appear when no sections exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add tap-to-dismiss for Note Editor",
+      "what": "Implement a tap-outside-to-dismiss gesture for the NoteEditorView's dimmed background.",
+      "why": "Improves navigation consistency and user convenience, allowing quick exit without targeting a small button.",
+      "ui_impact": "Tapping the dimmed background of the Note Editor will dismiss it.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/NoteEditorView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for habit interactions",
+      "what": "Introduce subtle haptic feedback when a habit is toggled or deleted in the Habit Checklist.",
+      "why": "Provides tactile confirmation for user actions, making the app feel more responsive and polished.",
+      "ui_impact": "Users will feel a light vibration when tapping to complete/uncomplete a habit or deleting one.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
