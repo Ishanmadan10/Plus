@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre sections",
+      "what": "Display a friendly message and icon when no custom sections exist in Control Centre, guiding users to add their first section.",
+      "why": "Improves discoverability and onboarding for new users, making it clear how to customize their app.",
+      "ui_impact": "A centered icon and text message will appear in the ControlCentreView when sectionStore.sections is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add context menu for list item deletion",
+      "what": "Implement `contextMenu` for `GroceryRow`, `PrayerCardRow`, `TaskRow`, and `HabitRow` to allow deletion via long-press.",
+      "why": "Improves accessibility and provides an alternative, discoverable way to delete items for all users.",
+      "ui_impact": "Long-pressing on a list item will reveal a 'Delete' option in a context menu.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Implement daily content cards in Home View",
+      "what": "Integrate `ScratchCardView`, `ReminderCardView`, and `JokeCardView` into `HomeView`, using the `PillButton` to toggle their visibility.",
+      "why": "Provides users with daily insights and interactive content as intended, making a core feature accessible and functional.",
+      "ui_impact": "The 'Gallery' button will be removed. The `PillButton` will toggle a carousel of daily content cards.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "large",
+      "priority": 2,
+      "status": "pending"
     }
   ]
 }
