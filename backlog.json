@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state in Gym Day Manager",
+      "what": "Display a clear message and icon when no gym days are added in `GymDayManagerView`.",
+      "why": "Guides users to create their first workout plan, improving discoverability and first-time experience.",
+      "ui_impact": "A centered icon (e.g., 'dumbbell') and text will appear when the list of gym days is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Journal color picker accessibility labels",
+      "what": "Replace empty `Label` text with descriptive color names (e.g., 'White', 'Yellow') in `JournalToolbar`'s color picker menu.",
+      "why": "Enables VoiceOver users to understand and select text colors effectively, improving inclusivity.",
+      "ui_impact": "No visual change, but VoiceOver will announce 'White color', 'Yellow color', etc., when interacting with buttons.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for habit completion toggle",
+      "what": "Implement light haptic feedback when a user taps a habit row to toggle its completion status.",
+      "why": "Provides tactile confirmation for a key interaction, making the app feel more responsive and polished.",
+      "ui_impact": "Users will feel a subtle vibration upon tapping a habit to mark it complete or incomplete.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
