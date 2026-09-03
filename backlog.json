@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card accessibility",
+      "what": "Add `accessibilityLabel` to the `foilOverlay` in `ScratchCardView` to describe its interactive nature.",
+      "why": "Improves VoiceOver experience, clearly indicating how to interact with the scratch card.",
+      "ui_impact": "No visual change. VoiceOver will announce interactive instruction.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Streamline Journal Section dismissal",
+      "what": "Remove the custom `dragOffset` and `highPriorityGesture` from `JournalSectionView`.",
+      "why": "Reduces gesture conflicts with internal scrolling and aligns dismissal behavior with other section detail views.",
+      "ui_impact": "The view will no longer be dismissible by dragging down; only the header button will dismiss it.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor Work Section to use generic checklist",
+      "what": "Replace the duplicated checklist UI and logic in `WorkSectionView`'s `workChecklist` with `GenericChecklistTab`.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent checklist UI/UX across sections.",
+      "ui_impact": "No visual change, but underlying implementation becomes cleaner and more robust.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
