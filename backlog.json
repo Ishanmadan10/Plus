@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Generic Checklist Empty State",
+      "what": "Update `TaskListView`'s empty state to use the section's accent color for the icon and a more prominent message.",
+      "why": "Improves visual consistency and makes the empty state more inviting and less stark, encouraging user engagement.",
+      "ui_impact": "The empty checklist icon and text will appear more vibrant and integrated with the section's theme.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/TaskListView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Show loading indicator for journal photos",
+      "what": "Display a `ProgressView` in `JournalEditorView` while a photo is being loaded from `PhotosPickerItem`.",
+      "why": "Provides immediate visual feedback to the user that the app is processing their selection, improving perceived performance.",
+      "ui_impact": "A small loading spinner will appear in the image area while a photo is being loaded.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalEditorView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Enhance accessibility for interactive elements",
+      "what": "Add dynamic `accessibilityLabel` to `PillButton` and an `accessibilityAction` to `ScratchCardView` for VoiceOver.",
+      "why": "Ensures users with visual impairments can understand the purpose of these interactive elements and use the scratch card.",
+      "ui_impact": "No visual change, but VoiceOver will announce button states and provide an alternative reveal action.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
