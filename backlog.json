@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Auto-select & restore Gym session",
+      "what": "Modify `GymSectionView` to automatically select the first gym day on appear if none is selected, and restore today's session data when a day is selected or on initial load.",
+      "why": "Users will seamlessly continue their workout from where they left off today or start fresh with the first day, reducing manual setup.",
+      "ui_impact": "When opening Gym or switching days, previous entries for the current day will pre-fill, or the first day will be highlighted.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine JournalSectionView dismissal and keyboard UX",
+      "what": "Change `JournalSectionView`'s dismissal to use a standard `onDismiss` button in the header, remove the `highPriorityGesture` for drag dismissal, and ensure `onTapGesture` only dismisses the keyboard without dismissing the view.",
+      "why": "Prevents accidental dismissal of the journal entry while typing or scrolling, and provides a clearer, more predictable way to exit the journal.",
+      "ui_impact": "The journal view will no longer dismiss by dragging down from anywhere; users will tap the 'chevron.down' button. Tapping within the editor will only dismiss the keyboard.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consolidate WorkSectionView into GenericSectionView",
+      "what": "Remove `WorkSectionView.swift` and update `SectionDetailView` to route the 'Work' section to `GenericSectionView`, passing 'Work', 'briefcase', and its color.",
+      "why": "Reduces code duplication, simplifies maintenance, and ensures a consistent user experience across all generic checklist/notes sections.",
+      "ui_impact": "No visual change for the user; the 'Work' section will function identically to other generic sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/SectionDetailView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
