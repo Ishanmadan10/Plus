@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve ScratchCardView Accessibility",
+      "what": "Add `accessibilityElement(children: .combine)` and a dynamic `accessibilityLabel` to `ScratchCardView`.",
+      "why": "Visually impaired users will understand the interactive nature and purpose of the card.",
+      "ui_impact": "No visual change; improved VoiceOver experience for the scratch card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Stable Journal Toolbar Placement",
+      "what": "Consolidate `JournalToolbar` to a single bottom-aligned view that animates with the keyboard.",
+      "why": "Provides a stable and predictable UI, reducing visual jarring during keyboard interactions.",
+      "ui_impact": "The toolbar will smoothly animate with the keyboard, no longer jumping between positions.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Use Generic Tabs in Work Section",
+      "what": "Replace custom `workChecklist` and `workNotes` in `WorkSectionView` with `GenericChecklistTab` and `GenericNotesTab`.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent UX across sections.",
+      "ui_impact": "No visual change; internal code consistency improved.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
