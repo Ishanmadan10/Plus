@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add `accessibilityLabel` to `ScratchCardView`'s foil overlay.",
+      "why": "Screen reader users will understand how to interact with the card and its purpose.",
+      "ui_impact": "No visual change, but improved screen reader experience.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Haptic Feedback to Key Actions",
+      "what": "Implement `UIImpactFeedbackGenerator(style: .light).impactOccurred()` for adding items.",
+      "why": "Provides tactile confirmation, making the app feel more responsive and polished.",
+      "ui_impact": "No visual change, but improved tactile user experience.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/AddPrayerView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Accessibility Action for Swipe-Delete",
+      "what": "Implement `accessibilityAction(named: \"Delete\")` for list rows with swipe-to-delete.",
+      "why": "Enables screen reader users to easily delete items without complex swipe gestures.",
+      "ui_impact": "No visual change, but improved screen reader interaction.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
