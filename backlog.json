@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Make Scratch Card Accessible for VoiceOver",
+      "what": "Add an `accessibilityAction` to `ScratchCardView` to reveal the content for VoiceOver users.",
+      "why": "Ensures users with visual impairments can access the 'thought of the day' without needing to perform a scratch gesture.",
+      "ui_impact": "No visual change, but VoiceOver users will hear an option to 'Reveal card' when interacting with the scratch card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Consistent Swipe-Down-to-Dismiss for Overlays",
+      "what": "Implement a consistent swipe-down-to-dismiss gesture for `ControlCentreView` and other full-screen overlays.",
+      "why": "Improves navigation fluidity and adheres to standard iOS sheet dismissal patterns, reducing friction for users.",
+      "ui_impact": "Users can swipe down from the top of the overlay to dismiss it, in addition to tapping the 'chevron.down' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Haptic Feedback to Key Interactions",
+      "what": "Add `UIImpactFeedbackGenerator(style: .light).impactOccurred()` to key user actions like adding/deleting list items and selecting tabs.",
+      "why": "Improves user experience by providing tactile confirmation for interactive elements, making the app feel more responsive and polished.",
+      "ui_impact": "No visual change, but users will feel a subtle vibration on interaction with various UI elements.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
