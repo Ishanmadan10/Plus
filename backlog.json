@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Control Centre sections",
+      "what": "Display a centered message and icon when no sections exist in the Control Centre grid.",
+      "why": "Clearly informs users how to add their first section, reducing confusion for new or empty states.",
+      "ui_impact": "A large icon and descriptive text will appear in the grid area if all sections are deleted.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve PillButton accessibility label",
+      "what": "Add a dynamic `accessibilityLabel` to the `PillButton` that describes its current state (open/closed).",
+      "why": "Provides clear context for VoiceOver users about the button's function and current status.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Open quick actions' or 'Close quick actions'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback to HabitRow actions",
+      "what": "Implement light haptic feedback when a habit is toggled or deleted within `HabitRow`.",
+      "why": "Provides tactile confirmation for user interactions, making the app feel more responsive and satisfying.",
+      "ui_impact": "No visual change; users will feel a subtle vibration when interacting with habit rows.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitRow.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
