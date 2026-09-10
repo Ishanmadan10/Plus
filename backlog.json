@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Gym Day Manager",
+      "what": "Display a clear message and icon when no workout days are defined in GymDayManagerView.",
+      "why": "Users will understand why the list is empty and how to add their first workout day, reducing confusion.",
+      "ui_impact": "A centered text message and dumbbell icon will appear if the 'Manage Days' list is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for swipe-to-delete rows",
+      "what": "Add an accessibility action named 'Delete' to `GroceryRow`, `PrayerCardRow`, and `TaskRow` for VoiceOver users.",
+      "why": "VoiceOver users can discover and perform the delete action, making these components fully accessible.",
+      "ui_impact": "No visual change; VoiceOver will announce a 'Delete' action when a row is selected.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Journal section dismissal pattern",
+      "what": "Replace the custom drag-down gesture in `JournalSectionView` with the standard `SectionHeader`'s chevron-down button for dismissal.",
+      "why": "Ensures consistent navigation and dismissal patterns across all full-screen sheets, improving learnability and predictability.",
+      "ui_impact": "The Journal section will dismiss via a chevron-down button in its header, matching other section views.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
