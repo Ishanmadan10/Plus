@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre sections",
+      "what": "Display a centered icon and text message when no custom sections are present.",
+      "why": "Guides users to create their first section, improving discoverability and first-time experience.",
+      "ui_impact": "A 'square.grid.2x2' icon and text will appear in the grid area when sections are empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Notes List title accessibility",
+      "what": "Change `Text(\"\\\\(sectionName) Notes\")` to `Text(sectionName + \" Notes\")` for better VoiceOver.",
+      "why": "Ensures screen readers announce the title correctly and improves localization robustness.",
+      "ui_impact": "No visual change; VoiceOver will announce the title more naturally.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/NotesListView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Remove redundant drag handle in Journal view",
+      "what": "Remove the `Capsule` drag handle from the top of `JournalSectionView`.",
+      "why": "Reduces visual clutter and relies on the explicit dismiss button in the `SectionHeader` for consistency.",
+      "ui_impact": "The small capsule at the top of the Journal sheet will no longer be visible.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
