@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve CalendarStrip accessibility for VoiceOver",
+      "what": "Add `accessibilityLabel` to `DayCell` in `CalendarStrip` for date and completion status.",
+      "why": "Enhances accessibility for visually impaired users by providing audible feedback on daily habit progress.",
+      "ui_impact": "No visual change; VoiceOver will read more descriptive information for each day.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Implement or remove non-functional Gallery button",
+      "what": "Implement a basic `GalleryView` presented by the 'Gallery' button, or remove the button.",
+      "why": "Prevents user confusion and frustration from a non-functional UI element.",
+      "ui_impact": "A new overlay view will appear when tapping the button, or the button will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor WorkSectionView to reuse generic tabs",
+      "what": "Replace duplicated checklist and notes logic in `WorkSectionView` with `GenericChecklistTab` and `GenericNotesTab`.",
+      "why": "Improves code maintainability, reduces redundancy, and ensures consistent UI/UX across sections.",
+      "ui_impact": "No visual change; ensures consistent behavior for checklist and notes features.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
