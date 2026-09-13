@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Gym Days",
+      "what": "Display a message and icon when no workout days are defined in Gym Day Manager.",
+      "why": "Informs users how to add content, preventing confusion on an empty screen.",
+      "ui_impact": "A centered icon (e.g., 'dumbbell') and text will appear when no days are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add accessibility actions for swipe-to-delete",
+      "what": "Implement `accessibilityAction(named: \"Delete\")` for `GroceryRow`, `PrayerCardRow`, and `TaskRow`.",
+      "why": "Improves accessibility for VoiceOver users to delete items without complex gestures.",
+      "ui_impact": "No visual change; VoiceOver users will hear a 'Delete' action when interacting with rows.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add explicit 'Done' button to Journal View",
+      "what": "Introduce a 'Done' button in the `JournalSectionView` header to explicitly save and dismiss.",
+      "why": "Provides clear user control for finalizing entries and improves consistency with `NoteEditorView`.",
+      "ui_impact": "A 'Done' button will appear in the top right. Tapping it will dismiss keyboard and view.",
+      "backend_impact": "Call `autoSave()` and `onDismiss()` on button tap.",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
