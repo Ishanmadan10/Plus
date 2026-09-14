@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for sections",
+      "what": "Display a clear 'No sections yet' message in ControlCentreView when no sections exist.",
+      "why": "Guides new users and provides clarity when all custom sections are deleted.",
+      "ui_impact": "A centered icon and text will appear when no sections are present.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve PillButton accessibility label",
+      "what": "Dynamically update PillButton's accessibilityLabel based on its isOpen state.",
+      "why": "Screen reader users will understand the button's current function (e.g., 'Open menu' or 'Close menu').",
+      "ui_impact": "No visual change; screen reader output will be more informative.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine JournalSectionView dismiss gesture",
+      "what": "Move the drag-to-dismiss gesture from the entire view to the drag handle, allowing TextEditor to scroll freely.",
+      "why": "Users can smoothly scroll journal content without accidentally dismissing the view.",
+      "ui_impact": "Dragging the top handle dismisses the view; dragging elsewhere scrolls the content.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
