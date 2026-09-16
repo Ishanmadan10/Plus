@@ -157,6 +157,18 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "fallback_001",
+      "title": "Improve empty states across app",
+      "what": "Add descriptive empty state views with icons and helpful text wherever lists or content areas can be empty.",
+      "why": "Blank screens confuse users and reduce perceived quality of the app.",
+      "ui_impact": "Empty state views added to habit list, task list, and emotion log.",
+      "backend_impact": "None \u2014 purely presentational.",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
     }
   ]
 }
