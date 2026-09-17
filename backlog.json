@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Make Scratch Card Accessible",
+      "what": "Add an accessibilityAction to ScratchCardView to programmatically reveal the hidden thought for VoiceOver users.",
+      "why": "Ensures users who cannot perform the scratching gesture can still access the daily thought, improving inclusivity.",
+      "ui_impact": "No visual change. VoiceOver users will hear an option to 'Reveal thought' when interacting with the card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine Journal Dismiss Gesture",
+      "what": "Limit the drag-to-dismiss gesture in JournalSectionView to the top drag handle area to prevent accidental dismissals.",
+      "why": "Reduces accidental dismissals and improves the reliability of content scrolling, enhancing user control.",
+      "ui_impact": "The drag handle will be the primary interactive area for dismissing, while content allows unimpeded scrolling.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Haptic Feedback for Actions",
+      "what": "Implement subtle haptic feedback for adding and deleting items in lists and toggling completion states.",
+      "why": "Provides immediate, tactile confirmation that a user's action has been registered, improving perceived responsiveness.",
+      "ui_impact": "No visual change. Users will feel a light vibration on interaction (e.g., adding a grocery item).",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
