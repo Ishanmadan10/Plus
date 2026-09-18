@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state in Gym Day Manager",
+      "what": "Display a clear message and icon when no gym days are added in GymDayManagerView.",
+      "why": "Guides users on how to start, reducing confusion when the list is empty.",
+      "ui_impact": "A centered icon and descriptive text will appear in the list area if no days exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility",
+      "what": "Make the hidden thought in ScratchCardView accessible to screen readers and add an accessibility action to reveal it.",
+      "why": "Ensures visually impaired users can access the daily thought, improving inclusivity.",
+      "ui_impact": "No visual change, but screen readers will announce content and a 'Reveal' action.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal View scrolling/dismissal",
+      "what": "Adjust `JournalSectionView`'s drag gesture to prioritize `TextEditor` scrolling over sheet dismissal.",
+      "why": "Prevents accidental dismissal when users intend to scroll long journal entries, reducing frustration.",
+      "ui_impact": "Smoother, more predictable scrolling within the `TextEditor` for long content.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
