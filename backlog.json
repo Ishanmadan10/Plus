@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show message when no sections in Control Centre",
+      "what": "Display a clear message and icon when `sectionStore.sections` is empty in `ControlCentreView`.",
+      "why": "Guides new users to create their first section, improving discoverability and reducing confusion.",
+      "ui_impact": "A centered message 'No sections yet!' with an icon will appear when no sections exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve calendar day cell accessibility",
+      "what": "Add an `accessibilityLabel` to `DayCell` to convey date and habit completion status.",
+      "why": "Allows visually impaired users to understand their habit progress on specific days.",
+      "ui_impact": "No visual change; screen readers will announce detailed information.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add drag-to-dismiss hint to Journal",
+      "what": "Add 'Drag down to dismiss' text to the drag handle capsule in `JournalSectionView`.",
+      "why": "Makes the custom dismiss gesture more discoverable and intuitive for users.",
+      "ui_impact": "The drag handle capsule will contain small text indicating its function.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
