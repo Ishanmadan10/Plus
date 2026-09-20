@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Add Section picker accessibility",
+      "what": "Add accessibility labels to icon and color selection buttons in `AddSectionSheet`.",
+      "why": "Improves usability for VoiceOver users, making icon and color choices clear and understandable.",
+      "ui_impact": "No visual change, but VoiceOver will announce the purpose of each icon/color button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Remove redundant Journal drag-to-dismiss",
+      "what": "Remove the custom drag handle and `highPriorityGesture` for dismissal in `JournalSectionView`.",
+      "why": "Simplifies navigation, removes redundant UI elements, and relies on the standard `SectionHeader` dismiss button.",
+      "ui_impact": "The `Capsule` drag handle will be removed, and the view will no longer dismiss via a full-screen drag gesture.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consolidate Work Section checklist/notes",
+      "what": "Refactor `WorkSectionView` to use the reusable `GenericChecklistTab` and `GenericNotesTab` components.",
+      "why": "Reduces code duplication, ensures consistent UI/UX across sections, and improves maintainability.",
+      "ui_impact": "No visual change, but the internal implementation becomes consistent with other generic sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
