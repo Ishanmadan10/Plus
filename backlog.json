@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add Delete Action to Habit Row",
+      "what": "Implement `accessibilityAction` for deleting a habit within `HabitRow`.",
+      "why": "Improves accessibility for VoiceOver users, allowing them to delete habits without complex swipe gestures.",
+      "ui_impact": "No visual change; VoiceOver users will have a 'Delete' action available in the rotor.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Hide Decorative Icon in Gym Empty State",
+      "what": "Set `accessibilityHidden(true)` for the 'dumbbell' icon in `GymSectionView`'s empty state.",
+      "why": "Prevents VoiceOver from announcing a purely decorative image, reducing auditory clutter for visually impaired users.",
+      "ui_impact": "No visual change; VoiceOver will skip the dumbbell icon.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Make Scratch Card Hint Accessible",
+      "what": "Add an `accessibilityLabel` to the `foilOverlay` in `ScratchCardView` to announce 'Scratch to reveal'.",
+      "why": "Ensures visually impaired users understand how to interact with the scratch card and what it contains.",
+      "ui_impact": "No visual change; VoiceOver will announce the interaction instruction.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
