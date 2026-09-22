@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance CalendarStrip DayCell accessibility",
+      "what": "Add `accessibilityElement(children: .ignore)` and a comprehensive `accessibilityLabel` to each `DayCell` in `CalendarStrip`.",
+      "why": "VoiceOver users will clearly understand the date, its completion status, and if it's today or a future date.",
+      "ui_impact": "No visual change. VoiceOver will announce more descriptive information for each day cell.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine JournalSectionView scroll-dismiss interaction",
+      "what": "Relocate the drag-to-dismiss gesture in `JournalSectionView` from the main `VStack` to the `SectionHeader` component, ensuring internal `TextEditor` scrolling is not interrupted.",
+      "why": "Prevents accidental sheet dismissal when users intend to scroll the journal content, improving interaction and reducing frustration.",
+      "ui_impact": "Dragging down on the `SectionHeader` will dismiss the sheet, while dragging within the `JournalEditorView` will always scroll the content.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize sheet dismissal UI consistency",
+      "what": "Remove the visual `Capsule` drag handles from `JournalSectionView` and `GenericNotesTab` to align with the consistent `chevron.down` button dismissal used across other modal sheets.",
+      "why": "Creates a more uniform and predictable user interface, reducing cognitive load and making the app feel more cohesive.",
+      "ui_impact": "The small gray `Capsule` at the top of `JournalSectionView` and `GenericNotesTab` will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
