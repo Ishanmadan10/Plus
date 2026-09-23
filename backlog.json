@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state for Gym Day Manager",
+      "what": "Replace the blank list in `GymDayManagerView` with a descriptive message and icon when no workout days are added.",
+      "why": "Guides users on how to get started, reducing confusion and improving the first-time experience.",
+      "ui_impact": "A centered VStack with a 'dumbbell.fill' icon, title 'No workout days yet!', and subtitle 'Tap '+' to add your first day.' will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance accessibility for custom interactive elements",
+      "what": "Add `accessibilityLabel` to custom checkboxes/radio buttons in `GroceryRow`, `GymExerciseRow`, and `PrayerCardRow` to announce their state.",
+      "why": "Improves usability for VoiceOver users by clearly communicating the state (selected/completed) of interactive elements.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Milk, selected, checkbox' or 'Bench press, completed, checkbox'.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Streamline Journal Entry UI and Saving",
+      "what": "Add an explicit 'Save' button to the `JournalSectionView` header and keep the `JournalToolbar` consistently at the bottom, pushing up with the keyboard.",
+      "why": "Provides clear user feedback for saving entries and maintains UI stability, reducing cognitive load and confusion.",
+      "ui_impact": "A 'Save' button will appear in the header. The toolbar will remain fixed at the bottom of the screen, moving up with the keyboard.",
+      "backend_impact": "The existing `autoSave()` logic will be explicitly triggered by the new button.",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
