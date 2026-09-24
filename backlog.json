@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for no exercises in Gym Day",
+      "what": "Display a clear message and icon when a selected Gym Day has no exercises.",
+      "why": "Guides users to add exercises, improving first-time experience and clarity.",
+      "ui_impact": "A centered message and icon will appear instead of just the 'Add exercise' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for icon and color pickers",
+      "what": "Add `accessibilityLabel` to icon and color selection buttons in `AddSectionSheet`.",
+      "why": "Enhances usability for visually impaired users with VoiceOver, providing context for choices.",
+      "ui_impact": "No visual change; improves VoiceOver experience by announcing button purpose.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Allow editing of existing gym exercises",
+      "what": "Add a context menu to `GymExerciseRow` to allow editing an exercise name via a pre-filled input overlay.",
+      "why": "Reduces friction by allowing quick corrections or refinements to exercise names without deletion.",
+      "ui_impact": "Long-pressing an exercise row will present a context menu with an 'Edit' option.",
+      "backend_impact": "Add `updateExercise` method to `GymStore`.",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
