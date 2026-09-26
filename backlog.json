@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state in Gym Day Manager",
+      "what": "Show an explicit message when no gym days are defined in GymDayManagerView.",
+      "why": "Informs users how to get started when their list of workout days is empty.",
+      "ui_impact": "A centered message with an icon and explanatory text will appear instead of an empty list.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add accessibility label to dismiss button",
+      "what": "Add `accessibilityLabel(\"Dismiss\")` to the 'chevron.down' button in `SectionHeader`.",
+      "why": "Improves usability for VoiceOver users by clearly stating the button's navigation action.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Dismiss' when the button is focused.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/SectionHeader.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize empty notes view in Work section",
+      "what": "Replace the custom 'Start typing...' placeholder in `WorkSectionView`'s notes tab with `EmptyNotesView`.",
+      "why": "Ensures consistent user experience across all note-taking sections and reduces UI code duplication.",
+      "ui_impact": "The empty state message for notes in the Work section will visually match other sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
