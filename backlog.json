@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Journal Toolbar Accessibility",
+      "what": "Add descriptive accessibility labels to emoji and color picker buttons in `JournalToolbar`.",
+      "why": "VoiceOver users will understand button functions, making the journal more accessible.",
+      "ui_impact": "Invisible change for sighted users; VoiceOver will announce button functions clearly.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Delete Accessibility Action to Task Row",
+      "what": "Implement an `accessibilityAction` for 'Delete' on `TaskRow` to allow VoiceOver users to remove tasks easily.",
+      "why": "Provides an alternative, discoverable way for VoiceOver users to delete tasks, improving accessibility.",
+      "ui_impact": "No visual change; VoiceOver users can access a 'Delete' action from the rotor.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/TaskRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refine Journal Drag-to-Dismiss Gesture",
+      "what": "Adjust `JournalSectionView`'s drag-to-dismiss gesture to prevent accidental dismissal when scrolling `TextEditor` content.",
+      "why": "Users can scroll journal entries without unintentionally dismissing the view, reducing frustration.",
+      "ui_impact": "The sheet will only dismiss via drag if the content is at the top or a dedicated handle is dragged.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
