@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Make Scratch Card accessible for VoiceOver",
+      "what": "Add a hidden 'Reveal content' button for VoiceOver users on `ScratchCardView`.",
+      "why": "VoiceOver users can access the card's content, ensuring inclusive UX.",
+      "ui_impact": "A small, hidden-by-default button appears for accessibility tools.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Consolidate 'Work' section with generic view",
+      "what": "Remove `WorkSectionView` and route the 'Work' section to `GenericSectionView`.",
+      "why": "Improves UI consistency, reduces code duplication, and simplifies maintenance.",
+      "ui_impact": "The 'Work' section will use the standard generic checklist and notes tabs.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/SectionDetailView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Hide decorative image in EmotionalPage from VoiceOver",
+      "what": "Add `accessibilityHidden(true)` to the background `Image(imageName)` in `EmotionalPage`.",
+      "why": "Prevents VoiceOver from announcing purely decorative images, improving UX for visually impaired users.",
+      "ui_impact": "No visual change, but VoiceOver will ignore the background image.",
+      "backend_impact": "None",
+      "file": "positive/Features/Emotion/Views/EmotionalPage.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
