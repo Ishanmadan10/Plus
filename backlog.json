@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Control Centre sections",
+      "what": "Display a message and icon when `sectionStore.sections` is empty in `ControlCentreView`.",
+      "why": "Guides users to create their first section, improving discoverability and UX.",
+      "ui_impact": "A centered message 'No sections yet! Tap '+' to add one.' with an icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility for reveal",
+      "what": "Add an `accessibilityAction` to the `foilOverlay` in `ScratchCardView` to reveal content.",
+      "why": "Enables users with visual impairments to access the daily thought, making the app inclusive.",
+      "ui_impact": "No visual change; VoiceOver users will hear an option to 'Reveal thought' on the card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Implement HomeView 'Gallery' button functionality",
+      "what": "Add an overlay to `HomeView` that appears when the 'Gallery' button is tapped, showing a 'Coming Soon' message.",
+      "why": "Fixes a broken UI element, providing immediate feedback and setting expectations for future features.",
+      "ui_impact": "Tapping the 'Gallery' button will present a full-screen 'Coming Soon' overlay.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
     }
   ]
 }
