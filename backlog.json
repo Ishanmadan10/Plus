@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card accessibility",
+      "what": "Add an accessibility label and action to the scratch card foil overlay.",
+      "why": "VoiceOver users can understand the interaction and reveal content without visual scratching.",
+      "ui_impact": "No visual change, but VoiceOver will announce 'Scratch to reveal, double tap to reveal'.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refactor Work Section for UI consistency",
+      "what": "Remove redundant WorkSectionView by using GenericSectionView, passing 'Work' specific data.",
+      "why": "Ensures consistent UI/UX across all sections and simplifies future maintenance and feature additions.",
+      "ui_impact": "No visual change if implemented correctly, but underlying code is cleaner and more consistent.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "large",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Enhance Calendar DayCell accessibility and feedback",
+      "what": "Add accessibility labels for date and completion status to DayCell, and subtle haptic feedback on tap.",
+      "why": "VoiceOver users gain critical context for each day's habit completion; all users get tap confirmation.",
+      "ui_impact": "No visual change. VoiceOver will announce completion status. Users feel a light tap on interaction.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
