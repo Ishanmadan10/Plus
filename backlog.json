@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Scratch Card VoiceOver Guidance",
+      "what": "Add an accessibility label to the `foilOverlay` in `ScratchCardView` to inform VoiceOver users.",
+      "why": "VoiceOver users will understand there's content to reveal and how to interact with the scratch card.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Scratch to reveal a thought for the day. Tap and drag to scratch.'",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Make SectionHeader dismissal optional",
+      "what": "Modify `SectionHeader` to make `onDismiss` optional, only showing the button if provided. Pass `nil` in `JournalSectionView`.",
+      "why": "Removes redundant dismissal button in `JournalSectionView` where a drag gesture is primary, reducing clutter.",
+      "ui_impact": "The `chevron.down` button in the top-left of `JournalSectionView` will no longer be present.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/SectionHeader.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for adding items",
+      "what": "Implement light haptic feedback (`UIImpactFeedbackGenerator(style: .light).impactOccurred()`) when `onSave` is called in `QuickInputOverlay`.",
+      "why": "Provides immediate, tactile confirmation that an item has been successfully added, enhancing responsiveness.",
+      "ui_impact": "No visual change, but the user will feel a light tap when adding items via this overlay.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/QuickInputOverlay.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
