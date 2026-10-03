@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Control Centre accessibility",
+      "what": "Add accessibility labels to 'Add section' button and SectionCard in ControlCentreView.",
+      "why": "Improves usability for VoiceOver users, making interactive elements clearer.",
+      "ui_impact": "No visual change; VoiceOver will announce elements more descriptively.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Journal section dismissal UX",
+      "what": "Move drag-to-dismiss gesture from entire VStack to drag handle Capsule in JournalSectionView.",
+      "why": "Prevents accidental dismissal when users intend to scroll content, reducing frustration.",
+      "ui_impact": "Journal view will only dismiss when dragging the top handle, not from anywhere.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for key actions",
+      "what": "Implement light haptic feedback for adding a section, task, and prayer.",
+      "why": "Provides immediate, tactile confirmation for successful user actions, enhancing responsiveness.",
+      "ui_impact": "Users will feel a subtle vibration on key interactions.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift, positive/Features/SectionDetail/Views/GenericChecklistTab.swift, positive/Features/SectionDetail/Views/SpiritualitySectionView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
