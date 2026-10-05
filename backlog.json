@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre sections",
+      "what": "Display a prominent message and icon in ControlCentreView when no sections are added.",
+      "why": "Guides new users on how to create their first section, improving discoverability.",
+      "ui_impact": "A centered 'No sections yet!' message with an icon will appear when the sections list is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve TextEditor placeholder accessibility",
+      "what": "Set `accessibilityHidden(true)` on the visual placeholder `Text` and add `accessibilityLabel` to the `TextEditor`.",
+      "why": "Ensures VoiceOver users correctly understand the purpose of the input field, improving accessibility.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Text editor, What's on your mind today?' instead of potentially reading the placeholder as content.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalEditorView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for habit toggles",
+      "what": "Implement a light haptic feedback when a habit is tapped to toggle its completion status.",
+      "why": "Provides immediate tactile confirmation for user actions, enhancing the app's responsiveness and polish.",
+      "ui_impact": "Users will feel a subtle vibration when tapping to complete or uncomplete a habit.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
