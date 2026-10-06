@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show Empty State in Control Centre",
+      "what": "Display a message and icon when no user-created sections exist in ControlCentreView.",
+      "why": "Guides users to create their first section, improving discoverability and initial UX.",
+      "ui_impact": "A centered text message and icon will appear when `sectionStore.sections` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Habit Row Accessibility for Toggling",
+      "what": "Add an `accessibilityAction` to `HabitRow` for toggling habit completion.",
+      "why": "Enables VoiceOver users to easily mark habits as complete or incomplete.",
+      "ui_impact": "No visual change; improves interaction for accessibility users.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Control Centre Header UI",
+      "what": "Refactor `ControlCentreView`'s custom header to use the reusable `SectionHeader` component.",
+      "why": "Ensures a consistent look and feel across section views, improving app coherence and maintainability.",
+      "ui_impact": "The header in Control Centre will adopt the standardized `SectionHeader` layout.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
