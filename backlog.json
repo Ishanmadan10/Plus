@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display Swipeable Content Cards on Home",
+      "what": "Integrate ScratchCardView, ReminderCardView, and JokeCardView into HomeView as a horizontal, swipeable carousel.",
+      "why": "Provides users access to daily content (scratch card, reminder, joke), improving engagement and content discoverability.",
+      "ui_impact": "A prominent horizontal carousel of content cards will appear below the main greeting/thought, with pagination dots and a swipe hint.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "large",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Show Journal Image Loading Feedback",
+      "what": "Display a ProgressView when a photo is loading into the journal entry, and an error icon if loading fails.",
+      "why": "Improves user experience by providing immediate feedback on image selection and processing status.",
+      "ui_impact": "A ProgressView will appear briefly in the image's place, or an error icon if loading fails, within the JournalEditorView.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Accessibility Actions for Swipe-to-Delete",
+      "what": "Implement accessibilityAction(named: 'Delete') for GroceryRow, PrayerCardRow, and TaskRow.",
+      "why": "Ensures all users, including those with motor impairments or using screen readers, can delete list items.",
+      "ui_impact": "No visual change; VoiceOver users will hear 'Delete' as an available action when interacting with these rows.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
