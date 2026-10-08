@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Control Centre sections",
+      "what": "Display a clear message and icon when `sectionStore.sections` is empty in `ControlCentreView`.",
+      "why": "Guides users on how to create their first section, improving discoverability and reducing confusion.",
+      "ui_impact": "A centered message like 'No sections yet! Tap '+' to add one.' with an icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add loading indicator to Gym 'Save Session'",
+      "what": "Display a `ProgressView` within the 'Save Session' button while the log is being saved.",
+      "why": "Provides immediate visual feedback that the user's action is being processed, improving confidence.",
+      "ui_impact": "The 'Save Session' button will show a small loading spinner briefly after being tapped.",
+      "backend_impact": "Add a `@State` variable to track saving status.",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Enhance HabitRow accessibility",
+      "what": "Add `accessibilityLabel` to the habit toggle and delete button in `HabitRow`, reflecting completion state.",
+      "why": "Improves usability for VoiceOver users by clearly describing button functions and states.",
+      "ui_impact": "No visual changes; VoiceOver will announce 'Habit title, checked' or 'Habit title, unchecked', and 'Delete habit'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
