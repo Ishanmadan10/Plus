@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Dynamic Accessibility Label for Pill Button",
+      "what": "Update `PillButton`'s accessibility label to dynamically reflect its current state (open/close menu).",
+      "why": "Improves usability for VoiceOver users by clearly communicating the button's current function.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Open menu' or 'Close menu' based on state.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Consolidate Gym Session Restoration",
+      "what": "Refactor duplicated session restoration logic from the day selection button and call `restoreSessionIfNeeded()` consistently.",
+      "why": "Ensures consistent state restoration when switching gym days or re-opening the view, preventing data loss.",
+      "ui_impact": "When a gym day is selected or the view appears, exercises, notes, distance, and duration will pre-fill if a session was started today.",
+      "backend_impact": "Logic to fetch and apply existing `GymLog` for the current day and selected workout.",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Consistent Journal Save Action",
+      "what": "Replace the `arrow.up.circle.fill` icon with a 'Save' or 'Done' text button in `JournalSectionView`'s toolbar.",
+      "why": "Improves clarity and consistency with `NoteEditorView` and standard UI patterns for saving content.",
+      "ui_impact": "The icon button at the bottom right of the journal will change to a text button.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
