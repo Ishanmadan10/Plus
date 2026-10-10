@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display Empty State in Control Centre",
+      "what": "Show a dedicated empty state message and icon when no custom sections exist.",
+      "why": "Informs users clearly when no sections are present and guides them to add new ones.",
+      "ui_impact": "A centered icon and text will appear instead of an empty grid with only the 'Add section' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Accessibility Action to Scratch Card",
+      "what": "Provide an accessibility action to reveal the scratch card content for VoiceOver users.",
+      "why": "Ensures users with motor or visual impairments can access the 'Thought of the Day' content.",
+      "ui_impact": "No visual change, but VoiceOver users will hear an option to 'Reveal thought'.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Implement Swipe-Down Dismissal for Modals",
+      "what": "Add a consistent swipe-down gesture to dismiss all full-screen modal views.",
+      "why": "Provides a natural, intuitive, and consistent way for users to dismiss overlays.",
+      "ui_impact": "Users can swipe down from the top of any full-screen modal to dismiss it.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
