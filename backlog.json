@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Accessible Scratch Card Reveal",
+      "what": "Add an accessibility action to `ScratchCardView` to reveal content without scratching.",
+      "why": "Enables users with motor impairments or visual disabilities to access the daily thought.",
+      "ui_impact": "A hidden accessibility element/button will be added, visible only to assistive technologies.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Auto-dismiss Habit Add Field",
+      "what": "Modify `HabitChecklistView` to hide the add field when its text field loses focus.",
+      "why": "Reduces friction and improves the intuitive flow for adding habits.",
+      "ui_impact": "The 'New habit...' text field and 'plus' button will disappear when keyboard is dismissed.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Journal Auto-Save Confirmation",
+      "what": "Display a subtle 'Saved!' message temporarily after `JournalSectionView` auto-saves content.",
+      "why": "Provides clear feedback to the user that their journal entry is securely stored.",
+      "ui_impact": "A small, transient text label will appear near the top of the journal editor after a save.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
