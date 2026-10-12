@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Empty state for Gym Day exercises",
+      "what": "Display a clear message when a selected Gym Day has no exercises.",
+      "why": "Guides users to add exercises, reducing confusion for new or empty workout plans.",
+      "ui_impact": "A centered text message and icon will appear when a workout day is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Accessibility for swipe-to-delete rows",
+      "what": "Add `accessibilityAction` for delete to `GroceryRow`, `PrayerCardRow`, and `TaskRow`.",
+      "why": "Improves accessibility for VoiceOver users, allowing them to easily delete items.",
+      "ui_impact": "No visual change; VoiceOver users will hear a 'Delete' action when interacting with rows.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Haptic feedback for adding sections",
+      "what": "Add a subtle haptic feedback when a new section is successfully added.",
+      "why": "Provides immediate tactile confirmation to the user that their action was successful.",
+      "ui_impact": "A subtle vibration will occur upon successful addition of a new section.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
