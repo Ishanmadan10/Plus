@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Guide users to add first section",
+      "what": "Display a clear empty state message in Control Centre when no sections exist.",
+      "why": "Improves discoverability and onboarding for new users or after deleting all sections.",
+      "ui_impact": "A centered text message and icon will appear when `sectionStore.sections` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility",
+      "what": "Add an `accessibilityLabel` to the `ScratchCardView`'s foil overlay with instructions.",
+      "why": "Enables visually impaired users to understand how to interact with the scratch card.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Scratch to reveal daily thought'.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Enhance Journal dismissal affordance",
+      "what": "Make the drag handle in `JournalSectionView` more prominent for easier dismissal.",
+      "why": "Reduces friction and makes it clearer for users how to dismiss the journal view.",
+      "ui_impact": "The drag handle (capsule) will be slightly larger or have a more distinct visual style.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
