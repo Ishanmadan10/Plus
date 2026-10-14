@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Explicit Empty State for Control Centre Sections",
+      "what": "Add a prominent 'No sections yet' message in ControlCentreView when sectionStore.sections is empty, guiding users to the 'Add section' button.",
+      "why": "Improves discoverability and user understanding when the app is in a fresh state or all custom sections have been deleted.",
+      "ui_impact": "A centered text message and icon will appear above the 'Add section' button when no sections exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Accessibility for Custom Checkboxes",
+      "what": "Add accessibilityAddTraits(.isToggle) and dynamic accessibilityLabel to custom checkboxes in GroceryRow, PrayerCardRow, and GymExerciseRow.",
+      "why": "Improves usability for VoiceOver users by clearly identifying interactive elements and communicating their state (checked/unchecked).",
+      "ui_impact": "No visual change; improves screen reader experience for users with accessibility needs.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Make Journal Drag Handle Exclusive for Dismissal",
+      "what": "Restrict the drag-to-dismiss gesture in JournalSectionView to only the Capsule drag handle, preventing conflicts with the internal TextEditor's scrolling.",
+      "why": "Eliminates UX friction by providing a clear, dedicated area for dismissing the view, ensuring reliable dismissal.",
+      "ui_impact": "Users will only be able to drag down from the top Capsule to dismiss the view. Dragging elsewhere will scroll the TextEditor.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
