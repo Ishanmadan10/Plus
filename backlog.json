@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Implement Home Dashboard Content Carousel",
+      "what": "Integrate ScratchCardView, ReminderCardView, and JokeCardView into a swipeable carousel on HomeView.",
+      "why": "Provides dynamic daily content (thought, reminder, joke) as intended, making the home screen more engaging.",
+      "ui_impact": "User will see a swipeable card area below the greeting/weather, displaying daily content with pagination dots.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "medium",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Accessibility to Scratch Card Reveal",
+      "what": "Implement a long-press gesture or an AccessibilityAction on ScratchCardView to reveal content.",
+      "why": "Ensures all users, including those with motor impairments or using VoiceOver, can access the hidden daily thought.",
+      "ui_impact": "No visual change for most users; VoiceOver users will hear an action to 'Reveal content' or a long-press will trigger it.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Note Editor Dismissal",
+      "what": "Implement a drag-down gesture for dismissing NoteEditorView for consistency with JournalSectionView.",
+      "why": "Reduces UX friction by providing a consistent and intuitive dismissal method across similar full-screen editing experiences.",
+      "ui_impact": "User can drag the NoteEditorView down from the top to dismiss it, in addition to tapping the 'chevron.down' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/NoteEditorView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
