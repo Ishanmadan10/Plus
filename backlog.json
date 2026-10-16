@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state in Gym Day Manager",
+      "what": "Display a guiding message and icon when no gym days are added in GymDayManagerView.",
+      "why": "Informs users how to add their first workout day, reducing confusion and improving discoverability.",
+      "ui_impact": "A centered text and icon will appear when the list of gym days is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance accessibility for GroceryRow selection",
+      "what": "Add `accessibilityAddTraits(.isSelected)` to the selection button in `GroceryRow` to convey its state.",
+      "why": "VoiceOver users will clearly understand when a grocery item is selected or deselected for ordering.",
+      "ui_impact": "No visual change, but improved screen reader experience for selected items.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor WorkSectionView to use GenericSectionView",
+      "what": "Replace duplicated tab logic and content in `WorkSectionView` by leveraging the existing `GenericSectionView`.",
+      "why": "Ensures consistent UI/UX across all sections, reduces code duplication, and simplifies future maintenance.",
+      "ui_impact": "The Work section will use the standardized tabbed checklist/notes layout as other generic sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "large",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
