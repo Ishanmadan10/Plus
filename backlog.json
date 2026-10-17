@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Control Centre sections",
+      "what": "Display a message and icon when no sections are defined in the Control Centre grid.",
+      "why": "Guides users to create their first section, improving discoverability and reducing confusion.",
+      "ui_impact": "A centered message 'No sections yet! Tap '+' to add one.' with a large icon.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add accessibility label to scratch card",
+      "what": "Add an `accessibilityLabel` to the `ScratchCardView` foil overlay to instruct users to scratch.",
+      "why": "Enables VoiceOver users to understand how to interact with the scratch card to reveal content.",
+      "ui_impact": "No visual change; improves experience for visually impaired users.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Restore active gym session progress",
+      "what": "Call `restoreSessionIfNeeded()` in `GymSectionView.onAppear` to load today's progress for the selected day.",
+      "why": "Prevents loss of user input (completed exercises, notes, cardio data) if they navigate away and return.",
+      "ui_impact": "Completed exercises, notes, and cardio fields will be pre-filled if a log for today exists.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
