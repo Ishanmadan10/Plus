@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state in Gym Day Manager",
+      "what": "Display a centered message and icon when no gym days are added in `GymDayManagerView`.",
+      "why": "Informs users how to get started with creating workout plans, reducing confusion.",
+      "ui_impact": "A centered 'No workout days yet!' message with a dumbbell icon will appear when the list is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for Habit Row toggle",
+      "what": "Add an `accessibilityLabel` to the habit completion toggle in `HabitRow` to announce its current state.",
+      "why": "Visually impaired users can clearly understand if a habit is completed or not completed.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Habit title, completed' or 'Habit title, not completed'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Work and Spirituality section views",
+      "what": "Refactor `WorkSectionView` to utilize `GenericChecklistTab` and `GenericNotesTab`, and `SpiritualitySectionView` to use `AddPrayerView` component.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent UI/UX across similar sections.",
+      "ui_impact": "No direct visual change, but ensures future consistency and easier updates across section types.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "large",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
