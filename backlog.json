@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add an accessibility label to `ScratchCardView` when it is unscratched.",
+      "why": "Screen reader users will understand the interactive nature and purpose of the card.",
+      "ui_impact": "No visual change; improved screen reader experience for the unscratched state.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Streamline Journal Dismissal UI",
+      "what": "Remove the separate drag handle `Capsule` in `JournalSectionView` and rely on the existing `SectionHeader`'s dismiss button.",
+      "why": "Simplifies dismissal UI, reduces visual clutter, and makes the primary dismissal method consistent.",
+      "ui_impact": "The `Capsule` drag handle at the very top of `JournalSectionView` will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Add Prayer UI with Overlay",
+      "what": "Replace inline 'Add Prayer' input fields in `SpiritualitySectionView` with the reusable `QuickInputOverlay` component.",
+      "why": "Creates a consistent and focused input experience for adding new items across different sections.",
+      "ui_impact": "The 'Add Prayer' form will appear as a modal overlay instead of inline fields.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/SpiritualitySectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
