@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Control Centre sections",
+      "what": "Display a clear message and icon when no custom sections are present in ControlCentreView.",
+      "why": "Guides users to add new sections, improving discoverability and initial user experience.",
+      "ui_impact": "A centered 'No sections yet!' message with an icon will appear when the sections list is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Scratch Card accessibility for screen readers",
+      "what": "Add an `accessibilityLabel` to the `foilOverlay` in `ScratchCardView` to describe its interactive nature.",
+      "why": "Enables visually impaired users to understand the 'scratch to reveal' interaction via VoiceOver.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Scratch to reveal, double tap to interact' or similar.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Streamline Journal Section dismissal UX",
+      "what": "Remove the redundant drag-to-dismiss gesture and visual handle from `JournalSectionView`.",
+      "why": "Ensures consistent dismissal using the existing `chevron.down` button, reducing UI clutter and friction.",
+      "ui_impact": "The `Capsule` drag handle and `highPriorityGesture` will be removed from `JournalSectionView`.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
