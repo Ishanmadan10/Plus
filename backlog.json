@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Add Section color picker accessibility",
+      "what": "Add an accessibilityLabel to color picker buttons in AddSectionSheet.",
+      "why": "Enhances accessibility for visually impaired users to understand color options.",
+      "ui_impact": "No visual change; VoiceOver will announce color names when focused.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Refine Journal drag-to-dismiss gesture",
+      "what": "Move the drag-to-dismiss gesture from the main VStack to the drag handle in JournalSectionView.",
+      "why": "Prevents accidental dismissal when scrolling journal content, improving text editing fluidity.",
+      "ui_impact": "Dragging on content scrolls TextEditor; dragging top handle dismisses sheet.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add 'Swipe to delete' hint to Habit Checklist",
+      "what": "Insert a 'Swipe left to delete' text hint above the habit list in HabitChecklistView.",
+      "why": "Provides clear instruction for deleting habits, consistent with other app lists.",
+      "ui_impact": "A small text label will appear above the list of habits.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
