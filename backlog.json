@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add Accessibility Labels to Icon Buttons",
+      "what": "Add `accessibilityLabel` to icon-only buttons in `ControlCentreView` and `SectionHeader`.",
+      "why": "Improves usability for VoiceOver users by providing clear descriptions for button actions.",
+      "ui_impact": "No visual change; VoiceOver will announce button purpose clearly.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Groceries Empty State Clarity",
+      "what": "Conditionally hide the 'Open Blinkit' and 'Open Zepto' buttons and the selection hint when the grocery list is empty.",
+      "why": "Prevents confusion and focuses the user on adding items when the list is empty, improving clarity.",
+      "ui_impact": "Order buttons and selection hint will disappear when the grocery list is empty, reappearing once items are added.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Haptic Feedback for Section Creation",
+      "what": "Trigger a light haptic feedback when a new section is successfully added via the `AddSectionSheet`.",
+      "why": "Provides immediate, tactile confirmation to the user that their action (adding a section) was successful.",
+      "ui_impact": "A subtle vibration will be felt upon successful section addition.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
