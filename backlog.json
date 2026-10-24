@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Activate Home Gallery Button",
+      "what": "Implement the overlay for the 'Gallery' button in HomeView to display a new view.",
+      "why": "A non-functional button creates confusion; activating it provides expected interaction.",
+      "ui_impact": "Tapping the 'Gallery' button will present a new overlay view (e.g., a photo gallery).",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Confirm Clear All Groceries",
+      "what": "Add an Alert confirmation before clearing all grocery items in GroceriesSectionView.",
+      "why": "Prevents accidental data loss, improving user confidence in destructive actions.",
+      "ui_impact": "Tapping the trash icon will show an alert asking for confirmation.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Journal Color Picker Accessibility",
+      "what": "Add descriptive accessibilityLabel to each color option in the JournalToolbar's color menu.",
+      "why": "Enables visually impaired users to understand and select text colors with VoiceOver.",
+      "ui_impact": "No visual change; VoiceOver will announce color names (e.g., 'White').",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
