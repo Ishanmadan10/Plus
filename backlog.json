@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Confirm Clear All Groceries Action",
+      "what": "Implement a confirmation alert before clearing all grocery items in GroceriesSectionView.",
+      "why": "Prevents accidental deletion of the entire grocery list, improving data safety and user confidence.",
+      "ui_impact": "Tapping the trash icon will present a confirmation dialog asking the user to confirm clearing the list.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Accessibility Action for Habit Deletion",
+      "what": "Add an `accessibilityAction(named: \"Delete\")` to `HabitRow` for VoiceOver users to delete habits.",
+      "why": "Enhances accessibility for users with motor impairments or those relying on VoiceOver, making habit management easier.",
+      "ui_impact": "VoiceOver users can activate a 'Delete' action directly from the habit row's context menu.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve Calendar Strip Day Cell Accessibility",
+      "what": "Add an `accessibilityLabel` to `DayCell` to announce the full date and completion status for VoiceOver users.",
+      "why": "Provides comprehensive information about each day's habit progress, making the calendar strip fully accessible.",
+      "ui_impact": "VoiceOver will announce 'Monday, October 23rd, 80% complete' (example) when a user focuses on a day cell.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
