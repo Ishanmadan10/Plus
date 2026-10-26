@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enable browsing past Journal entries",
+      "what": "Add a button in JournalSectionView to navigate to a NotesListView filtered for 'Journal' entries.",
+      "why": "Users can review their past thoughts and emotions, enhancing self-reflection and personal growth.",
+      "ui_impact": "A new 'View History' button appears, opening a list of past journal entries.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve HabitRow swipe-to-delete accessibility",
+      "what": "Add an accessibilityAction for 'Delete' to HabitRow to make it discoverable for VoiceOver users.",
+      "why": "Ensures users with visual impairments can easily delete habits without relying on complex swipe gestures.",
+      "ui_impact": "No visual change; VoiceOver users hear 'Delete' as an available action.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Remove redundant Journal 'Save' button",
+      "what": "Remove the 'arrow.up.circle.fill' button from JournalSectionView's toolbar, as entries auto-save.",
+      "why": "Eliminates user confusion about manual saving when auto-save is active, streamlining journaling.",
+      "ui_impact": "The 'send/save' icon button will no longer appear in the journal toolbar.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
