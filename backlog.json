@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add Accessibility Labels to SF Symbol Buttons",
+      "what": "Implement `accessibilityLabel` for all interactive SF Symbol images used as buttons.",
+      "why": "Improves usability for visually impaired users by providing spoken descriptions for icon-only buttons.",
+      "ui_impact": "No visual change; VoiceOver will announce button functions clearly.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Notes Empty State with Actionable Guidance",
+      "what": "Update `EmptyNotesView` to include actionable text guiding users on how to create their first note.",
+      "why": "Reduces user confusion when a notes section is empty and improves the first-time user experience.",
+      "ui_impact": "When empty, the notes tab will show a more descriptive message with creation instructions.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/EmptyNotesView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Provide Visual Feedback for Journal Auto-Save",
+      "what": "Display a subtle, temporary 'Saving...' or 'Saved' indicator in the Journal section upon auto-save.",
+      "why": "Reassures users that their entries are being persistently stored, reducing anxiety and building trust.",
+      "ui_impact": "A small text label will briefly appear and fade out after text or image changes are saved.",
+      "backend_impact": "Minor logic to trigger UI state based on auto-save events.",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
