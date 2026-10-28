@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Implement Home Gallery Button Functionality",
+      "what": "The 'Gallery' button in HomeView toggles 'showOverlay', but no UI element reacts to this state. Implement a basic overlay view (e.g., a placeholder or 'Coming Soon' screen) that appears when 'showOverlay' is true.",
+      "why": "Fixes a broken UI element, preventing user confusion and improving the perceived completeness of the app.",
+      "ui_impact": "Tapping the 'Gallery' button will present a new overlay view, and tapping it again will dismiss it.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "medium",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Dynamic Accessibility Label for Home Gallery Button",
+      "what": "Update the 'accessibilityLabel' of the 'Gallery' button in HomeView to dynamically reflect its state (e.g., 'Open Gallery' when 'showOverlay' is false, 'Close Gallery' when true).",
+      "why": "Improves accessibility for VoiceOver users by clearly communicating the button's current function.",
+      "ui_impact": "VoiceOver users will hear a more descriptive label for the button.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Haptic Feedback for List Item Interactions",
+      "what": "Add light haptic feedback (UIImpactFeedbackGenerator(style: .light).impactOccurred()) when a user taps to toggle a habit in 'HabitRow'.",
+      "why": "Provides immediate, tactile confirmation for user actions, making the app feel more responsive and polished.",
+      "ui_impact": "Users will feel a subtle vibration when tapping to mark a habit as complete or incomplete.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
