@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Support Dynamic Type for Text Scaling",
+      "what": "Replace fixed font sizes with `Font.preferredFont(forTextStyle:)` or `.font(.body)` with modifiers in text views.",
+      "why": "Users can adjust text sizes via iOS Accessibility settings, improving readability for diverse needs.",
+      "ui_impact": "Text elements throughout the app will automatically scale based on the user's system text size preference.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/SectionHeader.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Calendar Strip VoiceOver",
+      "what": "Add `accessibilityLabel` to `DayCell` in `CalendarStrip` to announce the full date and habit completion status.",
+      "why": "Visually impaired users can understand each day's completion ratio and date in the habit calendar.",
+      "ui_impact": "No visual change; VoiceOver will announce detailed information for each day cell.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Haptic Feedback for Key Actions",
+      "what": "Implement `UIImpactFeedbackGenerator` for habit toggles, adding/deleting tasks, and adding/deleting sections.",
+      "why": "Provides immediate tactile confirmation for user interactions, making the app feel more responsive and satisfying.",
+      "ui_impact": "No visual change; users will feel subtle vibrations on key interactive elements.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
