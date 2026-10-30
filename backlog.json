@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Make ScratchCardView accessible for VoiceOver users",
+      "what": "Add accessibilityLabel and accessibilityAction to ScratchCardView's foil overlay.",
+      "why": "VoiceOver users cannot perform the 'scratch' gesture, making this core daily feature unusable.",
+      "ui_impact": "No visual change; VoiceOver users can tap to reveal the card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Remove non-functional 'Gallery' button from HomeView",
+      "what": "Delete the rightmost button in HomeView that toggles 'showOverlay' as it displays no content.",
+      "why": "This button creates user confusion and a broken UX expectation by doing nothing functional.",
+      "ui_impact": "The rightmost button at the bottom of HomeView will be removed, adjusting layout.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor WorkSectionView to reuse generic tabs",
+      "what": "Replace custom 'workChecklist' and 'workNotes' in WorkSectionView with GenericChecklistTab and GenericNotesTab.",
+      "why": "Reduces code duplication, improves UI consistency across sections, and simplifies maintenance.",
+      "ui_impact": "The 'Work' section's checklist and notes will visually match other generic sections, using ReminderDatePicker.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
