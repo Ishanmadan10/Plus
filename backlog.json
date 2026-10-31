@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve ScratchCardView accessibility",
+      "what": "Add accessibility labels to ScratchCardView's foil overlay and combine children for VoiceOver.",
+      "why": "Ensures visually impaired users understand and can interact with the scratch-to-reveal card.",
+      "ui_impact": "No visual change; VoiceOver will announce interaction instructions and revealed content.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Streamline JournalSectionView dismissal",
+      "what": "Remove redundant drag handle and rely on header dismiss button; ensure smooth content scrolling.",
+      "why": "Reduces visual clutter, clarifies dismissal, and improves scrolling experience within the journal editor.",
+      "ui_impact": "The top drag handle capsule will disappear, and content scrolling will be more responsive.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize 'Add New Item' UI",
+      "what": "Refactor add forms (sections, groceries, prayers, generic tasks) to use a consistent, compact modal overlay.",
+      "why": "Provides a predictable and efficient user experience for adding new content across the app.",
+      "ui_impact": "All 'add new' actions will present a consistent, compact input overlay instead of varied forms.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "large",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
