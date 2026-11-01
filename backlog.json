@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Gym Day Manager",
+      "what": "Display a message and icon when no workout days are defined in Gym Day Manager.",
+      "why": "Users will clearly understand how to add days when the list is empty.",
+      "ui_impact": "A centered message 'No workout days yet! Tap '+' to add one.' with a dumbbell icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve accessibility for Grocery item selection",
+      "what": "Add `accessibilityLabel` and `accessibilityValue` to the `GroceryRow` selection button.",
+      "why": "VoiceOver users will clearly understand the purpose and current selection state of each grocery item.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Milk x2, selected' or 'Milk x2, not selected'.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Restore Gym session progress on view appear",
+      "what": "Call `restoreSessionIfNeeded()` in `GymSectionView`'s `onAppear` to load today's saved progress.",
+      "why": "Users won't lose their completed exercises, notes, or cardio metrics if they navigate away and return to the same workout day.",
+      "ui_impact": "Previously selected exercises, notes, and cardio inputs for today's log will be pre-filled when returning to a workout day.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
