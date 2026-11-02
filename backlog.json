@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Control Centre sections",
+      "what": "Display a prominent message and icon when no custom sections are added in Control Centre.",
+      "why": "Guides new users to create their first section, improving discoverability and reducing confusion.",
+      "ui_impact": "A centered icon (e.g., 'square.grid.2x2') and text will appear in the grid area when no sections exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Journal color picker accessibility",
+      "what": "Provide descriptive accessibility labels for each color option in the Journal's color picker menu.",
+      "why": "Enhances usability for VoiceOver users, making color selection clear and accessible.",
+      "ui_impact": "No visual change; VoiceOver will announce 'White color', 'Yellow color', etc.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/JournalToolbar.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Remove drag-to-dismiss from Notes tab",
+      "what": "Eliminate the drag-to-dismiss gesture and related UI elements from `GenericNotesTab`.",
+      "why": "Ensures consistent navigation behavior for tab content, preventing accidental dismissal and clarifying UI hierarchy.",
+      "ui_impact": "The drag handle (capsule) at the top of the tab will be removed, and content will not respond to vertical drag gestures.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GenericNotesTab.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
