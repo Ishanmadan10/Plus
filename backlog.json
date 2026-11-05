@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add accessibility labels to section picker buttons",
+      "what": "Enhance icon and color picker buttons in AddSectionSheet with descriptive accessibility labels.",
+      "why": "Improves accessibility for VoiceOver users, clarifying the purpose of each selection option.",
+      "ui_impact": "No visual change; VoiceOver will announce more descriptive labels for buttons.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Fix Journal entry saving logic and UI",
+      "what": "Refactor JournalSectionView to treat entryText as the full content of today's note, removing savedEntries state.",
+      "why": "Prevents data loss and confusion by ensuring the TextEditor directly edits and saves the complete journal entry.",
+      "ui_impact": "The TextEditor will display and allow editing of the full day's entry; the 'savedEntries' list will be removed.",
+      "backend_impact": "autoSave() will update note.content directly with entryText.",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Clarify HomeView 'Gallery' button purpose",
+      "what": "Rename the 'Gallery' button to 'Quick Add' or 'New Entry' and update its icon to 'plus.circle.fill'.",
+      "why": "Reduces user confusion by clearly indicating the button's function for adding new content, not viewing a gallery.",
+      "ui_impact": "The button's label and icon at the bottom right of HomeView will change.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
