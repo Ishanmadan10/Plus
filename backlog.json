@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Hide decorative images from VoiceOver",
+      "what": "Add `.accessibilityHidden(true)` to purely decorative SF Symbol images in empty states.",
+      "why": "Improves accessibility for VoiceOver users by reducing unnecessary announcements of icons.",
+      "ui_impact": "No visual change; VoiceOver will ignore decorative icons like 'dumbbell'.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Implement Home screen swipeable content cards",
+      "what": "Replace static `thoughtOfDay` text with a `TabView` displaying `ScratchCardView`, `ReminderCardView`, and `JokeCardView`, controlled by `HomeViewModel.currentCard`.",
+      "why": "Leverages existing components and ViewModel logic to provide richer, interactive daily content on the home screen.",
+      "ui_impact": "User can swipe between a scratch card, reminder, and joke on the home dashboard, with pagination dots.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "large",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Journal dismissal and simplify editing",
+      "what": "Change `JournalSectionView` dismissal to a `SectionHeader` with a 'chevron.down' button, and simplify note editing to directly bind `entryText` to the daily note's content, removing `savedEntries` and the append button.",
+      "why": "Improves UI consistency across the app and simplifies the journal editing experience, making it more intuitive.",
+      "ui_impact": "Journal view will dismiss via a top-left button. The editing area will be a single `TextEditor` for the day's note.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
