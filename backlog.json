@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show loading state for journal images",
+      "what": "Display a ProgressView while an image is being loaded from PhotosPicker in JournalSectionView.",
+      "why": "Informs the user that the image is being processed, preventing perceived unresponsiveness.",
+      "ui_impact": "A small loading spinner appears within the image area while an image is being fetched.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve HabitRow accessibility for screen readers",
+      "what": "Add an accessibility label to the HabitRow's main tap area to describe its function and state.",
+      "why": "Screen reader users will clearly understand the purpose of the habit item and its completion status.",
+      "ui_impact": "No visual change. Screen readers will announce 'Habit title, completed, button' or 'Habit title, not completed, button'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor WorkSectionView to use generic tabs",
+      "what": "Replace duplicated checklist and notes UI in WorkSectionView with instances of GenericChecklistTab and GenericNotesTab.",
+      "why": "Ensures consistent UI/UX across all custom sections, reduces code duplication, and improves maintainability.",
+      "ui_impact": "No visual change for the user, but the underlying implementation becomes consistent with other sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
