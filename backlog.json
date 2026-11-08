@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state in Gym Day Manager",
+      "what": "Show a clear message and icon when no gym days are defined in `GymDayManagerView`.",
+      "why": "Guides users on how to add their first workout day, improving usability for new users or after deletion.",
+      "ui_impact": "A centered message and icon will appear in the `List` area when `store.days` is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Support Dynamic Type for all text",
+      "what": "Replace fixed font sizes (`.system(size: ...)`) with scalable text styles or `.dynamicTypeSize` modifiers.",
+      "why": "Ensures text scales according to user's preferred text size settings, improving readability for all users.",
+      "ui_impact": "Text sizes across the app will adjust based on system Dynamic Type settings.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/ContentCards.swift",
+      "effort": "large",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add haptic feedback for list interactions",
+      "what": "Implement light haptic feedback for adding and deleting items in lists (e.g., habits, tasks, groceries, prayers, sections).",
+      "why": "Provides immediate, tactile confirmation for user actions, making interactions feel more responsive and satisfying.",
+      "ui_impact": "Users will feel a subtle vibration when they add or delete items.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
