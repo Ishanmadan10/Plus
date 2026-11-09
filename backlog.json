@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Journal image loading feedback",
+      "what": "Display a ProgressView while a selected image is loading and show a temporary error if loading fails.",
+      "why": "Informs the user about image processing status, preventing uncertainty and providing feedback on failures.",
+      "ui_impact": "A small ProgressView appears in the image's place, or a 'Failed to load image' text is shown.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Dynamic accessibility label for PillButton",
+      "what": "Add a dynamic accessibilityLabel to the PillButton reflecting its current state (e.g., 'Open quick actions').",
+      "why": "Improves usability for VoiceOver users by clearly communicating the button's function and state.",
+      "ui_impact": "No visual change; VoiceOver will announce the button's purpose more clearly.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Prevent accidental journal dismissal",
+      "what": "Disable the drag-to-dismiss gesture in JournalSectionView when the TextEditor is focused.",
+      "why": "Reduces user frustration by preventing the journal from closing unexpectedly while typing or scrolling.",
+      "ui_impact": "The view will not dismiss via drag when the keyboard is active and the user is typing.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
