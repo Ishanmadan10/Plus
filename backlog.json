@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Confirm 'Delete All' Groceries",
+      "what": "Implement an alert confirmation before clearing all grocery items.",
+      "why": "Prevents accidental data loss, enhancing user trust and data safety.",
+      "ui_impact": "A standard iOS alert will appear asking for confirmation before all items are removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Use QuickInputOverlay for new habits",
+      "what": "Replace the inline 'Add habit' text field in HabitChecklistView with QuickInputOverlay.",
+      "why": "Provides a consistent, focused input experience for adding new items across the app.",
+      "ui_impact": "When adding a habit, a modal overlay will appear instead of an inline text field.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Dynamic accessibility for PillButton",
+      "what": "Update PillButton's accessibility label to reflect its current state (open/close).",
+      "why": "Improves usability for VoiceOver users by clearly communicating the button's function.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Open quick actions' or 'Close quick actions'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Components/PillButton.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
