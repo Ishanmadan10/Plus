@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Confirm Section Deletion & Clean Tasks",
+      "what": "Implement an alert to confirm section deletion in ControlCentreView and remove associated tasks from HomeViewModel.",
+      "why": "Prevents accidental data loss and provides clear feedback for a high-impact action.",
+      "ui_impact": "A confirmation alert will appear before a section is permanently removed.",
+      "backend_impact": "HomeViewModel.allTasks will be updated to remove entries for the deleted section.",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Calendar Strip Day Cell Accessibility",
+      "what": "Add accessibilityLabel or accessibilityValue to DayCell in CalendarStrip to verbally describe habit completion.",
+      "why": "Improves accessibility for VoiceOver users, conveying completion status currently only visual.",
+      "ui_impact": "No visual change; VoiceOver will announce the completion status (e.g., 'Day 15, all habits completed').",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Implement Completion for Generic Checklist Tasks",
+      "what": "Introduce a completion state for tasks in GenericChecklistTab and TaskListView, allowing users to mark items as done.",
+      "why": "Enhances task management functionality and aligns with user expectations for a checklist feature.",
+      "ui_impact": "Each task row will gain a tappable checkbox/circle to toggle its completion status and visual update.",
+      "backend_impact": "Update tasks from [String] to [ChecklistItem] (struct with id, name, isCompleted).",
+      "file": "positive/Features/SectionDetail/Views/GenericChecklistTab.swift",
+      "effort": "large",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
