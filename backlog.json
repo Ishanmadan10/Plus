@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance Scratch Card accessibility",
+      "what": "Add an `accessibilityAction` to `ScratchCardView` allowing VoiceOver users to reveal content without physical scratching.",
+      "why": "Ensures users with motor or vision impairments can access the 'Thought of the Day' content.",
+      "ui_impact": "No visual change for sighted users. VoiceOver users will hear an action to reveal the card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Quick exit from nested section modals",
+      "what": "Implement a 'Done' button in deeply nested modals (e.g., `NoteEditorView`, `GymHistoryView`) that dismisses the entire `SectionDetailView` stack.",
+      "why": "Reduces navigation friction and taps, allowing users to quickly exit a multi-layered section flow.",
+      "ui_impact": "Nested modals will gain a 'Done' button or the existing 'chevron.down' will gain an option to dismiss all.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/NoteEditorView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Refactor WorkSectionView for consistency",
+      "what": "Refactor `WorkSectionView` to reuse `GenericChecklistTab` and `GenericNotesTab` components directly.",
+      "why": "Improves code maintainability, reduces duplication, and ensures consistent UI/UX behavior across all checklist and notes sections.",
+      "ui_impact": "No visual change for the user, but the underlying implementation becomes more robust and consistent.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
