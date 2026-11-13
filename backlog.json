@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add Empty State to Gym Day Manager",
+      "what": "Display a clear message and icon when no gym days are added in GymDayManagerView.",
+      "why": "Guides users on how to get started when the list is empty, reducing confusion.",
+      "ui_impact": "A centered VStack with a dumbbell icon and guiding text will appear when no gym days exist.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Improve Habit Row Accessibility",
+      "what": "Add an accessibilityValue to HabitRow to explicitly state its completion status for VoiceOver.",
+      "why": "Enhances accessibility for visually impaired users by clearly communicating habit completion.",
+      "ui_impact": "No visual change; VoiceOver will announce 'completed' or 'not completed' for each habit.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Restore Gym Session on Re-entry",
+      "what": "Call restoreSessionIfNeeded() on GymSectionView's onAppear, even if selectedDayID hasn't changed.",
+      "why": "Prevents accidental loss of unsaved notes or exercise selections when navigating within the Gym section.",
+      "ui_impact": "User's current session data (completed exercises, notes) will persist across internal navigation.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
