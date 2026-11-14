@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state to Gym Day Manager",
+      "what": "Display a message and icon when no workout days are added in GymDayManagerView.",
+      "why": "Guides users to add their first workout day, improving discoverability and reducing confusion.",
+      "ui_impact": "A centered message 'No workout days yet! Tap '+' to add one.' with a dumbbell icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Standardize header component usage",
+      "what": "Refactor `NotesListView` to use the shared `SectionHeader` component for consistent UI.",
+      "why": "Ensures consistent navigation and branding across all full-screen modal views, reducing cognitive load.",
+      "ui_impact": "The header in NotesListView will use the standard SectionHeader layout, matching other sections.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/NotesListView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add confirmation for item deletion",
+      "what": "Implement a confirmation dialog before permanently deleting habits, tasks, grocery items, or prayers.",
+      "why": "Prevents accidental data loss, giving users a chance to reconsider irreversible actions.",
+      "ui_impact": "A modal alert will appear asking for confirmation before an item is removed from a list.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "medium",
+      "priority": 3,
+      "status": "pending"
     }
   ]
 }
