@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Habit Row Toggle Accessibility",
+      "what": "Add an accessibility label to the habit row's primary tap action to clearly state its function and current state.",
+      "why": "Users with screen readers will understand they can toggle the habit's completion status and know its current state.",
+      "ui_impact": "No visual change. Screen readers will announce 'Toggle [Habit Name], currently [completed/not completed]'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Restrict Sheet Dismissal to Drag Handle",
+      "what": "Limit the drag-to-dismiss gesture for `JournalSectionView` (and `GenericNotesTab`) to the top capsule (drag handle) only.",
+      "why": "Prevents accidental dismissal when users are scrolling content within the sheet, improving interaction reliability.",
+      "ui_impact": "Users will only be able to drag down the sheet by interacting with the small capsule at the top.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Add Item Input UI",
+      "what": "Unify the visual style (padding, corner radius, button size) of the 'Add Item' text fields and 'plus.circle.fill' buttons.",
+      "why": "Creates a consistent and predictable user experience when adding new items, improving aesthetic polish.",
+      "ui_impact": "All inline 'Add Item' inputs will share consistent styling across relevant section views.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GenericChecklistTab.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
