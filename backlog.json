@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Gym Day Manager: Empty State",
+      "what": "Display a clear message and icon when no gym days are defined in `GymDayManagerView`.",
+      "why": "Guides users on how to add their first workout plan, improving onboarding and clarity.",
+      "ui_impact": "A centered 'No workout days yet!' message with a dumbbell icon will appear.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymDayManagerView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Scratch Card: VoiceOver Reveal Action",
+      "what": "Add an `accessibilityAction` to `ScratchCardView` to allow VoiceOver users to reveal the thought.",
+      "why": "Makes the 'thought of the day' accessible to users with visual impairments or motor difficulties.",
+      "ui_impact": "No visual change. VoiceOver will announce a 'Reveal thought' action.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Control Centre: Drag-to-Dismiss Gesture",
+      "what": "Implement a drag-to-dismiss gesture and a visual drag handle (capsule) for `ControlCentreView`.",
+      "why": "Provides a more intuitive and consistent dismissal method for full-screen modals, reducing friction.",
+      "ui_impact": "A small gray capsule will appear at the top center, and users can drag the view down to dismiss.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
