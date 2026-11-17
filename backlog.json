@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve Scratch Card Accessibility",
+      "what": "Add `accessibilityLabel` and `accessibilityHint` to the `foilOverlay` in `ScratchCardView` when content is hidden.",
+      "why": "Visually impaired users can understand the card's purpose and how to interact with it using VoiceOver.",
+      "ui_impact": "No visual change; VoiceOver will announce the card as 'Scratch card, Thought of the day is hidden. Scratch with your finger to reveal the message.'",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Enhance Calendar Strip Day Cell Accessibility",
+      "what": "Add a descriptive `accessibilityLabel` to `DayCell` in `CalendarStrip` that includes the date and habit completion status.",
+      "why": "Users relying on VoiceOver can fully understand their habit progress for each day, improving inclusivity.",
+      "ui_impact": "No visual change; VoiceOver will announce, e.g., 'Tuesday, 15th, All habits completed' or 'Thursday, 17th, Future date'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize Work Section Notes Tab",
+      "what": "Refactor `WorkSectionView`'s `workNotes` tab to use `RecentNoteCard` and `EmptyNotesView` for consistency with `GenericNotesTab`.",
+      "why": "Ensures a consistent user experience for note management across different section types and improves UI maintainability.",
+      "ui_impact": "The 'Work' section's notes tab will visually align with other generic sections, showing `RecentNoteCard`s and the `EmptyNotesView` when empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
