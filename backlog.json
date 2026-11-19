@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Standardize Work Notes Empty State",
+      "what": "Replace the 'Start typing...' placeholder with a dedicated EmptyNotesView in WorkSectionView's notes tab.",
+      "why": "Provides a consistent, clear, and more encouraging empty state for users when no notes exist in the Work section.",
+      "ui_impact": "When the Work section's notes tab is empty, users will see a 'No notes yet' message with an icon, instead of a simple placeholder.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add Accessibility Action to Reveal Scratch Card",
+      "what": "Implement an accessibilityAction on ScratchCardView that allows VoiceOver users to reveal the card without dragging.",
+      "why": "Ensures users with visual impairments can access the 'Thought of the Day' content, improving inclusivity.",
+      "ui_impact": "No visual change. VoiceOver users will hear an option like 'Double tap to reveal' when interacting with the card.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Improve Accessibility for Add Section TextField",
+      "what": "Add an accessibilityLabel or label to the 'Section name...' TextField in AddSectionSheet for better VoiceOver context.",
+      "why": "Enhances accessibility for users with visual impairments, making the form easier to navigate and understand.",
+      "ui_impact": "No visual change. VoiceOver will clearly announce the purpose of the text field.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 4,
+      "status": "pending"
     }
   ]
 }
