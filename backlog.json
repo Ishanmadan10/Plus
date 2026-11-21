@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Make Scratch Card Accessible",
+      "what": "Add a subtle 'Reveal' button to ScratchCardView, visible when the card is not yet revealed.",
+      "why": "Ensures all users, including those with accessibility needs, can access the daily thought.",
+      "ui_impact": "A small, de-emphasized 'Reveal' button will appear on the scratch card overlay.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "medium",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Remove Unused Home Gallery Button",
+      "what": "Remove the 'Gallery' button from HomeView as it currently has no implemented functionality.",
+      "why": "Prevents user confusion and frustration from interacting with a non-functional element.",
+      "ui_impact": "The third button in the bottom row of HomeView (currently 'plus' or 'xmark') will be removed.",
+      "backend_impact": "None",
+      "file": "positive/Features/Home/Views/HomeView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add Haptic Feedback to Habit Toggles",
+      "what": "Implement light haptic feedback when a habit is toggled (completed/uncompleted) in HabitRow.",
+      "why": "Provides satisfying tactile confirmation for user interactions, enhancing app responsiveness.",
+      "ui_impact": "Users will feel a subtle vibration when tapping to mark a habit as done or undone.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
