@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance GroceryRow accessibility",
+      "what": "Add an `accessibilityLabel` to the selection `Button` in `GroceryRow` to clearly describe its action.",
+      "why": "Users with visual impairments can understand the purpose of the button and the state of the grocery item.",
+      "ui_impact": "No visual change. VoiceOver will announce 'Toggle [item name] as selected' or similar.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Standardize sheet dismissal with drag-down gesture",
+      "what": "Implement a consistent drag-down gesture for full-screen sheets like `ControlCentreView` to dismiss them, mirroring `JournalSectionView`.",
+      "why": "Provides a more intuitive and consistent navigation experience, reducing friction for users accustomed to iOS sheet interactions.",
+      "ui_impact": "Users can drag down from the top of the sheet to dismiss it, in addition to tapping the 'X' or 'chevron.down' button.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add confirmation for clearing all groceries",
+      "what": "Introduce an `Alert` confirmation when the user taps the 'trash' button in `GroceriesSectionView` to clear the entire grocery list.",
+      "why": "Prevents accidental deletion of all grocery items, providing a safer and more reassuring user experience for a destructive action.",
+      "ui_impact": "A standard iOS alert will appear asking for confirmation before the list is cleared.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 2,
+      "status": "pending"
     }
   ]
 }
