@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Show empty state for Gym Day exercises",
+      "what": "Display a clear message when a selected Gym Day has no exercises.",
+      "why": "Guides users to add exercises, improving usability and reducing confusion.",
+      "ui_impact": "A centered text message and icon will appear when a Gym Day is selected but has no exercises.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Make Scratch Card hint accessible",
+      "what": "Replace Canvas-drawn 'Scratch to reveal' text with an accessible SwiftUI Text overlay.",
+      "why": "Ensures screen reader users can understand the card's purpose and interact with it.",
+      "ui_impact": "The 'Scratch to reveal \u2728' text will be rendered as a standard SwiftUI Text view, visually similar but accessible.",
+      "backend_impact": "None",
+      "file": "positive/Shared/Components/ScratchCardView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add confirmation for habit deletion",
+      "what": "Introduce a confirmation alert before a habit is permanently deleted via swipe action.",
+      "why": "Prevents accidental data loss, making the deletion process safer and more user-friendly.",
+      "ui_impact": "A small alert will pop up, asking the user to confirm 'Delete Habit?'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitRow.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
