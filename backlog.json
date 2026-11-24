@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Add empty state for Gym History",
+      "what": "Display a clear message when no gym sessions are logged in GymHistoryView.",
+      "why": "Users will understand that no data is available and how to add it.",
+      "ui_impact": "A dedicated view with an illustration and text will appear when store.logs is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymHistoryView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add empty state for Habit List",
+      "what": "Show an encouraging message when there are no habits added in HabitChecklistView.",
+      "why": "Guides new users on how to start adding habits.",
+      "ui_impact": "A visual placeholder with text and an icon will replace the list when store.habits is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add empty state for Grocery List",
+      "what": "Display a helpful message when the grocery list is empty in GroceriesSectionView.",
+      "why": "Users will know how to begin adding items to their list.",
+      "ui_impact": "A visual placeholder with an icon and instructional text will appear when items is empty.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
     }
   ]
 }
