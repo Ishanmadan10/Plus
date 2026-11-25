@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Display empty state for Gym Day exercises",
+      "what": "Add a `VStack` with a message and icon inside the `ScrollView` when `selectedDay.exercises` is empty.",
+      "why": "Guides users to add exercises, preventing confusion on empty workout days.",
+      "ui_impact": "A centered message and icon will appear when a Gym Day has no exercises.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "small",
+      "priority": 1,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Add accessibility label to HabitRow toggle",
+      "what": "Add `accessibilityLabel` to the `ZStack` that acts as the habit completion toggle in `HabitRow`.",
+      "why": "Improves VoiceOver usability, clearly communicating the action for each habit.",
+      "ui_impact": "No visual change; VoiceOver will announce 'Toggle completion for [habit title]'.",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add confirmation for 'Clear All' in Groceries",
+      "what": "Implement an `alert` or `confirmationDialog` before clearing all grocery items.",
+      "why": "Prevents accidental data loss for a destructive and irreversible action.",
+      "ui_impact": "A confirmation dialog will appear when the trash icon is tapped.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
