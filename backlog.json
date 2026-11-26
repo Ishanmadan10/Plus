@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Improve accessibility for section icon and color pickers",
+      "what": "Add explicit accessibility labels to icon and color selection buttons in the 'Add Section' sheet.",
+      "why": "Enhances usability for VoiceOver users, making interactive elements understandable and navigable.",
+      "ui_impact": "No visual change; VoiceOver will announce button purposes clearly.",
+      "backend_impact": "None",
+      "file": "positive/Features/ControlCentre/Views/ControlCentreView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Preserve unsaved Gym session state when switching days",
+      "what": "Implement temporary in-memory storage for current day's completed exercises, notes, and cardio metrics.",
+      "why": "Prevents accidental loss of unsaved workout progress, reducing user frustration and improving workflow.",
+      "ui_impact": "User's selections and inputs will persist when navigating between workout days before saving.",
+      "backend_impact": "Requires a new @State dictionary to hold unsaved state per GymDay ID.",
+      "file": "positive/Features/SectionDetail/Views/GymSectionView.swift",
+      "effort": "medium",
+      "priority": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Standardize PrayerCardRow completion indicator style",
+      "what": "Change the 'PrayerCardRow' completion indicator from a rounded rectangle to a circle.",
+      "why": "Creates a cohesive and predictable user interface across different checklist-like components.",
+      "ui_impact": "The checkbox for prayer cards will visually change from a square to a circle.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/PrayerCardRow.swift",
+      "effort": "small",
+      "priority": 5,
+      "status": "pending"
     }
   ]
 }
