@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Dynamic Accessibility Labels for Toggle Buttons",
+      "what": "Update accessibility labels for buttons that toggle state to reflect their current action.",
+      "why": "Improves accessibility for VoiceOver users by clearly communicating the button's function.",
+      "ui_impact": "No visual change; VoiceOver will announce the correct action (e.g., 'Add habit', 'Dismiss').",
+      "backend_impact": "None",
+      "file": "positive/Features/Habits/Views/HabitChecklistView.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Reuse Generic Tab Components in Work Section",
+      "what": "Refactor WorkSectionView to utilize GenericChecklistTab and GenericNotesTab instead of duplicated custom implementations.",
+      "why": "Reduces code duplication, ensures UI consistency across sections, and simplifies future maintenance.",
+      "ui_impact": "No visual change for the user; the internal code structure becomes more consistent.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/WorkSectionView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Visual Confirmation for Journal Auto-Save",
+      "what": "Display a brief, temporary 'Saved' message or checkmark icon after a Journal entry is auto-saved.",
+      "why": "Provides immediate feedback to the user that their thoughts have been successfully recorded.",
+      "ui_impact": "A small, temporary text label or icon appears near the text editor, then fades out.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/JournalSectionView.swift",
+      "effort": "medium",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
