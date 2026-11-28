@@ -157,6 +157,42 @@
       "effort": "small",
       "priority": 6,
       "status": "pending"
+    },
+    {
+      "id": "sug_014",
+      "title": "Enhance accessibility for list item toggles",
+      "what": "Add dynamic accessibility labels to custom toggle/selection buttons in `GroceryRow`, `PrayerCardRow`, and `GymExerciseRow`.",
+      "why": "Improves usability for VoiceOver users by clearly stating the item's state (selected/done) and purpose.",
+      "ui_impact": "No visual change; VoiceOver will announce item state (e.g., 'Item name, selected').",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Components/GroceryRow.swift",
+      "effort": "small",
+      "priority": 3,
+      "status": "pending"
+    },
+    {
+      "id": "sug_015",
+      "title": "Consolidate WorkSectionView with GenericSectionView",
+      "what": "Remove `WorkSectionView` and update `SectionDetailView` to route 'Work' to `GenericSectionView`.",
+      "why": "Reduces code duplication, improves maintainability, and ensures consistent behavior for checklist and notes tabs.",
+      "ui_impact": "No visual change for the user; the 'Work' section will function identically.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/SectionDetailView.swift",
+      "effort": "medium",
+      "priority": 5,
+      "status": "pending"
+    },
+    {
+      "id": "sug_016",
+      "title": "Add confirmation for clearing all groceries",
+      "what": "Present an `Alert` asking for user confirmation before deleting all items in `GroceriesSectionView`.",
+      "why": "Prevents accidental data loss for a destructive action, providing a safer user experience.",
+      "ui_impact": "A system alert will appear when the trash button is tapped, asking for confirmation.",
+      "backend_impact": "None",
+      "file": "positive/Features/SectionDetail/Views/GroceriesSectionView.swift",
+      "effort": "small",
+      "priority": 6,
+      "status": "pending"
     }
   ]
 }
